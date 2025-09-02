@@ -132,14 +132,14 @@ export default function Home() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 text-center object-contain">
             {[
-              { name: "Perplexity", purpose: "AI Research & Search Assistant", logo: "/perplexity.png" },
-              { name: "ChatGPT", purpose: "Ad Copy & Strategy", logo: "/chatgpt5.png" },
-              { name: "Hera AI", purpose: "AI Motion Graphics & Animation", logo: "/hera_ai.png" },
-              { name: "Gemini", purpose: "Content Creation", logo: "/gemini.png" },
-              { name: "Veo3", purpose: "AI Text-to-Video Generation", logo: "/veo3.png" },
-              { name: "Bolt.AI", purpose: "Automation", logo: "/bolt.png" },
-              { name: "Heygen", purpose: "AI Video Creation", logo: "/heygen.png" },
-              { name: "ElevenLabs", purpose: "AI Voiceovers", logo: "/elevenlabs.png" }
+              { name: "Perplexity", purpose: "AI Research & Search Assistant", logo: "/perplexity.webp" },
+              { name: "ChatGPT", purpose: "Ad Copy & Strategy", logo: "/chatgpt5.webp" },
+              { name: "Hera AI", purpose: "AI Motion Graphics & Animation", logo: "/hera_ai.webp" },
+              { name: "Gemini", purpose: "Content Creation", logo: "/gemini.webp" },
+              { name: "Veo3", purpose: "AI Text-to-Video Generation", logo: "/veo3.webp" },
+              { name: "Bolt.AI", purpose: "Automation", logo: "/bolt.webp" },
+              { name: "Heygen", purpose: "AI Video Creation", logo: "/heygen.webp" },
+              { name: "ElevenLabs", purpose: "AI Voiceovers", logo: "/elevenlabs.webp" }
             ].map((tool, index) => (
               <div key={tool.name} className={`bg-white-contrast p-8 rounded-2xl hover-lift animate-fade-in-up stagger-${index + 3}`}>
                 <div className="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6 bg-white shadow-sm animate-float">
@@ -170,14 +170,14 @@ export default function Home() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 text-center object-contain">
             {[
-              { name: "Meta Ads", purpose: "Paid Social Advertising", logo: "meta.png" },
-              { name: "Google Ads", purpose: "Search & Performance Max", logo: "/google.png" },
-              { name: "LinkedIn Ads", purpose: "B2B Lead Generation", logo: "/linkedin.png" },
-              { name: "Pinterest", purpose: "Visual Discovery Ads", logo: "/pinterest.png" },
-              { name: "Google Search Console", purpose: "SEO Performance Tracking", logo: "/google_search_console.png" },
-              { name: "Google My Business", purpose: "Local SEO & Reviews", logo: "/google_my_business.png" },
-              { name: "Google Analytics", purpose: "Measurement & Attribution", logo: "/google_analytics.png" },
-              { name: "SEMrush", purpose: "SEO & Competitive Research", logo: "/semrush.png" },
+              { name: "Meta Ads", purpose: "Paid Social Advertising", logo: "meta.webp" },
+              { name: "Google Ads", purpose: "Search & Performance Max", logo: "/google.webp" },
+              { name: "LinkedIn Ads", purpose: "B2B Lead Generation", logo: "/linkedin.webp" },
+              { name: "Pinterest", purpose: "Visual Discovery Ads", logo: "/pinterest.webp" },
+              { name: "Google Search Console", purpose: "SEO Performance Tracking", logo: "/google_search_console.webp" },
+              { name: "Google My Business", purpose: "Local SEO & Reviews", logo: "/google_my_business.webp" },
+              { name: "Google Analytics", purpose: "Measurement & Attribution", logo: "/google_analytics.webp" },
+              { name: "SEMrush", purpose: "SEO & Competitive Research", logo: "/semrush.webp" },
             ].map((tool, index) => (
               <div key={tool.name} className={`bg-white-contrast p-8 rounded-2xl hover-lift animate-fade-in-up stagger-${index + 3}`}>
                 <div className="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6 bg-white shadow-sm">
@@ -207,7 +207,7 @@ export default function Home() {
             <Card className="hover-lift bg-white shadow-lg animate-fade-in-up stagger-3">
               <CardContent className="p-10 text-center">
                 <img
-                  src="/vinay.jpg"
+                  src="/vinay.webp"
                   alt="Vinay Hankare"
                   className="w-40 h-40 rounded-full object-cover mx-auto mb-6 border-4 border-adsmagnify-dark-yellow shadow-lg"
                 />
@@ -230,7 +230,7 @@ export default function Home() {
             <Card className="hover-lift bg-white shadow-lg animate-fade-in-up stagger-4">
               <CardContent className="p-10 text-center">
                 <img
-                  src="/aloke.JPG"
+                  src="/aloke.webp"
                   alt="Industry Expert"
                   className="w-40 h-40 rounded-full object-cover mx-auto mb-6 border-4 border-adsmagnify-dark-yellow shadow-lg"
                 />

@@ -55,7 +55,7 @@ const MetaTags = ({
             "@context": "https://schema.org",
             "@type": "LocalBusiness",
             "name": "Adsmagnify Academy",
-            "image": `${baseUrl}/images/logo.jpg`,
+            "image": `${baseUrl}/images/logo.webp`,
             "description": "AI-powered digital marketing courses in Mumbai with live projects and shadow internships.",
             "address": {
               "@type": "PostalAddress",

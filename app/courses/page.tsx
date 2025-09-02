@@ -77,17 +77,17 @@ export default function CoursesPage() {
   // Get marketing tool logos
   const getMarketingToolLogo = (tool: string): string => {
     const logoMap: Record<string, string> = {
-      "meta ads": "/meta.png",
-      "google ads": "/google.png",
-      "linkedin ads": "/linkedin.png",
-      "pinterest": "/pinterest.png",
-      "google search console": "/google_search_console.png",
-      "google my business": "/google_my_business.png",
-      "google analytics": "/google_analytics.png",
-      "semrush": "/semrush.png"
+      "meta ads": "/meta.webp",
+      "google ads": "/google.webp",
+      "linkedin ads": "/linkedin.webp",
+      "pinterest": "/pinterest.webp",
+      "google search console": "/google_search_console.webp",
+      "google my business": "/google_my_business.webp",
+      "google analytics": "/google_analytics.webp",
+      "semrush": "/semrush.webp"
     };
     
-    return logoMap[tool.toLowerCase()] || "/logo.png";
+    return logoMap[tool.toLowerCase()] || "/logo.webp";
   };
 
   // Get all unique marketing tools across all courses

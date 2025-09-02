@@ -111,17 +111,17 @@ export default async function CoursePage({ params }: CoursePageProps) {
   // Get marketing tool logos
   const getMarketingToolLogo = (tool: string): string => {
     const logoMap: Record<string, string> = {
-      "meta ads": "/meta.png",
-      "google ads": "/google.png",
-      "linkedin ads": "/linkedin.png",
-      "pinterest": "/pinterest.png",
-      "google search console": "/google_search_console.png",
-      "google my business": "/google_my_business.png",
-      "google analytics": "/google_analytics.png",
-      "semrush": "/semrush.png"
+      "meta ads": "/meta.webp",
+      "google ads": "/google.webp",
+      "linkedin ads": "/linkedin.webp",
+      "pinterest": "/pinterest.webp",
+      "google search console": "/google_search_console.webp",
+      "google my business": "/google_my_business.webp",
+      "google analytics": "/google_analytics.webp",
+      "semrush": "/semrush.webp"
     };
     
-    return logoMap[tool.toLowerCase()] || "/logo.png";
+    return logoMap[tool.toLowerCase()] || "/logo.webp";
   };
 
   const marketingTools = getMarketingToolsBySlug(slug);
@@ -289,20 +289,20 @@ export default async function CoursePage({ params }: CoursePageProps) {
             <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-6">
               {(() => {
                 const logoSrcByTool: Record<string, string> = {
-                  "chatgpt": "/chatgpt5.png",
-                  "chatgpt-5": "/chatgpt5.png",
-                  "gemini": "/gemini.png",
-                  "bolt.ai": "/bolt.png",
-                  "boltai": "/bolt.png",
-                  "heygen": "/heygen.png",
-                  "elevenlabs": "/elevenlabs.png",
-                  "perplexity": "/perplexity.png",
-                  "veo3": "/veo3.png",
-                  "hera ai": "/hera_ai.png"
+                  "chatgpt": "/chatgpt5.webp",
+                  "chatgpt-5": "/chatgpt5.webp",
+                  "gemini": "/gemini.webp",
+                  "bolt.ai": "/bolt.webp",
+                  "boltai": "/bolt.webp",
+                  "heygen": "/heygen.webp",
+                  "elevenlabs": "/elevenlabs.webp",
+                  "perplexity": "/perplexity.webp",
+                  "veo3": "/veo3.webp",
+                  "hera ai": "/hera_ai.webp"
                 };
                 return course.aiTools.map((tool) => {
                   const key = tool.toLowerCase().replace(/\s+/g, "");
-                  const src = logoSrcByTool[key] || "/hera_ai.png";
+                  const src = logoSrcByTool[key] || "/hera_ai.webp";
                   return (
                     <div key={tool} className="bg-white p-4 rounded-lg text-center">
                       <div className="w-12 h-12 rounded-2xl flex items-center justify-center mx-auto mb-3 bg-white shadow-sm overflow-hidden">

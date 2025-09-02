@@ -68,17 +68,17 @@ const CourseCard = ({
   // Get marketing tool logos
   const getMarketingToolLogo = (tool: string): string => {
     const logoMap: Record<string, string> = {
-      "meta ads": "/meta.png",
-      "google ads": "/google.png",
-      "linkedin ads": "/linkedin.png",
-      "pinterest": "/pinterest.png",
-      "google search console": "/google_search_console.png",
-      "google my business": "/google_my_business.png",
-      "google analytics": "/google_analytics.png",
-      "semrush": "/semrush.png"
+      "meta ads": "/meta.webp",
+      "google ads": "/google.webp",
+      "linkedin ads": "/linkedin.webp",
+      "pinterest": "/pinterest.webp",
+      "google search console": "/google_search_console.webp",
+      "google my business": "/google_my_business.webp",
+      "google analytics": "/google_analytics.webp",
+      "semrush": "/semrush.webp"
     };
     
-    return logoMap[tool.toLowerCase()] || "/logo.png";
+    return logoMap[tool.toLowerCase()] || "/logo.webp";
   };
 
   const marketingTools = getMarketingToolsBySlug(slug);
@@ -148,17 +148,17 @@ const CourseCard = ({
           <div className="flex flex-wrap items-center gap-3">
             {(() => {
               const logoSrcByTool: Record<string, string> = {
-                "chatgpt": "/chatgpt5.png",
-                "chatgpt-5": "/chatgpt5.png",
-                "gemini": "/gemini.png",
-                "bolt.ai": "/bolt.png",
-                "boltai": "/bolt.png",
-                "heygen": "/heygen.png",
-                "elevenlabs": "/elevenlabs.png",
-                "perplexity": "/perplexity.png",
-                "veo3": "/veo3.png",
-                "heraai": "/hera_ai.png",
-                "hera": "/hera_ai.png",
+                "chatgpt": "/chatgpt5.webp",
+                "chatgpt-5": "/chatgpt5.webp",
+                "gemini": "/gemini.webp",
+                "bolt.ai": "/bolt.webp",
+                "boltai": "/bolt.webp",
+                "heygen": "/heygen.webp",
+                "elevenlabs": "/elevenlabs.webp",
+                "perplexity": "/perplexity.webp",
+                "veo3": "/veo3.webp",
+                "heraai": "/hera_ai.webp",
+                "hera": "/hera_ai.webp",
               };
               
               // Show all AI tools that should be displayed
@@ -175,7 +175,7 @@ const CourseCard = ({
               
               return allAiTools.map((tool, idx) => {
                 const key = tool.toLowerCase().replace(/\s+/g, "");
-                const src = logoSrcByTool[key] || "/logo.png";
+                const src = logoSrcByTool[key] || "/logo.webp";
                 return (
                   <div key={`${key}-${idx}`} className="w-8 h-8 rounded-md bg-white shadow-sm overflow-hidden flex items-center justify-center">
                     <img src={src} alt={`${tool} logo`} className="w-6 h-6 object-contain" />

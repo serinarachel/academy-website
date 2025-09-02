@@ -33,7 +33,7 @@ const Header = () => {
               aria-label="Adsmagnify Academy Home"
             >
               <Image
-                src="/logo.png"
+                src="/logo.webp"
                 alt="Adsmagnify Academy"
                 width={1000}
                 height={1000}
