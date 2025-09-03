@@ -35,7 +35,142 @@ const setupGTMPageViewTracking = () => {
   trackPageView(window.location.href, document.title, document.referrer);
 };
 
-// GTM History Change Tracking with built-in variables
+// GTM Virtual Pageview Tracking for SPA Navigation
+const setupGTMVirtualPageviewTracking = () => {
+  if (typeof window === 'undefined') return;
+
+  // Store previous URL and state
+  let previousUrl = window.location.href;
+  let previousPath = window.location.pathname;
+  let previousTitle = document.title;
+  let virtualPageviewTimeout: NodeJS.Timeout | null = null;
+
+  // Function to push virtualPageview event
+  const pushVirtualPageview = (path: string, title: string) => {
+    if (window.dataLayer) {
+      window.dataLayer.push({
+        event: 'virtualPageview',
+        pagePath: path,
+        pageTitle: title,
+        page_location: window.location.href,
+        page_hostname: window.location.hostname,
+        page_referrer: previousUrl,
+        previous_path: previousPath,
+        previous_title: previousTitle,
+        timestamp: Date.now(),
+        navigation_type: 'spa_route_change'
+      });
+    }
+  };
+
+  // Debounced function to prevent multiple rapid fires
+  const debouncedVirtualPageview = (newPath: string, newTitle: string) => {
+    if (virtualPageviewTimeout) {
+      clearTimeout(virtualPageviewTimeout);
+    }
+
+    virtualPageviewTimeout = setTimeout(() => {
+      // Only push if path or title actually changed
+      if (newPath !== previousPath || newTitle !== previousTitle) {
+        pushVirtualPageview(newPath, newTitle);
+        
+        // Update previous values
+        previousPath = newPath;
+        previousTitle = newTitle;
+        previousUrl = window.location.href;
+        
+        // Reset page metrics for new page
+        pageStartTime = Date.now();
+        scrollDepth = 0;
+        maxScrollDepth = 0;
+      }
+    }, 100); // 100ms delay to ensure title is set
+  };
+
+  // Override pushState
+  const originalPushState = window.history.pushState;
+  window.history.pushState = function(state, title, url) {
+    const newPath = url ? new URL(url, window.location.origin).pathname : window.location.pathname;
+    const newTitle = title || document.title;
+    
+    originalPushState.call(this, state, title, url);
+    
+    // Wait for title to be set, then push virtualPageview
+    setTimeout(() => {
+      debouncedVirtualPageview(newPath, document.title);
+    }, 50);
+  };
+
+  // Override replaceState
+  const originalReplaceState = window.history.replaceState;
+  window.history.replaceState = function(state, title, url) {
+    const newPath = url ? new URL(url, window.location.origin).pathname : window.location.pathname;
+    const newTitle = title || document.title;
+    
+    originalReplaceState.call(this, state, title, url);
+    
+    // Wait for title to be set, then push virtualPageview
+    setTimeout(() => {
+      debouncedVirtualPageview(newPath, document.title);
+    }, 50);
+  };
+
+  // Listen for popstate (browser back/forward)
+  window.addEventListener('popstate', () => {
+    const newPath = window.location.pathname;
+    const newTitle = document.title;
+    
+    // Wait for title to be set, then push virtualPageview
+    setTimeout(() => {
+      debouncedVirtualPageview(newPath, document.title);
+    }, 50);
+  });
+
+  // Listen for hash changes
+  window.addEventListener('hashchange', () => {
+    const newPath = window.location.pathname;
+    const newTitle = document.title;
+    
+    // Wait for title to be set, then push virtualPageview
+    setTimeout(() => {
+      debouncedVirtualPageview(newPath, document.title);
+    }, 50);
+  });
+
+  // Listen for title changes (for dynamic title updates)
+  let titleObserver: MutationObserver | null = null;
+  
+  if (typeof MutationObserver !== 'undefined') {
+    titleObserver = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.type === 'childList' && mutation.target === document.head) {
+          const titleElement = document.querySelector('title');
+          if (titleElement && titleElement.textContent !== previousTitle) {
+            const newTitle = titleElement.textContent || document.title;
+            debouncedVirtualPageview(window.location.pathname, newTitle);
+          }
+        }
+      });
+    });
+
+    titleObserver.observe(document.head, {
+      childList: true,
+      subtree: true
+    });
+  }
+
+  // Cleanup function
+  return () => {
+    if (virtualPageviewTimeout) {
+      clearTimeout(virtualPageviewTimeout);
+    }
+    if (titleObserver) {
+      titleObserver.disconnect();
+    }
+  };
+};
+
+// GTM History Change Tracking with built-in variables (keeping for backward compatibility)
 const setupGTMHistoryTracking = () => {
   if (typeof window === 'undefined') return;
 
@@ -75,11 +210,6 @@ const setupGTMHistoryTracking = () => {
       // Update previous values
       previousUrl = newUrl;
       previousState = newState;
-      
-      // Reset page metrics for new page
-      pageStartTime = Date.now();
-      scrollDepth = 0;
-      maxScrollDepth = 0;
     }, 1000); // 1 second delay as requested
   };
 
@@ -416,7 +546,8 @@ const GTMSetup = () => {
     const waitForGTM = () => {
       if (window.dataLayer) {
         setupGTMPageViewTracking();
-        setupGTMHistoryTracking();
+        setupGTMVirtualPageviewTracking(); // Primary virtual pageview tracking
+        setupGTMHistoryTracking(); // Secondary history tracking for backward compatibility
         setupGTMClickTracking();
         setupGTMFormTracking();
         setupGTMScrollTracking();
