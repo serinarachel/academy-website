@@ -1,9 +1,9 @@
 'use client';
 
-import { useEffect } from 'react';
-import { trackGlobalClick } from '@/hooks/use-tracking';
+import { Suspense, useEffect } from 'react';
+import { trackGlobalClick, trackNavigation } from '@/hooks/use-tracking';
 
-const ClickTracking = () => {
+const ClickTrackingInner = () => {
   useEffect(() => {
     const handleClick = (e: MouseEvent) => {
       const target = e.target as HTMLElement | null;
@@ -18,7 +18,7 @@ const ClickTracking = () => {
         trackGlobalClick('cta_click', 'engagement', `${text}_${location}`);
       }
 
-      // Track all link clicks
+      // Track all link clicks with enhanced navigation tracking
       if (target.tagName === 'A' || target.closest('a')) {
         const link = target.tagName === 'A' ? target : target.closest('a') as HTMLElement;
         const href = link?.getAttribute('href');
@@ -26,6 +26,12 @@ const ClickTracking = () => {
         const location = window.location.pathname;
         
         if (href && href !== '#' && !href.startsWith('javascript:')) {
+          // Determine if it's external or internal
+          if (href.startsWith('http') || href.startsWith('mailto:') || href.startsWith('tel:')) {
+            trackNavigation(href, 'external');
+          } else {
+            trackNavigation(href, 'internal');
+          }
           trackGlobalClick('link_click', 'navigation', `${text}_${location}`);
         }
       }
@@ -40,11 +46,40 @@ const ClickTracking = () => {
       }
     };
 
+    // Track full page navigation events
+    const handleNavigationStart = () => {
+      trackNavigation(window.location.pathname, 'internal');
+    };
+
+    // Track page reloads and navigation
+    const handleBeforeUnload = () => {
+      trackNavigation(window.location.href, 'reload');
+    };
+
+    const handlePopState = () => {
+      trackNavigation(window.location.href, 'internal');
+    };
+
     document.addEventListener('click', handleClick, { capture: true });
-    return () => document.removeEventListener('click', handleClick, { capture: true } as any);
+    window.addEventListener('beforeunload', handleBeforeUnload);
+    window.addEventListener('popstate', handlePopState);
+    
+    return () => {
+      document.removeEventListener('click', handleClick, { capture: true } as any);
+      window.removeEventListener('beforeunload', handleBeforeUnload);
+      window.removeEventListener('popstate', handlePopState);
+    };
   }, []);
 
   return null;
+};
+
+const ClickTracking = () => {
+  return (
+    <Suspense fallback={null}>
+      <ClickTrackingInner />
+    </Suspense>
+  );
 };
 
 export default ClickTracking;

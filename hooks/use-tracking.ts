@@ -1,9 +1,8 @@
 import { useEffect, useRef } from 'react';
-import { usePathname, useSearchParams } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 
 // Global tracking state to avoid hydration issues
 let isClient = false;
-let hasInitialized = false;
 
 // Initialize client-side tracking
 if (typeof window !== 'undefined') {
@@ -78,20 +77,28 @@ export const trackEvent = (
 // Hook for automatic page view tracking
 export const usePageTracking = () => {
   const pathname = usePathname();
-  const searchParams = useSearchParams();
   const previousPath = useRef<string>('');
 
   useEffect(() => {
     if (!isClient) return;
     
-    const currentPath = pathname + (searchParams?.toString() ? `?${searchParams.toString()}` : '');
+    const currentPath = pathname;
     
     // Only track if path actually changed
     if (currentPath !== previousPath.current) {
       previousPath.current = currentPath;
-      trackPageView(currentPath);
+      
+      // Use window.location for full page navigation tracking as suggested
+      const fullUrl = window.location.href;
+      const searchParams = window.location.search;
+      const urlToTrack = currentPath + searchParams;
+      
+      trackPageView(urlToTrack);
+      
+      // Track full page navigation event
+      trackEvent('full_page_navigation', 'navigation', `navigate_to_${currentPath}`);
     }
-  }, [pathname, searchParams]);
+  }, [pathname]);
 };
 
 // Hook for tracking CTA button clicks
@@ -118,4 +125,38 @@ export const useFormTracking = () => {
 export const trackGlobalClick = (action: string, category: string, label?: string) => {
   if (!isClient) return;
   trackEvent(action, category, label);
+};
+
+// Enhanced navigation tracking using window.location methods as suggested
+export const trackFullPageNavigation = (url: string, method: 'assign' | 'href' | 'replace') => {
+  if (!isClient) return;
+  
+  // Track the navigation method used
+  trackEvent('full_page_navigation', 'navigation', `${method}_to_${url}`);
+  
+  // Use the appropriate window.location method for full page navigation
+  switch (method) {
+    case 'assign':
+      window.location.assign(url);
+      break;
+    case 'href':
+      window.location.href = url;
+      break;
+    case 'replace':
+      window.location.replace(url);
+      break;
+  }
+};
+
+// Track external links and full page reloads
+export const trackNavigation = (url: string, type: 'internal' | 'external' | 'reload') => {
+  if (!isClient) return;
+  
+  if (type === 'external') {
+    trackEvent('external_link_click', 'navigation', url);
+  } else if (type === 'reload') {
+    trackEvent('page_reload', 'navigation', url);
+  } else {
+    trackEvent('internal_navigation', 'navigation', url);
+  }
 };

@@ -16,14 +16,13 @@ import {
   CheckCircle,
   Send
 } from "lucide-react";
-import { useRouter } from "next/navigation";
 import { useFormTracking } from "@/hooks/use-tracking";
+import { navigateToInternal } from "@/utils/navigation";
 
 // Import course data for the form
 import coursesData from "@/data/courses.json";
 
 export default function ContactPage() {
-  const router = useRouter();
   const { trackFormSubmit } = useFormTracking();
   
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -51,8 +50,9 @@ export default function ContactPage() {
     setTimeout(() => {
       setIsSubmitting(false);
       
-      // Redirect to thank you page
-      router.push('/thank-you');
+      // Use full page navigation for tracking purposes
+      // This ensures the page change is tracked as a full navigation, not just history
+      navigateToInternal('/thank-you');
     }, 1500);
   };
 
