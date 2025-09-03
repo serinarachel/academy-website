@@ -106,7 +106,24 @@ const setupGTMCTATracking = () => {
       buttonClasses.toLowerCase().includes('button-primary');
 
     if (isCTAButton) {
-      // Push to dataLayer with built-in GTM variables
+      // First, push the click data to dataLayer for GTM's built-in Click Variables
+      if (window.dataLayer) {
+        // This ensures GTM's built-in Click Variables are populated
+        window.dataLayer.push({
+          event: 'gtm.click',
+          gtm: {
+            element: button,
+            elementId: buttonId,
+            elementClasses: buttonClasses,
+            elementText: buttonText,
+            elementUrl: buttonHref,
+            elementTarget: (button as HTMLAnchorElement).target || '',
+            elementType: button.tagName.toLowerCase()
+          }
+        });
+      }
+
+      // Then push our custom CTA event with all the button data
       if (window.dataLayer) {
         window.dataLayer.push({
           event: 'gtm.ctaClick',

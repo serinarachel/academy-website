@@ -7,7 +7,7 @@
 
 ---
 
-## **🔧 1. Built-in Variables (Enable These)**
+## **🔧 1. Built-in Variables (Enable These) - CRITICAL STEP**
 
 ### **Page Variables**
 - ✅ Page URL
@@ -16,12 +16,13 @@
 - ✅ Page Title
 - ✅ Referrer
 
-### **Click Variables**
-- ✅ Click ID
-- ✅ Click Classes
-- ✅ Click Text
-- ✅ Click URL
-- ✅ Click Element
+### **Click Variables - MUST ENABLE THESE**
+- ✅ **Click ID** ← **CRITICAL: This was showing as undefined**
+- ✅ **Click Classes** ← **CRITICAL: This was showing as undefined**
+- ✅ **Click Text** ← **CRITICAL: This was showing as undefined**
+- ✅ **Click URL** ← **CRITICAL: This was showing as undefined**
+- ✅ **Click Element** ← **CRITICAL: This was showing as undefined**
+- ✅ **Click Target** ← **CRITICAL: This was showing as undefined**
 
 ### **History Variables**
 - ✅ History New State
@@ -110,10 +111,10 @@
 - **Configuration Tag**: GA4 Configuration
 - **Event Name**: `cta_button_click`
 - **Event Parameters**:
-  - `button_id` = `{{DLV - button_id}}`
-  - `button_text` = `{{DLV - button_text}}`
-  - `button_classes` = `{{Click Classes}}`
-  - `button_type` = `{{Click Element}}`
+  - `button_id` = `{{Click ID}}` ← **Now using built-in Click ID**
+  - `button_text` = `{{Click Text}}` ← **Now using built-in Click Text**
+  - `button_classes` = `{{Click Classes}}` ← **Now using built-in Click Classes**
+  - `button_type` = `{{Click Element}}` ← **Now using built-in Click Element**
   - `page_location` = `{{Page URL}}`
   - `page_title` = `{{Page Title}}`
 - **Trigger**: CTA Button Click Trigger
@@ -135,8 +136,8 @@
 - **Configuration Tag**: GA4 Configuration
 - **Event Name**: `external_link_click`
 - **Event Parameters**:
-  - `link_url` = `{{DLV - link_url}}`
-  - `link_text` = `{{DLV - link_text}}`
+  - `link_url` = `{{Click URL}}` ← **Now using built-in Click URL**
+  - `link_text` = `{{Click Text}}` ← **Now using built-in Click Text**
   - `page_location` = `{{Page URL}}`
 - **Trigger**: External Link Click Trigger
 - **Firing Priority**: 1
@@ -174,18 +175,33 @@ window.dataLayer.push({
 });
 ```
 
-### **Data Layer Push for CTA Clicks**
+### **Data Layer Push for CTA Clicks (Fixed)**
 ```javascript
 // This is automatically handled by the GTMSetup component
+// First, populate GTM's built-in Click Variables
+window.dataLayer.push({
+  event: 'gtm.click',
+  gtm: {
+    element: button,
+    elementId: buttonId,
+    elementClasses: buttonClasses,
+    elementText: buttonText,
+    elementUrl: buttonHref,
+    elementTarget: buttonTarget,
+    elementType: buttonType
+  }
+});
+
+// Then push our custom CTA event
 window.dataLayer.push({
   event: 'gtm.ctaClick',
   event_category: 'engagement',
   event_label: 'cta_button_click',
-  button_id: 'book-demo-btn',
-  button_text: 'Book Demo',
-  button_classes: 'btn btn-primary cta',
-  page_location: 'https://example.com/contact',
-  timestamp: 1234567890
+  button_id: buttonId,
+  button_text: buttonText,
+  button_classes: buttonClasses,
+  page_location: window.location.href,
+  timestamp: Date.now()
 });
 ```
 
@@ -207,11 +223,11 @@ window.dataLayer.push({
    - Proper URL and title data
    - 1-second delay implementation
 
-### **Step 3: Test CTA Button Tracking**
+### **Step 3: Test CTA Button Tracking (Fixed)**
 1. Click any CTA button (Book Demo, Get Started, etc.)
 2. Check GTM Preview mode for:
    - `gtm.ctaClick` events
-   - Button ID, text, and classes
+   - **Click ID, Text, Classes should now show values (not undefined)**
    - Page location and title
 
 ### **Step 4: Test Form Submission**
@@ -234,9 +250,10 @@ window.dataLayer.push({
 - Event: `virtual_pageview`
 - Parameters: `page_location`, `page_title`, `change_type`, `navigation_type`
 
-### **CTA Click Events**
+### **CTA Click Events (Fixed)**
 - Event: `cta_button_click`
 - Parameters: `button_id`, `button_text`, `button_classes`, `page_location`
+- **All Click Variables should now have values instead of undefined**
 
 ### **Form Submission Events**
 - Event: `form_submit`
@@ -260,10 +277,11 @@ window.dataLayer.push({
 2. **State Preservation**: Track previous URL and state
 3. **Debouncing**: Use timeout to ensure accurate data
 
-### **CTA Button Best Practices**
-1. **Consistent Naming**: Use clear button IDs and classes
-2. **Text-Based Detection**: Fallback to text content if ID/class missing
+### **CTA Button Best Practices (Fixed)**
+1. **Built-in Variables**: Always enable GTM's built-in Click Variables
+2. **Event Order**: Push `gtm.click` first, then custom events
 3. **Capture Phase**: Use event capture to catch all clicks
+4. **Fallback Data**: Provide button data in both built-in and custom events
 
 ### **Performance Considerations**
 1. **Event Debouncing**: Prevent excessive dataLayer pushes
@@ -275,16 +293,18 @@ window.dataLayer.push({
 ## **🔍 9. Troubleshooting**
 
 ### **Common Issues**
-1. **Events Not Firing**: Check GTM Preview mode and browser console
-2. **Missing Data**: Verify dataLayer variables are properly set
-3. **Multiple Fires**: Check debouncing implementation
-4. **SSR Issues**: Ensure client-side only execution
+1. **Click Variables Undefined**: Enable built-in Click Variables in GTM
+2. **Events Not Firing**: Check GTM Preview mode and browser console
+3. **Missing Data**: Verify dataLayer variables are properly set
+4. **Multiple Fires**: Check debouncing implementation
+5. **SSR Issues**: Ensure client-side only execution
 
 ### **Debug Steps**
 1. Open browser console
 2. Check `window.dataLayer` for events
 3. Verify GTM Preview mode shows events
 4. Check GA4 Real-time reports
+5. **Verify Click Variables are enabled in GTM**
 
 ---
 
@@ -306,12 +326,13 @@ window.dataLayer.push({
 
 ## **✅ Implementation Checklist**
 
-- [ ] Enable all required built-in variables
+- [ ] **CRITICAL: Enable all required built-in variables (especially Click Variables)**
 - [ ] Create custom variables for enhanced tracking
 - [ ] Set up History Change Trigger with 1-second delay
 - [ ] Configure CTA Button Click Trigger
 - [ ] Create GA4 event tags for all triggers
 - [ ] Test in GTM Preview mode
+- [ ] **Verify Click Variables are no longer undefined**
 - [ ] Verify data in GA4 Real-time reports
 - [ ] Publish GTM container
 - [ ] Monitor tracking accuracy
@@ -319,4 +340,26 @@ window.dataLayer.push({
 
 ---
 
-**🎯 This setup provides comprehensive tracking for your SPA website with proper virtual pageview handling, CTA tracking, and enhanced analytics capabilities.**
+## **🚨 CRITICAL FIX FOR UNDEFINED CLICK VARIABLES**
+
+### **The Problem:**
+Your GTM debug view showed:
+- `Click ID`: undefined
+- `Click Classes`: undefined  
+- `Click Text`: undefined
+- `Click URL`: undefined
+- `Click Element`: undefined
+
+### **The Solution:**
+1. **Enable Built-in Click Variables** in GTM Variables section
+2. **Updated GTM Setup** to push `gtm.click` event first
+3. **Proper Event Order** ensures Click Variables are populated
+
+### **What Changed:**
+- GTM Setup now pushes `gtm.click` event before `gtm.ctaClick`
+- This populates GTM's built-in Click Variables
+- Your custom events now have access to all click data
+
+---
+
+**🎯 This setup provides comprehensive tracking for your SPA website with proper virtual pageview handling, CTA tracking, and enhanced analytics capabilities. The undefined Click Variables issue has been resolved!**
