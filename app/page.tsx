@@ -19,12 +19,14 @@ import {
   MessageCircle
 } from "lucide-react";
 import CountUp from "@/components/common/count-up";
+import { useCTATracking } from "@/hooks/use-tracking";
 
 // Import course data
 import coursesData from "@/data/courses.json";
 import testimonialsData from "@/data/testimonials.json";
 
 export default function Home() {
+  const { trackCTAClick } = useCTATracking();
   const featuredTestimonials = testimonialsData.slice(0, 6);
 
   return (
@@ -85,6 +87,7 @@ export default function Home() {
               asChild 
               size="lg" 
               className="bg-adsmagnify-blue hover:bg-adsmagnify-dark-blue text-white font-bold px-8 py-3 rounded-xl shadow-lg hover:scale-105 transform transition-all duration-300 font-satoshi"
+              onClick={() => trackCTAClick('view_all_courses', 'home_page')}
             >
               <Link href="/courses" className="flex items-center gap-2">
                 View All Courses
@@ -191,6 +194,7 @@ export default function Home() {
               variant="outline" 
               size="lg" 
               className="border-adsmagnify-blue text-adsmagnify-blue hover:bg-adsmagnify-blue hover:text-white font-bold px-8 py-3 rounded-xl shadow-lg hover:scale-105 transform transition-all duration-300 font-satoshi"
+              onClick={() => trackCTAClick('view_all_testimonials', 'home_page')}
             >
               <Link href="/testimonials" className="flex items-center gap-2">
                 View All Testimonials
@@ -217,6 +221,7 @@ export default function Home() {
               asChild 
               size="lg" 
               className="bg-adsmagnify-dark-yellow text-adsmagnify-blue font-bold text-lg px-12 py-6 rounded-xl shadow-lg hover:bg-white hover:text-adsmagnify-blue hover:scale-105 transform transition-all duration-300 font-satoshi"
+              onClick={() => trackCTAClick('book_demo', 'home_page_cta')}
             >
               <Link href="/contact">Book Your Demo Lecture Today</Link>
             </Button>
@@ -225,6 +230,7 @@ export default function Home() {
               variant="outline" 
               size="lg" 
               className="bg-white text-adsmagnify-blue border-2 border-adsmagnify-blue font-bold text-lg px-12 py-6 rounded-xl shadow-lg hover:bg-adsmagnify-dark-yellow hover:text-adsmagnify-blue hover:scale-105 transform transition-all duration-300 font-satoshi"
+              onClick={() => trackCTAClick('whatsapp', 'home_page_cta')}
             >
               <a href="https://wa.me/917700090236" target="_blank" rel="noopener noreferrer" className="font-satoshi">
                 WhatsApp: +91 7700090236

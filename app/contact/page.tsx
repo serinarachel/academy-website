@@ -17,12 +17,14 @@ import {
   Send
 } from "lucide-react";
 import { useRouter } from "next/navigation";
+import { useFormTracking } from "@/hooks/use-tracking";
 
 // Import course data for the form
 import coursesData from "@/data/courses.json";
 
 export default function ContactPage() {
   const router = useRouter();
+  const { trackFormSubmit } = useFormTracking();
   
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
@@ -41,6 +43,9 @@ export default function ContactPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    
+    // Track form submission
+    trackFormSubmit('demo_booking', 'contact_page');
     
     // Simulate form submission
     setTimeout(() => {

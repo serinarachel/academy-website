@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Clock, Users, MapPin, IndianRupee, Star, Zap, Target } from "lucide-react";
+import { useCTATracking } from "@/hooks/use-tracking";
 
 interface CourseCardProps {
   slug: string;
@@ -13,7 +14,12 @@ interface CourseCardProps {
   duration: string;
   mode: string;
   overview: string;
+  whoItsFor: string[];
+  modules: { title: string; topics: string[] }[];
+  outcomes: string[];
   aiTools: string[];
+  marketingTools: string[];
+  upcomingBatches: { startDate: string; seats: string }[];
 }
 
 const CourseCard = ({
@@ -26,6 +32,7 @@ const CourseCard = ({
   overview,
   aiTools
 }: CourseCardProps) => {
+  const { trackCTAClick } = useCTATracking();
 
   // Define marketing tools based on course slug
   const getMarketingToolsBySlug = (courseSlug: string): string[] => {
@@ -226,6 +233,7 @@ const CourseCard = ({
             <Button 
               asChild 
               className="flex-1 btn-secondary hover:scale-105 transform transition-all duration-300 shadow-md"
+              onClick={() => trackCTAClick('view_details', 'course_card', slug)}
             >
               <Link href={`/courses/${slug}`}>View Details</Link>
             </Button>
@@ -233,6 +241,7 @@ const CourseCard = ({
               asChild 
               variant="outline" 
               className="flex-1 btn-outline hover:scale-105 transform transition-all duration-300"
+              onClick={() => trackCTAClick('book_demo', 'course_card', slug)}
             >
               <Link href="/contact">Book Demo</Link>
             </Button>

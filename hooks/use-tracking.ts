@@ -1,10 +1,18 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { usePathname, useSearchParams } from 'next/navigation';
+
+// Global tracking state to avoid hydration issues
+let isClient = false;
+let hasInitialized = false;
+
+// Initialize client-side tracking
+if (typeof window !== 'undefined') {
+  isClient = true;
+}
 
 // Tracking utility functions
 export const trackPageView = (url: string, title?: string) => {
-  // Only run on client side
-  if (typeof window === 'undefined') return;
+  if (!isClient) return;
   
   // Google Analytics 4
   if (window.gtag) {
@@ -36,8 +44,7 @@ export const trackEvent = (
   label?: string,
   value?: number
 ) => {
-  // Only run on client side
-  if (typeof window === 'undefined') return;
+  if (!isClient) return;
   
   // Google Analytics 4
   if (window.gtag) {
@@ -72,28 +79,23 @@ export const trackEvent = (
 export const usePageTracking = () => {
   const pathname = usePathname();
   const searchParams = useSearchParams();
-  const [isClient, setIsClient] = useState(false);
-
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
+  const previousPath = useRef<string>('');
 
   useEffect(() => {
     if (!isClient) return;
     
-    const url = pathname + (searchParams?.toString() ? `?${searchParams.toString()}` : '');
-    trackPageView(url);
-  }, [pathname, searchParams, isClient]);
+    const currentPath = pathname + (searchParams?.toString() ? `?${searchParams.toString()}` : '');
+    
+    // Only track if path actually changed
+    if (currentPath !== previousPath.current) {
+      previousPath.current = currentPath;
+      trackPageView(currentPath);
+    }
+  }, [pathname, searchParams]);
 };
 
 // Hook for tracking CTA button clicks
 export const useCTATracking = () => {
-  const [isClient, setIsClient] = useState(false);
-
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
-
   const trackCTAClick = (buttonType: string, location: string, course?: string) => {
     if (!isClient) return;
     trackEvent('cta_click', 'engagement', `${buttonType}_${location}${course ? `_${course}` : ''}`);
@@ -104,16 +106,16 @@ export const useCTATracking = () => {
 
 // Hook for tracking form submissions
 export const useFormTracking = () => {
-  const [isClient, setIsClient] = useState(false);
-
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
-
   const trackFormSubmit = (formType: string, location: string) => {
     if (!isClient) return;
     trackEvent('form_submit', 'engagement', `${formType}_${location}`);
   };
 
   return { trackFormSubmit };
+};
+
+// Global click tracking function that can be called from anywhere
+export const trackGlobalClick = (action: string, category: string, label?: string) => {
+  if (!isClient) return;
+  trackEvent(action, category, label);
 };

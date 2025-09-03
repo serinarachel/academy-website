@@ -6,9 +6,11 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu, Phone, MapPin, X } from "lucide-react";
+import { useCTATracking } from "@/hooks/use-tracking";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { trackCTAClick } = useCTATracking();
 
   const navItems = [
     { href: "/", label: "Home" },
@@ -61,6 +63,7 @@ const Header = () => {
               <Button 
                 asChild
                 className="bg-adsmagnify-dark-yellow text-adsmagnify-blue font-bold px-6 py-3 rounded-xl shadow-lg hover:bg-adsmagnify-dark-yellow hover:text-adsmagnify-blue hover:hover-pulse-ring font-satoshi"
+                onClick={() => trackCTAClick('book_demo', 'header')}
               >
                 <Link href="/contact">Book Demo</Link>
               </Button>
@@ -101,6 +104,7 @@ const Header = () => {
                   <Button 
                     asChild 
                     className="bg-adsmagnify-dark-yellow text-adsmagnify-blue font-bold px-8 py-4 rounded-xl shadow-lg hover:bg-adsmagnify-dark-yellow hover:text-adsmagnify-blue hover:hover-elastic font-satoshi mt-6"
+                    onClick={() => trackCTAClick('book_demo', 'mobile_menu')}
                   >
                     <Link href="/contact" onClick={() => setIsOpen(false)}>
                       Book Demo Lecture

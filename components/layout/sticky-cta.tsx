@@ -4,9 +4,11 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { X, Phone, MessageCircle } from "lucide-react";
+import { useCTATracking } from "@/hooks/use-tracking";
 
 const StickyCTA = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const { trackCTAClick } = useCTATracking();
 
   useEffect(() => {
     const timer = setTimeout(() => setIsVisible(true), 3000);
@@ -28,10 +30,11 @@ const StickyCTA = () => {
         </div>
         
         <div className="flex items-center gap-2 ml-4">
-          <Button 
+          <Button
             asChild
             size="sm"
             className="bg-white text-adsmagnify-blue hover:bg-adsmagnify-blue hover:text-white hidden sm:inline-flex hover:hover-slide-up shadow-md font-satoshi"
+            onClick={() => trackCTAClick('phone_call', 'sticky_cta')}
           >
             <a href="tel:+917700090236">
               <Phone className="h-4 w-4 mr-1" />
@@ -39,10 +42,11 @@ const StickyCTA = () => {
             </a>
           </Button>
           
-          <Button 
+          <Button
             asChild
             size="sm"
             className="bg-white text-adsmagnify-blue hover:bg-adsmagnify-blue hover:text-white hidden sm:inline-flex hover:hover-wiggle shadow-md font-satoshi"
+            onClick={() => trackCTAClick('whatsapp', 'sticky_cta')}
           >
             <a href="https://wa.me/917700090236" target="_blank" rel="noopener noreferrer">
               <MessageCircle className="h-4 w-4 mr-1" />
@@ -50,10 +54,11 @@ const StickyCTA = () => {
             </a>
           </Button>
 
-          <Button 
-            asChild 
+          <Button
+            asChild
             size="sm" 
             className="bg-white text-adsmagnify-blue hover:bg-adsmagnify-blue hover:text-white hover:hover-neon shadow-md font-satoshi"
+            onClick={() => trackCTAClick('book_demo', 'sticky_cta')}
           >
             <Link href="/contact">Book Demo</Link>
           </Button>

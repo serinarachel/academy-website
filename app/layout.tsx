@@ -6,6 +6,8 @@ import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
 import StickyCTA from "@/components/layout/sticky-cta";
 import Script from "next/script";
+import PageTracking from "@/components/tracking/page-tracking";
+import ClickTracking from "@/components/tracking/click-tracking";
 
 export const metadata: Metadata = {
   title: {
@@ -123,6 +125,8 @@ export default function RootLayout({
         <main>{children}</main>
         <Footer />
         <StickyCTA />
+        <PageTracking />
+        <ClickTracking />
       </body>
     </html>
   );

@@ -5,8 +5,10 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { CheckCircle, Phone, MessageCircle, MapPin, Clock, ArrowRight } from "lucide-react";
+import { useCTATracking } from "@/hooks/use-tracking";
 
 export default function ThankYouPage() {
+  const { trackCTAClick } = useCTATracking();
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 py-16">
@@ -110,6 +112,7 @@ export default function ThankYouPage() {
               asChild 
               size="lg"
               className="w-full md:w-auto bg-adsmagnify-blue hover:bg-adsmagnify-dark-blue text-white font-bold px-8 py-3 rounded-xl shadow-lg hover:scale-105 transform transition-all duration-300 font-satoshi"
+              onClick={() => trackCTAClick('explore_courses', 'thank_you_page')}
             >
               <Link href="/courses">
                 Explore Our Courses
@@ -122,6 +125,7 @@ export default function ThankYouPage() {
                 variant="outline"
                 size="lg"
                 className="bg-white text-adsmagnify-blue border-2 border-adsmagnify-blue font-bold px-6 py-3 rounded-xl shadow-lg hover:bg-adsmagnify-blue hover:text-white hover:scale-105 transform transition-all duration-300 font-satoshi"
+                onClick={() => trackCTAClick('whatsapp', 'thank_you_page')}
               >
                 <a href="https://wa.me/917700090236" target="_blank" rel="noopener noreferrer">
                   <MessageCircle className="w-5 h-5 mr-2" />
@@ -134,6 +138,7 @@ export default function ThankYouPage() {
                 variant="outline"
                 size="lg"
                 className="bg-white text-adsmagnify-blue border-2 border-adsmagnify-blue font-bold px-6 py-3 rounded-xl shadow-lg hover:bg-adsmagnify-blue hover:text-white hover:scale-105 transform transition-all duration-300 font-satoshi"
+                onClick={() => trackCTAClick('phone_call', 'thank_you_page')}
               >
                 <a href="tel:+917700090236">
                   <Phone className="w-5 h-5 mr-2" />
