@@ -2,6 +2,39 @@
 
 import { useEffect, useRef } from 'react';
 
+// Global tracking state
+let isInitialized = false;
+let pageStartTime = Date.now();
+let scrollDepth = 0;
+let maxScrollDepth = 0;
+
+// GTM Enhanced Page View Tracking
+const setupGTMPageViewTracking = () => {
+  if (typeof window === 'undefined') return;
+
+  const trackPageView = (url: string, title: string, referrer: string) => {
+    if (window.dataLayer) {
+      window.dataLayer.push({
+        event: 'gtm.pageView',
+        page_location: url,
+        page_title: title,
+        page_referrer: referrer,
+        page_hostname: window.location.hostname,
+        page_path: window.location.pathname,
+        timestamp: Date.now(),
+        user_agent: navigator.userAgent,
+        screen_resolution: `${screen.width}x${screen.height}`,
+        viewport_size: `${window.innerWidth}x${window.innerHeight}`,
+        language: navigator.language,
+        timezone: Intl.DateTimeFormat().resolvedOptions().timeZone
+      });
+    }
+  };
+
+  // Initial page view
+  trackPageView(window.location.href, document.title, document.referrer);
+};
+
 // GTM History Change Tracking with built-in variables
 const setupGTMHistoryTracking = () => {
   if (typeof window === 'undefined') return;
@@ -27,10 +60,14 @@ const setupGTMHistoryTracking = () => {
           page_location: newUrl,
           page_referrer: previousUrl,
           page_title: document.title,
-          history_state: newState,
-          previous_url: previousUrl,
-          previous_state: previousState,
+          page_hostname: window.location.hostname,
+          page_path: window.location.pathname,
+          history_old_url: previousUrl,
+          history_new_url: newUrl,
+          history_old_state: previousState,
+          history_new_state: newState,
           change_type: changeType,
+          navigation_type: 'virtual_pageview',
           timestamp: Date.now()
         });
       }
@@ -38,6 +75,11 @@ const setupGTMHistoryTracking = () => {
       // Update previous values
       previousUrl = newUrl;
       previousState = newState;
+      
+      // Reset page metrics for new page
+      pageStartTime = Date.now();
+      scrollDepth = 0;
+      maxScrollDepth = 0;
     }, 1000); // 1 second delay as requested
   };
 
@@ -70,32 +112,45 @@ const setupGTMHistoryTracking = () => {
   });
 };
 
-// GTM CTA Button Tracking with built-in variables
-const setupGTMCTATracking = () => {
+// GTM Comprehensive Click Tracking with built-in variables
+const setupGTMClickTracking = () => {
   if (typeof window === 'undefined') return;
 
-  const handleCTAClick = (event: Event) => {
+  const handleClick = (event: Event) => {
     const target = event.target as HTMLElement;
     const button = target.closest('button') || target.closest('a') || target;
     
     if (!button) return;
 
-    // Check if it's a CTA button (by ID, class, or text)
+    // Get all click data
     const buttonId = button.id || '';
     const buttonClasses = button.className || '';
     const buttonText = button.textContent?.trim() || '';
     const buttonHref = (button as HTMLAnchorElement).href || '';
+    const buttonTarget = (button as HTMLAnchorElement).target || '';
+    const buttonType = button.tagName.toLowerCase();
     
+    // First, populate GTM's built-in Click Variables
+    if (window.dataLayer) {
+      window.dataLayer.push({
+        event: 'gtm.click',
+        gtm: {
+          element: button,
+          elementId: buttonId,
+          elementClasses: buttonClasses,
+          elementText: buttonText,
+          elementUrl: buttonHref,
+          elementTarget: buttonTarget,
+          elementType: buttonType
+        }
+      });
+    }
+
     // Define CTA button identifiers
     const ctaIdentifiers = [
-      'book-demo-btn',
-      'book-demo',
-      'get-started',
-      'enroll-now',
-      'contact-us',
-      'learn-more',
-      'cta',
-      'demo'
+      'book-demo-btn', 'book-demo', 'get-started', 'enroll-now',
+      'contact-us', 'learn-more', 'cta', 'demo', 'apply-now',
+      'download', 'subscribe', 'sign-up', 'register'
     ];
 
     const isCTAButton = 
@@ -105,25 +160,8 @@ const setupGTMCTATracking = () => {
       buttonClasses.toLowerCase().includes('btn-primary') ||
       buttonClasses.toLowerCase().includes('button-primary');
 
+    // Track CTA button clicks
     if (isCTAButton) {
-      // First, push the click data to dataLayer for GTM's built-in Click Variables
-      if (window.dataLayer) {
-        // This ensures GTM's built-in Click Variables are populated
-        window.dataLayer.push({
-          event: 'gtm.click',
-          gtm: {
-            element: button,
-            elementId: buttonId,
-            elementClasses: buttonClasses,
-            elementText: buttonText,
-            elementUrl: buttonHref,
-            elementTarget: (button as HTMLAnchorElement).target || '',
-            elementType: button.tagName.toLowerCase()
-          }
-        });
-      }
-
-      // Then push our custom CTA event with all the button data
       if (window.dataLayer) {
         window.dataLayer.push({
           event: 'gtm.ctaClick',
@@ -132,10 +170,42 @@ const setupGTMCTATracking = () => {
           page_location: window.location.href,
           page_title: document.title,
           button_id: buttonId,
-          button_classes: buttonClasses,
           button_text: buttonText,
+          button_classes: buttonClasses,
           button_href: buttonHref,
-          button_type: button.tagName.toLowerCase(),
+          button_target: buttonTarget,
+          button_type: buttonType,
+          timestamp: Date.now()
+        });
+      }
+    }
+
+    // Track outbound link clicks
+    if (buttonType === 'a' && buttonHref && buttonHref !== window.location.origin) {
+      if (window.dataLayer) {
+        window.dataLayer.push({
+          event: 'gtm.outboundLinkClick',
+          event_category: 'engagement',
+          event_label: 'outbound_link_click',
+          link_url: buttonHref,
+          link_text: buttonText,
+          link_target: buttonTarget,
+          page_location: window.location.href,
+          page_title: document.title,
+          timestamp: Date.now()
+        });
+      }
+    }
+
+    // Track video interactions
+    if (buttonType === 'video' || button.closest('video')) {
+      if (window.dataLayer) {
+        window.dataLayer.push({
+          event: 'gtm.videoInteraction',
+          event_category: 'engagement',
+          event_label: 'video_click',
+          video_element: buttonType === 'video' ? button : button.closest('video'),
+          page_location: window.location.href,
           timestamp: Date.now()
         });
       }
@@ -143,30 +213,13 @@ const setupGTMCTATracking = () => {
   };
 
   // Use capture phase to ensure we catch all clicks
-  document.addEventListener('click', handleCTAClick, { capture: true });
+  document.addEventListener('click', handleClick, { capture: true });
 };
 
-// GTM Enhanced Ecommerce and Custom Events
-const setupGTMEnhancedTracking = () => {
+// GTM Form Tracking
+const setupGTMFormTracking = () => {
   if (typeof window === 'undefined') return;
 
-  // Track page views with enhanced data
-  const trackEnhancedPageView = () => {
-    if (window.dataLayer) {
-      window.dataLayer.push({
-        event: 'gtm.pageView',
-        page_location: window.location.href,
-        page_title: document.title,
-        page_referrer: document.referrer,
-        timestamp: Date.now(),
-        user_agent: navigator.userAgent,
-        screen_resolution: `${screen.width}x${screen.height}`,
-        viewport_size: `${window.innerWidth}x${window.innerHeight}`
-      });
-    }
-  };
-
-  // Track form submissions
   const handleFormSubmit = (event: Event) => {
     const form = event.target as HTMLFormElement;
     if (form && window.dataLayer) {
@@ -177,36 +230,178 @@ const setupGTMEnhancedTracking = () => {
         form_id: form.id || 'unknown',
         form_action: form.action || 'unknown',
         form_method: form.method || 'unknown',
+        form_name: form.name || 'unknown',
+        page_location: window.location.href,
+        page_title: document.title,
+        timestamp: Date.now()
+      });
+    }
+  };
+
+  const handleFormStart = (event: Event) => {
+    const form = event.target as HTMLFormElement;
+    if (form && window.dataLayer) {
+      window.dataLayer.push({
+        event: 'gtm.formStart',
+        event_category: 'engagement',
+        event_label: 'form_start',
+        form_id: form.id || 'unknown',
+        form_action: form.action || 'unknown',
         page_location: window.location.href,
         timestamp: Date.now()
       });
     }
   };
 
-  // Track external link clicks
-  const handleExternalLinkClick = (event: Event) => {
-    const link = event.target as HTMLAnchorElement;
-    if (link && link.href && link.href !== window.location.origin) {
-      if (window.dataLayer) {
-        window.dataLayer.push({
-          event: 'gtm.externalLinkClick',
-          event_category: 'engagement',
-          event_label: 'external_link_click',
-          link_url: link.href,
-          link_text: link.textContent?.trim() || 'unknown',
-          page_location: window.location.href,
-          timestamp: Date.now()
-        });
+  // Add event listeners
+  document.addEventListener('submit', handleFormSubmit, { capture: true });
+  document.addEventListener('focusin', (e) => {
+    if ((e.target as HTMLElement).tagName === 'INPUT' || (e.target as HTMLElement).tagName === 'TEXTAREA') {
+      const form = (e.target as HTMLElement).closest('form');
+      if (form) handleFormStart({ target: form } as any);
+    }
+  });
+};
+
+// GTM Scroll Depth Tracking
+const setupGTMScrollTracking = () => {
+  if (typeof window === 'undefined') return;
+
+  let scrollTimeout: NodeJS.Timeout | null = null;
+  const scrollThresholds = [25, 50, 75, 90, 100];
+  const trackedThresholds = new Set<number>();
+
+  const handleScroll = () => {
+    if (scrollTimeout) {
+      clearTimeout(scrollTimeout);
+    }
+
+    scrollTimeout = setTimeout(() => {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrollPercent = Math.round((scrollTop / docHeight) * 100);
+
+      // Track scroll depth milestones
+      scrollThresholds.forEach(threshold => {
+        if (scrollPercent >= threshold && !trackedThresholds.has(threshold)) {
+          trackedThresholds.add(threshold);
+          
+          if (window.dataLayer) {
+            window.dataLayer.push({
+              event: 'gtm.scrollDepth',
+              event_category: 'engagement',
+              event_label: `scroll_${threshold}%`,
+              scroll_depth: threshold,
+              scroll_percentage: scrollPercent,
+              page_location: window.location.href,
+              page_title: document.title,
+              timestamp: Date.now()
+            });
+          }
+        }
+      });
+
+      // Update max scroll depth
+      if (scrollPercent > maxScrollDepth) {
+        maxScrollDepth = scrollPercent;
       }
+    }, 100);
+  };
+
+  window.addEventListener('scroll', handleScroll, { passive: true });
+};
+
+// GTM Time on Page Tracking
+const setupGTMTimeTracking = () => {
+  if (typeof window === 'undefined') return;
+
+  let timeTrackingInterval: NodeJS.Timeout | null = null;
+  const timeThresholds = [10, 30, 60, 120, 300, 600]; // seconds
+  const trackedTimeThresholds = new Set<number>();
+
+  const startTimeTracking = () => {
+    pageStartTime = Date.now();
+    
+    timeTrackingInterval = setInterval(() => {
+      const timeOnPage = Math.floor((Date.now() - pageStartTime) / 1000);
+      
+      // Track time milestones
+      timeThresholds.forEach(threshold => {
+        if (timeOnPage >= threshold && !trackedTimeThresholds.has(threshold)) {
+          trackedTimeThresholds.add(threshold);
+          
+          if (window.dataLayer) {
+            window.dataLayer.push({
+              event: 'gtm.timeOnPage',
+              event_category: 'engagement',
+              event_label: `time_${threshold}s`,
+              time_on_page: threshold,
+              time_on_page_seconds: timeOnPage,
+              page_location: window.location.href,
+              page_title: document.title,
+              timestamp: Date.now()
+            });
+          }
+        }
+      });
+    }, 1000);
+  };
+
+  const stopTimeTracking = () => {
+    if (timeTrackingInterval) {
+      clearInterval(timeTrackingInterval);
+      timeTrackingInterval = null;
+    }
+    
+    // Track final time on page
+    const finalTimeOnPage = Math.floor((Date.now() - pageStartTime) / 1000);
+    if (window.dataLayer && finalTimeOnPage > 0) {
+      window.dataLayer.push({
+        event: 'gtm.pageExit',
+        event_category: 'engagement',
+        event_label: 'page_exit',
+        time_on_page: finalTimeOnPage,
+        max_scroll_depth: maxScrollDepth,
+        page_location: window.location.href,
+        page_title: document.title,
+        timestamp: Date.now()
+      });
     }
   };
 
-  // Add event listeners
-  document.addEventListener('submit', handleFormSubmit, { capture: true });
-  document.addEventListener('click', handleExternalLinkClick, { capture: true });
+  // Start tracking on page load
+  startTimeTracking();
 
-  // Initial page view
-  trackEnhancedPageView();
+  // Track page exit
+  window.addEventListener('beforeunload', stopTimeTracking);
+  window.addEventListener('pagehide', stopTimeTracking);
+};
+
+// GTM Enhanced Ecommerce and Custom Events
+const setupGTMEnhancedTracking = () => {
+  if (typeof window === 'undefined') return;
+
+  // Track user engagement metrics
+  const trackUserEngagement = () => {
+    if (window.dataLayer) {
+      window.dataLayer.push({
+        event: 'gtm.userEngagement',
+        event_category: 'engagement',
+        event_label: 'user_engagement',
+        page_location: window.location.href,
+        page_title: document.title,
+        user_agent: navigator.userAgent,
+        screen_resolution: `${screen.width}x${screen.height}`,
+        viewport_size: `${window.innerWidth}x${window.innerHeight}`,
+        language: navigator.language,
+        timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+        timestamp: Date.now()
+      });
+    }
+  };
+
+  // Track initial engagement after 5 seconds
+  setTimeout(trackUserEngagement, 5000);
 };
 
 // Main GTM Setup Component
@@ -220,8 +415,12 @@ const GTMSetup = () => {
     // Wait for GTM to be ready
     const waitForGTM = () => {
       if (window.dataLayer) {
+        setupGTMPageViewTracking();
         setupGTMHistoryTracking();
-        setupGTMCTATracking();
+        setupGTMClickTracking();
+        setupGTMFormTracking();
+        setupGTMScrollTracking();
+        setupGTMTimeTracking();
         setupGTMEnhancedTracking();
       } else {
         setTimeout(waitForGTM, 100);
