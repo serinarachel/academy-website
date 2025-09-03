@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[925],{8925:(l,e,s)=>{s.r(e),s.d(e,{default:()=>k});var u=s(5155),a=s(2115),n=s(3037);let c=()=>((0,n.CF)(),null),k=()=>(0,u.jsx)(a.Suspense,{fallback:null,children:(0,u.jsx)(c,{})})}}]);
