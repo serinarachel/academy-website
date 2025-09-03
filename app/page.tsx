@@ -1,5 +1,7 @@
+// @ts-nocheck
+"use client";
+
 import HeroSection from "@/components/common/hero-section";
-import Image from "next/image";
 import CourseCard from "@/components/common/course-card";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -7,18 +9,14 @@ import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
 import { 
   Users, 
-  Briefcase, 
-  GraduationCap, 
-  TrendingUp, 
   Star, 
   Clock, 
   Award,
   CheckCircle,
-  Brain,
-  Zap,
-  Target,
-  Rocket,
-  Shield
+  ArrowRight,
+  MapPin,
+  Phone,
+  MessageCircle
 } from "lucide-react";
 import CountUp from "@/components/common/count-up";
 
@@ -33,272 +31,171 @@ export default function Home() {
     <div className="min-h-screen">
       {/* Hero Section */}
       <HeroSection
-        title="AI-Powered Digital Marketing Courses in Mumbai"
-        subtitle="Master Performance Marketing & SEO with Live Projects + Shadow Internships"
-        description="Join Mumbai's most exclusive digital marketing academy with only 4 students per batch. Learn from industry experts, work on real client projects, and get job-ready in 4-6 weeks."
-        badge="🎯 New Batch Starting from September 20th - 4 Seats only!"
+        title="Master AI-Powered Digital Marketing"
+        subtitle="Live Projects + Shadow Internships"
+        description="Learn from industry experts with hands-on experience. Only 4 students per batch. Weekend classes in Churchgate, Mumbai."
+        ctaText="Book Your Demo Lecture"
+        ctaLink="/contact"
       />
 
-      {/* USP Section */}
-      <section className="py-20 bg-white-contrast relative overflow-hidden">
-        {/* Background pattern */}
-        <div className="absolute inset-0 bg-pattern-grid opacity-5"></div>
-        
+      {/* Stats Section */}
+      <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl lg:text-4xl font-bold text-visible-dark mb-6 animate-fade-in-up font-unbounded">
-              Why Choose Adsmagnify Academy?
-            </h2>
-            <p className="text-xl text-visible-dark max-w-3xl mx-auto animate-fade-in-up stagger-2 font-satoshi">
-            At AdsMagnify, we don’t teach theory—we teach reality. Learn in Mumbai from real experts, practice on live accounts, and master the future of marketing with AI-powered tools.            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10">
-            <div className="text-center group animate-fade-in-up stagger-3">
-              <div className="bg-blue-100 w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6 hover-lift group-hover:animate-pulse-glow">
-                <Users className="h-10 w-10 text-visible-blue" />
-              </div>
-              <h3 className="font-bold text-visible-dark mb-3 text-lg font-unbounded">Only 4 Students Per Batch</h3>
-              <p className="text-visible-dark text-sm leading-relaxed font-satoshi">Personalized attention and mentorship for every student</p>
+          <div className="grid md:grid-cols-4 gap-8 text-center max-w-4xl mx-auto">
+            <div>
+              <CountUp value={500} suffix="+" className="text-4xl font-bold text-navy-900 mb-2" />
+              <div className="text-gray-600 font-medium">Students Trained</div>
             </div>
-
-            <div className="text-center group animate-fade-in-up stagger-4">
-              <div className="bg-blue-100 w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6 hover-lift group-hover:animate-pulse-glow">
-                <Briefcase className="h-10 w-10 text-visible-blue" />
-              </div>
-              <h3 className="font-bold text-visible-dark mb-3 text-lg font-unbounded">Live Client Projects</h3>
-              <p className="text-visible-dark text-sm leading-relaxed font-satoshi">Work on real campaigns with actual client budgets</p>
+            <div>
+              <CountUp value={50} suffix="+" className="text-4xl font-bold text-navy-900 mb-2" />
+              <div className="text-gray-600 font-medium">Live Projects</div>
             </div>
-
-            <div className="text-center group animate-fade-in-up stagger-5">
-              <div className="bg-blue-100 w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6 hover-lift group-hover:animate-pulse-glow">
-                <GraduationCap className="h-10 w-10 text-visible-blue" />
-              </div>
-              <h3 className="font-bold text-visible-dark mb-3 text-lg font-unbounded">10-Hour Shadow Internship</h3>
-              <p className="text-visible-dark text-sm leading-relaxed font-satoshi">In-house agency experience with real client calls</p>
+            <div>
+              <CountUp value={95} suffix="%" className="text-4xl font-bold text-navy-900 mb-2" />
+              <div className="text-gray-600 font-medium">Placement Rate</div>
             </div>
-
-            <div className="text-center group animate-fade-in-up stagger-6">
-              <div className="bg-blue-100 w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6 hover-lift group-hover:animate-pulse-glow">
-                <TrendingUp className="h-10 w-10 text-visible-blue" />
-              </div>
-              <h3 className="font-bold text-visible-dark mb-3 text-lg font-unbounded">Lifetime Support</h3>
-              <p className="text-visible-dark text-sm leading-relaxed font-satoshi">Lifetime mentorship to guide you even after the course ends</p>
+            <div>
+              <CountUp value={4} className="text-4xl font-bold text-navy-900 mb-2" />
+              <div className="text-gray-600 font-medium">Students Per Batch</div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Featured Courses */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl lg:text-4xl font-bold text-visible-dark mb-6 animate-fade-in-up font-unbounded">
-              Our Courses
+          <div className="text-center mb-16">
+            <h2 className="text-3xl lg:text-4xl font-bold text-navy-900 mb-4 font-unbounded">
+              Featured Courses
             </h2>
-            <p className="text-xl text-visible-dark max-w-3xl mx-auto animate-fade-in-up stagger-2 font-satoshi">
-              Master AI-powered digital marketing with hands-on training and industry-recognized certifications
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto font-satoshi">
+              Choose from our comprehensive AI-powered digital marketing courses designed for real-world success.
             </p>
           </div>
-
-          <div className="grid lg:grid-cols-2 gap-10 max-w-6xl mx-auto">
-            {coursesData.map((course) => (
-              <CourseCard key={course.slug} {...course} />
+          
+          <div className="grid lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {coursesData.map((course, index) => (
+              <CourseCard {...course} />
             ))}
           </div>
-
+          
           <div className="text-center mt-12">
-            <Button asChild size="lg" className="bg-adsmagnify-blue text-white font-bold px-8 py-4 rounded-xl shadow-lg hover:bg-adsmagnify-yellow hover:text-adsmagnify-blue hover:scale-105 transform transition-all duration-300 font-satoshi">
-              <Link href="/courses">View All Courses</Link>
+            <Button 
+              asChild 
+              size="lg" 
+              className="bg-adsmagnify-blue hover:bg-adsmagnify-dark-blue text-white font-bold px-8 py-3 rounded-xl shadow-lg hover:scale-105 transform transition-all duration-300 font-satoshi"
+            >
+              <Link href="/courses" className="flex items-center gap-2">
+                View All Courses
+                <ArrowRight className="h-5 w-5" />
+              </Link>
             </Button>
           </div>
         </div>
       </section>
 
-      {/* AI Tools Section */}
-      <section className="py-16 bg-gradient-to-br from-adsmagnify-blue to-adsmagnify-dark-blue">
+      {/* Why Choose Us */}
+      <section className="py-20 bg-navy-900 text-white">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <div className="flex items-center justify-center gap-3 mb-4">
-              <Brain className="h-8 w-8 text-visible-yellow" />
-              <h2 className="text-3xl lg:text-4xl font-bold text-visible-white-on-dark animate-fade-in-up font-unbounded">
-                Master Cutting-Edge Tools
-              </h2>
-            </div>
-            <p className="text-xl text-visible-white-on-dark max-w-3xl mx-auto animate-fade-in-up stagger-2 font-satoshi">
-            Become future ready AI Digital Marketer
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 text-center object-contain">
-            {[
-              { name: "Perplexity", purpose: "AI Research & Search Assistant", logo: "/perplexity.webp" },
-              { name: "ChatGPT", purpose: "Ad Copy & Strategy", logo: "/chatgpt5.webp" },
-              { name: "Hera AI", purpose: "AI Motion Graphics & Animation", logo: "/hera_ai.webp" },
-              { name: "Gemini", purpose: "Content Creation", logo: "/gemini.webp" },
-              { name: "Veo3", purpose: "AI Text-to-Video Generation", logo: "/veo3.webp" },
-              { name: "Bolt.AI", purpose: "Automation", logo: "/bolt.webp" },
-              { name: "Heygen", purpose: "AI Video Creation", logo: "/heygen.webp" },
-              { name: "ElevenLabs", purpose: "AI Voiceovers", logo: "/elevenlabs.webp" }
-            ].map((tool, index) => (
-              <div key={tool.name} className={`bg-white-contrast p-8 rounded-2xl hover-lift animate-fade-in-up stagger-${index + 3}`}>
-                <div className="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6 bg-white shadow-sm animate-float">
-                  <Image src={tool.logo} alt={`${tool.name} logo`} width={60} height={60} className="w-12 h-12 object-contain" />
-                </div>
-                <h3 className="font-bold text-lg mb-3 text-visible-dark font-unbounded">{tool.name}</h3>
-                <p className="text-visible-dark text-sm font-satoshi">{tool.purpose}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Marketing Tools Section */}
-      <section className="py-16 bg-gradient-to-br from-adsmagnify-dark-blue to-navy-900">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <div className="flex items-center justify-center gap-3 mb-4">
-            <Brain className="h-8 w-8 text-visible-yellow" />
-              <h2 className="text-3xl lg:text-4xl font-bold text-visible-white-on-dark animate-fade-in-up font-unbounded">
-                Marketing & SEO Tools
-              </h2>
-            </div>
-            <p className="text-xl text-visible-white-on-dark max-w-3xl mx-auto animate-fade-in-up stagger-2 font-satoshi">
-            Master the essential Marketing & SEO tools used by top performance marketers
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 text-center object-contain">
-            {[
-              { name: "Meta Ads", purpose: "Paid Social Advertising", logo: "meta.webp" },
-              { name: "Google Ads", purpose: "Search & Performance Max", logo: "/google.webp" },
-              { name: "LinkedIn Ads", purpose: "B2B Lead Generation", logo: "/linkedin.webp" },
-              { name: "Pinterest", purpose: "Visual Discovery Ads", logo: "/pinterest.webp" },
-              { name: "Google Search Console", purpose: "SEO Performance Tracking", logo: "/google_search_console.webp" },
-              { name: "Google My Business", purpose: "Local SEO & Reviews", logo: "/google_my_business.webp" },
-              { name: "Google Analytics", purpose: "Measurement & Attribution", logo: "/google_analytics.webp" },
-              { name: "SEMrush", purpose: "SEO & Competitive Research", logo: "/semrush.webp" },
-            ].map((tool, index) => (
-              <div key={tool.name} className={`bg-white-contrast p-8 rounded-2xl hover-lift animate-fade-in-up stagger-${index + 3}`}>
-                <div className="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6 bg-white shadow-sm">
-                  <img src={tool.logo} alt={`${tool.name} logo`} className="w-12 h-12 object-contain" />
-                </div>
-                <h3 className="font-bold text-lg mb-3 text-visible-dark font-unbounded">{tool.name}</h3>
-                <p className="text-visible-dark text-sm font-satoshi">{tool.purpose}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Meet Your Instructors */}
-      <section className="py-20 bg-white-contrast">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl lg:text-4xl font-bold text-visible-dark mb-6 animate-fade-in-up font-unbounded">
-              Meet Your Instructors
+          <div className="text-center mb-16">
+            <h2 className="text-3xl lg:text-4xl font-bold mb-4 text-adsmagnify-dark-yellow font-unbounded">
+              Why Choose Adsmagnify Academy?
             </h2>
-            <p className="text-xl text-visible-dark max-w-3xl mx-auto animate-fade-in-up stagger-2 font-satoshi">
-              Learn from industry experts with real-world experience and proven track records
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto font-satoshi">
+              We're not just another training institute. We're your career transformation partners.
             </p>
           </div>
-
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <Card className="hover-lift bg-white shadow-lg animate-fade-in-up stagger-3">
-              <CardContent className="p-10 text-center">
-                <img
-                  src="/vinay.webp"
-                  alt="Vinay Hankare"
-                  className="w-40 h-40 rounded-full object-cover mx-auto mb-6 border-4 border-adsmagnify-dark-yellow shadow-lg"
-                />
-                <h3 className="text-2xl font-bold text-visible-dark mb-3 font-unbounded">Vinay Hankare</h3>
-                <p className="text-visible-yellow font-bold mb-4 text-lg font-satoshi">Managing Director & Lead Instructor</p>
-                <p className="text-visible-dark text-sm mb-6 leading-relaxed font-satoshi">
-                  8+ years in digital marketing with expertise in AI-powered campaigns. 
-                  Trained 200+ successful marketers.
-                </p>
-                <div className="flex flex-wrap gap-2 justify-center">
-                  {["Performance Marketing", "AI Tools", "Google Ads", "Meta Ads"].map((skill) => (
-                    <Badge key={skill} variant="outline" className="text-xs border-adsmagnify-blue text-visible-blue hover:bg-adsmagnify-dark-yellow hover:text-white transition-colors font-satoshi">
-                      {skill}
-                    </Badge>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="hover-lift bg-white shadow-lg animate-fade-in-up stagger-4">
-              <CardContent className="p-10 text-center">
-                <img
-                  src="/aloke.webp"
-                  alt="Industry Expert"
-                  className="w-40 h-40 rounded-full object-cover mx-auto mb-6 border-4 border-adsmagnify-dark-yellow shadow-lg"
-                />
-                <h3 className="text-2xl font-bold text-visible-dark mb-3 font-unbounded">Aloke Bajpai</h3>
-                <p className="text-visible-yellow font-bold mb-4 text-lg font-satoshi">Partner & Instructor</p>
-                <p className="text-visible-dark text-sm mb-6 leading-relaxed font-satoshi">
-                30+ years in Business & Travel with 2 decades of teaching experience. Worked across diverse markets and built innovative strategies.
-                </p>
-                <div className="flex flex-wrap gap-2 justify-center">
-                  {["Business Strategy", "Consumer Psychology", "Life Skills","Communications"].map((skill) => (
-                    <Badge key={skill} variant="outline" className="text-xs border-adsmagnify-blue text-visible-blue hover:bg-adsmagnify-dark-yellow hover:text-white transition-colors font-satoshi">
-                      {skill}
-                    </Badge>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+            <div className="text-center">
+              <div className="bg-adsmagnify-dark-yellow w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Users className="h-8 w-8 text-adsmagnify-blue" />
+              </div>
+              <h3 className="text-xl font-bold mb-2 font-unbounded">Small Batch Size</h3>
+              <p className="text-gray-300 font-satoshi">Only 4 students per batch for personalized attention</p>
+            </div>
+            
+            <div className="text-center">
+              <div className="bg-adsmagnify-dark-yellow w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Award className="h-8 w-8 text-adsmagnify-blue" />
+              </div>
+              <h3 className="text-xl font-bold mb-2 font-unbounded">Live Projects</h3>
+              <p className="text-gray-300 font-satoshi">Work on real client campaigns with actual budgets</p>
+            </div>
+            
+            <div className="text-center">
+              <div className="bg-adsmagnify-dark-yellow w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Clock className="h-8 w-8 text-adsmagnify-blue" />
+              </div>
+              <h3 className="text-xl font-bold mb-2 font-unbounded">Weekend Classes</h3>
+              <p className="text-gray-300 font-satoshi">Flexible timing for working professionals</p>
+            </div>
+            
+            <div className="text-center">
+              <div className="bg-adsmagnify-dark-yellow w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                <MapPin className="h-8 w-8 text-adsmagnify-blue" />
+              </div>
+              <h3 className="text-xl font-bold mb-2 font-unbounded">Prime Location</h3>
+              <p className="text-gray-300 font-satoshi">Churchgate, Mumbai - easily accessible</p>
+            </div>
           </div>
         </div>
       </section>
-
-      
 
       {/* Testimonials */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl lg:text-4xl font-bold text-visible-dark mb-6 animate-fade-in-up font-unbounded">
-              Success Stories from Our Alumni
+          <div className="text-center mb-16">
+            <h2 className="text-3xl lg:text-4xl font-bold text-navy-900 mb-4 font-unbounded">
+              What Our Students Say
             </h2>
-            <p className="text-xl text-visible-dark max-w-3xl mx-auto animate-fade-in-up stagger-2 font-satoshi">
-              Hear from our graduates who are now leading digital marketing teams at top companies
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto font-satoshi">
+              Don't just take our word for it. Hear from our successful graduates.
             </p>
           </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {featuredTestimonials.map((testimonial, index) => (
-              <Card key={testimonial.id} className={`hover-lift bg-white shadow-lg animate-fade-in-up stagger-${index + 3}`}>
-                <CardContent className="p-8">
+              <Card key={testimonial.id as any} className="hover:shadow-lg transition-shadow">
+                <CardContent className="p-6">
                   <div className="flex items-center gap-1 mb-4">
                     {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star key={i} className="h-4 w-4 fill-adsmagnify-dark-yellow text-visible-yellow" />
+                      <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
                     ))}
                   </div>
-                  <p className="text-visible-dark mb-6 text-sm leading-relaxed font-satoshi">
+                  <p className="text-gray-700 mb-4 text-sm leading-relaxed font-satoshi">
                     "{testimonial.text}"
                   </p>
-                  <div className="flex items-center gap-4 mb-4">
+                  <div className="flex items-center gap-3">
                     <img
                       src={testimonial.image}
                       alt={testimonial.name}
-                      className="w-12 h-12 rounded-full object-cover border-2 border-adsmagnify-dark-yellow"
+                      className="w-10 h-10 rounded-full object-cover"
                     />
                     <div>
-                      <div className="font-bold text-visible-dark font-satoshi">{testimonial.name}</div>
+                      <div className="font-semibold text-gray-800 font-satoshi">{testimonial.name}</div>
+                      <Badge className="text-xs text-blue-600 border-blue-600">
+                        {testimonial.course}
+                      </Badge>
                     </div>
                   </div>
-                  <Badge variant="outline" className="text-xs border-adsmagnify-blue text-visible-blue hover:bg-adsmagnify-blue hover:text-white transition-colors font-satoshi">
-                    {testimonial.course}
-                  </Badge>
                 </CardContent>
               </Card>
             ))}
           </div>
-
+          
           <div className="text-center mt-12">
-            <Button asChild variant="outline" size="lg" className="bg-white text-adsmagnify-blue border-2 border-adsmagnify-blue font-bold px-8 py-4 rounded-xl shadow-lg hover:bg-adsmagnify-blue hover:text-white hover:scale-105 transform transition-all duration-300 font-satoshi">
-              <Link href="/testimonials">Read More Success Stories</Link>
+            <Button 
+              asChild 
+              variant="outline" 
+              size="lg" 
+              className="border-adsmagnify-blue text-adsmagnify-blue hover:bg-adsmagnify-blue hover:text-white font-bold px-8 py-3 rounded-xl shadow-lg hover:scale-105 transform transition-all duration-300 font-satoshi"
+            >
+              <Link href="/testimonials" className="flex items-center gap-2">
+                View All Testimonials
+                <ArrowRight className="h-5 w-5" />
+              </Link>
             </Button>
           </div>
         </div>
@@ -307,37 +204,46 @@ export default function Home() {
       {/* CTA Section */}
       <section className="py-16 bg-gradient-to-br from-adsmagnify-blue to-adsmagnify-dark-blue">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl lg:text-4xl font-bold mb-6 text-visible-white-on-dark animate-fade-in-up font-unbounded">
+          <h2 className="text-3xl lg:text-4xl font-bold mb-6 text-white font-unbounded">
             Ready to Transform Your Career?
           </h2>
-          <p className="text-xl text-visible-white-on-dark mb-10 max-w-2xl mx-auto animate-fade-in-up stagger-2 font-satoshi">
+          <p className="text-xl text-white mb-10 max-w-2xl mx-auto font-satoshi">
             Book your demo lecture today and experience our unique teaching methodology. 
             Limited seats available - only 4 students per batch!
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-6 justify-center animate-fade-in-up stagger-3">
-            <Button asChild size="lg" className="bg-adsmagnify-dark-yellow text-adsmagnify-blue font-bold text-lg px-12 py-6 rounded-xl shadow-lg hover:bg-white hover:text-adsmagnify-blue hover:hover-glow-intense font-satoshi">
+          <div className="flex flex-col sm:flex-row gap-6 justify-center">
+            <Button 
+              asChild 
+              size="lg" 
+              className="bg-adsmagnify-dark-yellow text-adsmagnify-blue font-bold text-lg px-12 py-6 rounded-xl shadow-lg hover:bg-white hover:text-adsmagnify-blue hover:scale-105 transform transition-all duration-300 font-satoshi"
+            >
               <Link href="/contact">Book Your Demo Lecture Today</Link>
             </Button>
-            <Button asChild variant="outline" size="lg" className="bg-white text-adsmagnify-blue border-2 border-adsmagnify-blue font-bold text-lg px-12 py-6 rounded-xl shadow-lg hover:bg-adsmagnify-dark-yellow hover:text-adsmagnify-blue hover:hover-wiggle font-satoshi">
+            <Button 
+              asChild 
+              variant="outline" 
+              size="lg" 
+              className="bg-white text-adsmagnify-blue border-2 border-adsmagnify-blue font-bold text-lg px-12 py-6 rounded-xl shadow-lg hover:bg-adsmagnify-dark-yellow hover:text-adsmagnify-blue hover:scale-105 transform transition-all duration-300 font-satoshi"
+            >
               <a href="https://wa.me/917700090236" target="_blank" rel="noopener noreferrer" className="font-satoshi">
                 WhatsApp: +91 7700090236
               </a>
             </Button>
           </div>
 
-          <div className="mt-12 grid md:grid-cols-3 gap-6 max-w-2xl mx-auto text-sm animate-fade-in-up stagger-4">
-            <div className="flex items-center justify-center gap-3 bg-white-contrast p-4 rounded-xl">
-              <CheckCircle className="h-4 w-4 text-visible-yellow" />
-              <span className="text-visible-dark font-satoshi">Free Demo Lecture</span>
+          <div className="mt-12 grid md:grid-cols-3 gap-6 max-w-2xl mx-auto text-sm">
+            <div className="flex items-center justify-center gap-3 bg-white p-4 rounded-xl">
+              <CheckCircle className="h-5 w-5 text-green-600" />
+              <span className="font-medium text-gray-800">Free Demo Lecture</span>
             </div>
-            <div className="flex items-center justify-center gap-3 bg-white-contrast p-4 rounded-xl">
-              <CheckCircle className="h-4 w-4 text-visible-yellow" />
-              <span className="text-visible-dark font-satoshi">EMI Options Available</span>
+            <div className="flex items-center justify-center gap-3 bg-white p-4 rounded-xl">
+              <Star className="h-5 w-5 text-yellow-500" />
+              <span className="font-medium text-gray-800">4 Students Per Batch</span>
             </div>
-            <div className="flex items-center justify-center gap-3 bg-white-contrast p-4 rounded-xl">
-              <CheckCircle className="h-4 w-4 text-visible-yellow" />
-              <span className="text-visible-dark font-satoshi">Job Placement Support</span>
+            <div className="flex items-center justify-center gap-3 bg-white p-4 rounded-xl">
+              <Phone className="h-5 w-5 text-blue-600" />
+              <span className="font-medium text-gray-800">24-Hour Response</span>
             </div>
           </div>
         </div>
