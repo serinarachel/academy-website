@@ -6,19 +6,7 @@ import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
 import StickyCTA from "@/components/layout/sticky-cta";
 import Script from "next/script";
-import dynamic from "next/dynamic";
-import ErrorBoundary from "@/components/tracking/error-boundary";
-
-// Dynamically import tracking components to avoid SSR issues
-const PageTracking = dynamic(() => import("@/components/tracking/page-tracking"), {
-  ssr: false,
-  loading: () => null,
-});
-
-const ClickTracking = dynamic(() => import("@/components/tracking/click-tracking"), {
-  ssr: false,
-  loading: () => null,
-});
+import TrackingWrapper from "@/components/tracking/tracking-wrapper";
 
 export const metadata: Metadata = {
   title: {
@@ -136,10 +124,7 @@ export default function RootLayout({
         <main>{children}</main>
         <Footer />
         <StickyCTA />
-        <ErrorBoundary>
-          <PageTracking />
-          <ClickTracking />
-        </ErrorBoundary>
+        <TrackingWrapper />
       </body>
     </html>
   );
