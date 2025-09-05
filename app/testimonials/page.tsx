@@ -153,8 +153,10 @@ export default function TestimonialsPage() {
                             className="w-10 h-10 rounded-full object-cover"
                           />
                           <div>
-                            <div className="font-medium text-primary text-sm">{testimonial.name}</div>
-                            <div className="text-xs text-gray-500">{testimonial.course}</div>
+                          <div className="font-medium text-primary text-sm">{testimonial.name}</div>
+                          <Badge variant="outline" className="text-xs border-primary text-primary">
+                                {testimonial.course}
+                          </Badge>
                           </div>
                         </div>
                       </CardContent>
@@ -191,7 +193,9 @@ export default function TestimonialsPage() {
                           />
                           <div>
                             <div className="font-medium text-primary text-sm">{testimonial.name}</div>
-                            <div className="text-xs text-gray-500">{testimonial.course}</div>
+                            <Badge variant="outline" className="text-xs border-primary text-primary">
+                                {testimonial.course}
+                          </Badge>
                           </div>
                         </div>
                       </CardContent>

@@ -178,8 +178,8 @@ export default function Home() {
                     />
                     <div>
                       <div className="font-semibold text-gray-800 font-satoshi">{testimonial.name}</div>
-                      <Badge className="text-xs text-blue-600 border-blue-600">
-                        {testimonial.course}
+                      <Badge variant="outline" className="text-xs border-primary text-primary">
+                          {testimonial.course}
                       </Badge>
                     </div>
                   </div>
