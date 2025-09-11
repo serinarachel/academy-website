@@ -115,7 +115,7 @@ export default function Home() {
               <div className="bg-adsmagnify-dark-yellow w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Users className="h-8 w-8 text-adsmagnify-blue" />
               </div>
-              <h3 className="text-xl font-bold mb-2 font-unbounded">Small Batch Size</h3>
+              <h3 className="text-xl text-adsmagnify-dark-yellow font-bold mb-2 font-unbounded">Small Batch Size</h3>
               <p className="text-gray-300 font-satoshi">Only 4 students per batch for personalized attention</p>
             </div>
             
@@ -123,7 +123,7 @@ export default function Home() {
               <div className="bg-adsmagnify-dark-yellow w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Award className="h-8 w-8 text-adsmagnify-blue" />
               </div>
-              <h3 className="text-xl font-bold mb-2 font-unbounded">Live Projects</h3>
+              <h3 className="text-xl text-adsmagnify-dark-yellow font-bold mb-2 font-unbounded">Live Projects</h3>
               <p className="text-gray-300 font-satoshi">Work on real client campaigns with actual budgets</p>
             </div>
             
@@ -131,7 +131,7 @@ export default function Home() {
               <div className="bg-adsmagnify-dark-yellow w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Clock className="h-8 w-8 text-adsmagnify-blue" />
               </div>
-              <h3 className="text-xl font-bold mb-2 font-unbounded">Weekend Classes</h3>
+              <h3 className="text-xl text-adsmagnify-dark-yellow font-bold mb-2 font-unbounded">Weekend Classes</h3>
               <p className="text-gray-300 font-satoshi">Flexible timing for working professionals</p>
             </div>
             
@@ -139,7 +139,7 @@ export default function Home() {
               <div className="bg-adsmagnify-dark-yellow w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                 <MapPin className="h-8 w-8 text-adsmagnify-blue" />
               </div>
-              <h3 className="text-xl font-bold mb-2 font-unbounded">Prime Location</h3>
+              <h3 className="text-xl text-adsmagnify-dark-yellow font-bold mb-2 font-unbounded">Prime Location</h3>
               <p className="text-gray-300 font-satoshi">Churchgate, Mumbai - easily accessible</p>
             </div>
           </div>
