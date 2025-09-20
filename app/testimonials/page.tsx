@@ -218,7 +218,7 @@ export default function TestimonialsPage() {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild size="lg" className="bg-adsmagnify-yellow hover:bg-adsmagnify-dark-yellow text-black font-semibold hover:scale-105 transform transition-all duration-200">
+            <Button asChild size="lg" className="bg-adsmagnify-yellow hover:bg-adsmagnify-dark-yellow text-adsmagnify-blue font-semibold hover:scale-105 transform transition-all duration-200">
               <Link href="/contact">Book Demo Lecture</Link>
             </Button>
             <Button asChild variant="outline" size="lg" className="bg-white text-adsmagnify-blue border-white hover:bg-adsmagnify-dark-yellow hover:text-adsmagnify-blue hover:scale-105 transform transition-all duration-200">

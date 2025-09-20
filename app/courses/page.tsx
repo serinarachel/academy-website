@@ -5,7 +5,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { ArrowRight, CheckCircle, Users, Clock, MapPin, IndianRupee, Star, Zap, Target } from "lucide-react";
+import { ArrowRight, CheckCircle, Users, Clock, MapPin, IndianRupee, Star, Zap, Target, Award } from "lucide-react";
 import coursesData from "@/data/courses.json";
 import { useCTATracking } from "@/hooks/use-tracking";
 
@@ -392,7 +392,7 @@ export default function CoursesPage() {
                 {
                   title: "Lifetime Mentorship",
                   description: "Consistent support even after course completion",
-                  icon: Users
+                  icon: Award
                 },
                 {
                   title: "Job Placement Support",
