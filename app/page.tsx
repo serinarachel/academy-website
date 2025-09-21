@@ -3,6 +3,7 @@
 
 import HeroSection from "@/components/common/hero-section";
 import CourseCard from "@/components/common/course-card";
+import SpecialCourseBanner from "@/components/common/special-course-banner";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -145,6 +146,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Special Course Banner */}
+      <SpecialCourseBanner />
 
       {/* Testimonials */}
       <section className="py-20">

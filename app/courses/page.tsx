@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ArrowRight, CheckCircle, Users, Clock, MapPin, IndianRupee, Star, Zap, Target, Award } from "lucide-react";
+import SpecialCourseBanner from "@/components/common/special-course-banner";
 import coursesData from "@/data/courses.json";
 import { useCTATracking } from "@/hooks/use-tracking";
 
@@ -414,6 +415,9 @@ export default function CoursesPage() {
           </div>
         </div>
       </section>
+
+      {/* Special Course Banner */}
+      <SpecialCourseBanner />
 
       {/* CTA Section */}
       <section className="py-20 bg-adsmagnify-yellow text-adsmagnify-blue">

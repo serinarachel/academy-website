@@ -155,7 +155,7 @@ export default function ThankYouPage() {
             </p>
             <div className="flex justify-center gap-4 mt-4">
               <a 
-                href="https://facebook.com/adsmagnifyacademy" 
+                href="https://www.facebook.com/share/1Cy7Ls1FvJ/" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="text-blue-600 hover:text-blue-800 transition-colors"
@@ -163,20 +163,28 @@ export default function ThankYouPage() {
                 Facebook
               </a>
               <a 
-                href="https://instagram.com/adsmagnifyacademy" 
+                href="https://www.instagram.com/adsmagnify/" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="text-pink-600 hover:text-pink-800 transition-colors"
+                className="text-blue-600 hover:text-blue-800 transition-colors"
               >
                 Instagram
               </a>
               <a 
-                href="https://linkedin.com/company/adsmagnifyacademy" 
+                href="https://www.linkedin.com/company/adsmagnify/" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="text-blue-700 hover:text-blue-900 transition-colors"
               >
                 LinkedIn
+              </a>
+              <a 
+                href="https://youtube.com/@adsmagnify?si=X1344zszhrJClXxJ" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-blue-700 hover:text-blue-900 transition-colors"
+              >
+                Youtube
               </a>
             </div>
           </div>
