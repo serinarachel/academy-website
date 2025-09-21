@@ -17,6 +17,12 @@ const SpecialCourseBanner = () => {
                   AdProfit Mastery Program
                   <span className="block text-adsmagnify-dark-yellow">(Powered by AI)</span>
                 </h2>
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="flex items-center gap-2 bg-white/20 px-4 py-2 rounded-full">
+                    <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
+                    <span className="text-white font-semibold text-sm">Offline/Online</span>
+                  </div>
+                </div>
 
                 <p className="text-xl text-gray-200 leading-relaxed">
                   Turn Your Meta Ads Into a Profit Machine — Scale Campaigns to ₹50 Lakhs+ With Confidence

@@ -101,6 +101,12 @@ export default function AdProfitMasteryProgram() {
                 <span className="text-lg font-semibold">Next Batch:</span>
                 <span className="text-lg">27th October 2025</span>
               </div>
+              <div className="flex items-center justify-center gap-4 mb-6">
+                <div className="flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full border border-white/30">
+                  <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
+                  <span className="text-white font-semibold text-sm">Offline/Online</span>
+                </div>
+              </div>
 
               <Button
                 size="lg"
@@ -223,7 +229,7 @@ export default function AdProfitMasteryProgram() {
               <div className="max-w-4xl mx-auto">
                 <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 mb-6">
                   <p className="text-xl text-adsmagnify-blue font-semibold mb-4">
-                    "If you truly want to build a business online that makes you enough money and keeps you at peace, paid traffic generation with less complexity is essential." 
+                    "If you truly want to build a business online that makes you enough money and keeps you at peace, paid traffic generation with less complexity is essential."
                   </p>
                 </div>
 
@@ -240,8 +246,14 @@ export default function AdProfitMasteryProgram() {
                       <Calendar className="h-6 w-6 text-adsmagnify-blue" />
                       <div className="text-left">
                         <span className="text-lg font-semibold block text-adsmagnify-blue">Next Batch</span>
-                        <span className="text-sm text-gray-600">Starting Soon</span>
+                        <span className="text-sm text-gray-600">27th October 2025</span>
                       </div>
+                    </div>
+                  </div>
+                  <div className="flex items-center justify-center gap-4 mb-6">
+                    <div className="flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full border border-white/30">
+                      <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
+                      <span className="text-adsmagnify-blue font-semibold text-sm">Offline/Online</span>
                     </div>
                   </div>
 
@@ -460,9 +472,14 @@ export default function AdProfitMasteryProgram() {
                 <div className="flex items-center justify-center gap-4 mb-6">
                   <Calendar className="h-6 w-6 text-adsmagnify-blue" />
                   <span className="text-lg font-semibold">Next Batch:</span>
-                  <span className="text-lg">Starting Soon</span>
+                  <span className="text-lg">27th October 2025</span>
                 </div>
-
+                <div className="flex items-center justify-center gap-4 mb-6">
+                  <div className="flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full border border-white/30">
+                    <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
+                    <span className="text-adsmagnify-blue font-semibold text-sm">Offline/Online</span>
+                  </div>
+                </div>
                 <Button
                   size="lg"
                   className="bg-adsmagnify-blue hover:bg-adsmagnify-dark-blue text-white font-bold text-xl px-12 py-6 rounded-xl shadow-lg hover:scale-105 transform transition-all duration-300 mb-4"
@@ -522,7 +539,7 @@ export default function AdProfitMasteryProgram() {
             <h2 className="text-3xl lg:text-4xl font-bold text-navy-900 mb-12 text-center">
               Frequently Asked Questions (FAQs)
             </h2>
-            
+
             <div className="space-y-8">
               <div className="bg-gray-50 p-6 rounded-xl">
                 <h3 className="text-lg font-bold text-navy-900 mb-3">1. What's the difference between the Performance Marketing Course and the AdProfit Mastery Program (AMP)?</h3>
@@ -632,6 +649,12 @@ export default function AdProfitMasteryProgram() {
                 <Calendar className="h-6 w-6 text-adsmagnify-dark-yellow" />
                 <span className="text-lg font-semibold">Next Batch:</span>
                 <span className="text-lg">27th October 2025</span>
+              </div>
+              <div className="flex items-center justify-center gap-4 mb-6">
+                <div className="flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full border border-white/30">
+                  <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
+                  <span className="text-white font-semibold text-sm">Offline/Online</span>
+                </div>
               </div>
 
               <Button
