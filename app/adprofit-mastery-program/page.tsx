@@ -78,16 +78,16 @@ export default function AdProfitMasteryProgram() {
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto text-center">
             <h1 className="text-4xl text-white lg:text-6xl font-bold mb-6 leading-tight">
-              Run Meta Ads Peacefully using the
-              <span className="block text-adsmagnify-dark-yellow">AdProfit Mastery Program</span>
+              AdProfit Mastery Program (AMP)
+              <span className="block text-adsmagnify-dark-yellow">(Powered by AI)</span>
             </h1>
 
             <p className="text-xl lg:text-2xl text-gray-200 mb-8 max-w-4xl mx-auto leading-relaxed">
-              Learn the updated 2025 method to launch & scale Meta Ads from spending ₹0 to up to ₹50K <em>per day</em> profitably <strong>WITHOUT</strong> any complexity
+              Turn Your Meta Ads Into a Profit Machine — Scale Campaigns to ₹50 Lakhs+ With Confidence
             </p>
 
             <p className="text-lg text-gray-300 mb-8 max-w-4xl mx-auto">
-              (...like <strong>without</strong> duplicating ad sets, <strong>without</strong> launching multiple campaigns, and <strong>without</strong> laser targeting)
+              The AdProfit Mastery Program (AMP) is a 4-phase advanced training designed for marketers, entrepreneurs, and freelancers who already have basic experience with Meta Ads and want to confidently scale their campaigns to higher spends while protecting ROI.
             </p>
 
             <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20 max-w-2xl mx-auto mb-8">
@@ -178,48 +178,46 @@ export default function AdProfitMasteryProgram() {
         <div className="container mx-auto px-4 relative">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-16">
-              <div className="inline-block bg-adsmagnify-blue/10 px-4 py-2 rounded-full border border-adsmagnify-blue/20 mb-6">
-                <span className="text-adsmagnify-blue font-semibold text-sm">🎯 TARGET AUDIENCE</span>
-              </div>
               <h2 className="text-3xl lg:text-5xl font-bold text-navy-900 mb-6">
-                Who is this program for?
+                Who is AMP For?
               </h2>
               <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                This program is designed for marketers who are struggling with Meta Ads and need a proven system to scale profitably
+                Unlike basic ad trainings, AMP is profit-first — you'll learn how to structure, scale, and optimize campaigns that not only grow revenue but also safeguard your budget.
               </p>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-8 mb-16">
-              <div className="space-y-6">
-              <div className="flex items-start gap-4 p-4 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl border-l-4 border-blue-400">
-              <div className="w-3 h-3 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
-                  <p className="text-lg text-gray-700">If you tried running Meta ads but got little to no results from conversion or lead ads in 2025</p>
+            <div className="max-w-6xl mx-auto">
+              <div className="grid md:grid-cols-2 gap-8 mb-8">
+                <div className="space-y-6">
+                  <div className="flex items-start gap-4 p-4 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl border-l-4 border-blue-400">
+                    <div className="w-3 h-3 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
+                    <p className="text-lg text-gray-700">Business owners who want to scale ads without losing money</p>
+                  </div>
+                  <div className="flex items-start gap-4 p-4 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl border-l-4 border-blue-400">
+                    <div className="w-3 h-3 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
+                    <p className="text-lg text-gray-700">Freelancers who want to deliver better results for clients</p>
+                  </div>
                 </div>
-                <div className="flex items-start gap-4 p-4 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl border-l-4 border-blue-400">
-                  <div className="w-3 h-3 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
-                  <p className="text-lg text-gray-700">If you feel stressed launching and managing multiple campaigns/ad sets and not getting quality leads</p>
-                </div>
-                <div className="flex items-start gap-4 p-4 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl border-l-4 border-blue-400">
-                  <div className="w-3 h-3 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
-                  <p className="text-lg text-gray-700">If your ad cost rises as soon as you increase the budget by 10-20% following the usual scaling method</p>
+
+                <div className="space-y-6">
+                  <div className="flex items-start gap-4 p-4 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl border-l-4 border-blue-400">
+                    <div className="w-3 h-3 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
+                    <p className="text-lg text-gray-700">Marketers who know campaign setup but struggle with scaling</p>
+                  </div>
+                  <div className="flex items-start gap-4 p-4 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl border-l-4 border-blue-400">
+                    <div className="w-3 h-3 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
+                    <p className="text-lg text-gray-700">Anyone who has spent money on Meta Ads but can't crack consistent ROI</p>
+                  </div>
                 </div>
               </div>
 
-              <div className="space-y-6">
-              <div className="flex items-start gap-4 p-4 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl border-l-4 border-blue-400">
-              <div className="w-3 h-3 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
-                  <p className="text-lg text-gray-700">If you tried duplicating campaigns/ad sets in order to scale, but it failed to deliver stable results</p>
-                </div>
-                <div className="flex items-start gap-4 p-4 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl border-l-4 border-blue-400">
+              <div className="flex justify-center">
+                <div className="flex items-start gap-4 p-4 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl border-l-4 border-blue-400 max-w-2xl">
                   <div className="w-3 h-3 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
-                  <p className="text-lg text-gray-700">If you are using laser targeting and audience interest stacking but not getting consistent results</p>
-                </div>
-                <div className="flex items-start gap-4 p-4 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl border-l-4 border-blue-400">
-                  <div className="w-3 h-3 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
-                  <p className="text-lg text-gray-700">If you find it confusing how many campaigns, ad sets, or ads to launch at what budget and how often</p>
+                  <p className="text-lg text-gray-700">Pre-Requisite: You should have already run Meta Ads (basic knowledge required)</p>
                 </div>
               </div>
-            </div>
+            </div><br />
 
             <div className="bg-gradient-to-br from-adsmagnify-blue/10 to-adsmagnify-dark-yellow/10 p-8 rounded-3xl text-center border border-adsmagnify-blue/20 shadow-xl">
               <div className="max-w-4xl mx-auto">
@@ -272,90 +270,185 @@ export default function AdProfitMasteryProgram() {
         <div className="container mx-auto px-4 relative">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
-              <div className="inline-block bg-adsmagnify-blue/10 px-4 py-2 rounded-full border border-adsmagnify-blue/20 mb-6">
-                <span className="text-adsmagnify-blue font-semibold text-sm">📚 LEARNING OUTCOMES</span>
-              </div>
               <h2 className="text-3xl lg:text-5xl font-bold text-navy-900 mb-6">
-                What will you learn in the program?
+                The 4 Phases of AMP
               </h2>
               <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                Master the proven strategies and frameworks that are helping businesses scale their Meta Ads profitably
+                A comprehensive 4-phase advanced training designed to take you from basic Meta Ads knowledge to scaling campaigns to ₹50 Lakhs+ with confidence
               </p>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-              <div className="group bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-gray-100">
-                <h3 className="font-bold text-navy-900 text-lg mb-3">Campaign Launch Method</h3>
-                <p className="text-gray-600">The campaign launch method if and when you are launching an ad campaign for the first time</p>
+            <div className="grid md:grid-cols-2 gap-8 mb-16">
+              {/* Phase 1 */}
+              <div className="group bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-gray-100">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="bg-gradient-to-br from-blue-500 to-blue-600 p-3 rounded-xl w-12 h-12 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                    <span className="text-white font-bold text-lg">1</span>
+                  </div>
+                  <h3 className="font-bold text-navy-900 text-xl">Phase: Profit Foundations</h3>
+                </div>
+                <ul className="space-y-2 text-gray-600">
+                  <li className="flex items-start gap-2">
+                    <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
+                    <span>Introduction to the Single-Campaign Profit System</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
+                    <span>Future-proofing ads with first-party vs. third-party data</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
+                    <span>Targeting strategies: Advantage+ vs. manual audiences</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
+                    <span>Understanding the Meta Ad Auction for cheaper results</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
+                    <span>Attribution clarity with the Goalpost Tracking Method</span>
+                  </li>
+                </ul>
               </div>
 
-              <div className="group bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-gray-100">
-                <h3 className="font-bold text-navy-900 text-lg mb-3">Audience Testing Strategy</h3>
-                <p className="text-gray-600">The strategy to test different audience interests by checking audience overlap before you even launch</p>
+              {/* Phase 2 */}
+              <div className="group bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-gray-100">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="bg-gradient-to-br from-blue-500 to-blue-600 p-3 rounded-xl w-12 h-12 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                    <span className="text-white font-bold text-lg">2</span>
+                  </div>
+                  <h3 className="font-bold text-navy-900 text-xl">Phase: Campaign Launch & Setup</h3>
+                </div>
+                <ul className="space-y-2 text-gray-600">
+                  <li className="flex items-start gap-2">
+                    <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
+                    <span>The 5 Profit Variables that make or break campaigns</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
+                    <span>The Creative Trio Formula – testing multiple creatives to find winners</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
+                    <span>The Focused Scaling Formula – doubling down with precision</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
+                    <span>Key KPIs that separate winners from losers</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
+                    <span>Launch SOPs for new ad accounts</span>
+                  </li>
+                </ul>
               </div>
 
-              <div className="group bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-gray-100">
-                <h3 className="font-bold text-navy-900 text-lg mb-3">Ad Testing Framework</h3>
-                <p className="text-gray-600">Our proprietary ad testing framework 1:1:3 and 1:1:2 that allows to test and find a winning ad fast</p>
+              {/* Phase 3 */}
+              <div className="group bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-gray-100">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="bg-gradient-to-br from-blue-500 to-blue-600 p-3 rounded-xl w-12 h-12 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                    <span className="text-white font-bold text-lg">3</span>
+                  </div>
+                  <h3 className="font-bold text-navy-900 text-xl">Phase: Scaling to ₹50 Lakhs+ Ad Spend</h3>
+                </div>
+                <ul className="space-y-2 text-gray-600">
+                  <li className="flex items-start gap-2">
+                    <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
+                    <span>Case study: Scaling campaigns to ₹50 Lakhs ad spend while staying profitable</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
+                    <span>Using the Ad Budget Optimizer Tool for data-driven scaling</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
+                    <span>How & when to increase budgets without breaking performance</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
+                    <span>The 10-Minute Daily Profit Routine for optimization</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
+                    <span>Morning & evening checklists for stable results</span>
+                  </li>
+                </ul>
               </div>
 
-              <div className="group bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-gray-100">
-                <h3 className="font-bold text-navy-900 text-lg mb-3">Ad Fatigue Science</h3>
-                <p className="text-gray-600">The science behind ad fatigue, audience overlap, and auction overlap and how to avoid the same</p>
-              </div>
-
-              <div className="group bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-gray-100">
-                <h3 className="font-bold text-navy-900 text-lg mb-3">Scaling System</h3>
-                <p className="text-gray-600">The ad scaling system that is helping us take our clients accounts from spending 0 to up to 50K per day</p>
-              </div>
-
-              <div className="group bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-gray-100">
-                <h3 className="font-bold text-navy-900 text-lg mb-3">AMP Implementation</h3>
-                <p className="text-gray-600">What is the AdProfit Mastery Program™ and how to start implementing it for a stable ad performance</p>
+              {/* Phase 4 */}
+              <div className="group bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-gray-100">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="bg-gradient-to-br from-blue-500 to-blue-600 p-3 rounded-xl w-12 h-12 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                    <span className="text-white font-bold text-lg">4</span>
+                  </div>
+                  <h3 className="font-bold text-navy-900 text-xl">Phase: Creative Breakthroughs</h3>
+                </div>
+                <ul className="space-y-2 text-gray-600">
+                  <li className="flex items-start gap-2">
+                    <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
+                    <span>Why creatives decide whether a campaign scales or fails</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
+                    <span>The Creative Sprint Test – generate 10 ad ideas in 24 hours with minimum spend</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
+                    <span>5 different methods to test creatives effectively</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
+                    <span>Testing strategies for video, image, and carousel ads</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
+                    <span>Case studies of high-performing ad creatives</span>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Do you resonate */}
+      {/* Bonuses Included */}
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl lg:text-4xl font-bold text-navy-900 mb-8 text-center">
-              Do you resonate with any of the below...
+              Bonuses Included
             </h2>
 
             <div className="space-y-6 mb-12">
               <div className="flex items-start gap-4">
                 <div className="w-2 h-2 bg-adsmagnify-blue rounded-full mt-3 flex-shrink-0"></div>
-                <p className="text-lg text-gray-700">"I have been trying to learn Meta Ads since a long time, but I always get confused on budgets/campaigns"</p>
+                <p className="text-lg text-gray-700">Ad Scaling Calculator (plug-and-play budget planner)</p>
               </div>
               <div className="flex items-start gap-4">
                 <div className="w-2 h-2 bg-adsmagnify-blue rounded-full mt-3 flex-shrink-0"></div>
-                <p className="text-lg text-gray-700">"I don't understand how to manage & optimize campaigns/ad sets. Should I do ABO or CBO in 2025?"</p>
+                <p className="text-lg text-gray-700">SOPs for creative testing, performance tracking & optimization</p>
               </div>
               <div className="flex items-start gap-4">
                 <div className="w-2 h-2 bg-adsmagnify-blue rounded-full mt-3 flex-shrink-0"></div>
-                <p className="text-lg text-gray-700">"I tried interest targeting and laser targeting, but nothing works consistently. It is driving me crazy"</p>
+                <p className="text-lg text-gray-700">Private AMP Community for peer support, Q&A, and updates</p>
               </div>
               <div className="flex items-start gap-4">
                 <div className="w-2 h-2 bg-adsmagnify-blue rounded-full mt-3 flex-shrink-0"></div>
-                <p className="text-lg text-gray-700">"I tried increasing the budget by 10-20%, but my ads stop performing as soon as I increase the budget"</p>
+                <p className="text-lg text-gray-700">Lifetime Access to the course material</p>
               </div>
               <div className="flex items-start gap-4">
                 <div className="w-2 h-2 bg-adsmagnify-blue rounded-full mt-3 flex-shrink-0"></div>
-                <p className="text-lg text-gray-700">"I'm sick of inconsistency in my ads performance. One day it's great, but the next day it is terrible"</p>
+                <p className="text-lg text-gray-700">Bonus Sessions on Advertising Psychology & Scaling Playbooks</p>
               </div>
               <div className="flex items-start gap-4">
                 <div className="w-2 h-2 bg-adsmagnify-blue rounded-full mt-3 flex-shrink-0"></div>
-                <p className="text-lg text-gray-700">"I don't know how to launch and scale my ad account, fast and with peace. I want an end-to-end system"</p>
+                <p className="text-lg text-gray-700">Perform detailed competitor analysis using Gemini</p>
               </div>
             </div>
 
             <div className="bg-adsmagnify-blue/10 p-8 rounded-2xl text-center">
               <p className="text-xl text-adsmagnify-blue font-semibold mb-4">
-                If you said YES to any of the above, this program is a must attend for you 
+                Duration & Format: 4 Phases (4 Weeks) – step-by-step training with access to private community for ongoing support
               </p>
 
               <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 max-w-2xl mx-auto">
@@ -367,7 +460,7 @@ export default function AdProfitMasteryProgram() {
                 <div className="flex items-center justify-center gap-4 mb-6">
                   <Calendar className="h-6 w-6 text-adsmagnify-blue" />
                   <span className="text-lg font-semibold">Next Batch:</span>
-                  <span className="text-lg">27th October 2025</span>
+                  <span className="text-lg">Starting Soon</span>
                 </div>
 
                 <Button
@@ -388,34 +481,130 @@ export default function AdProfitMasteryProgram() {
       </section>
 
 
-      {/* Here's a quick recap */}
+      {/* Key Takeaways */}
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl lg:text-4xl font-bold text-navy-900 mb-8 text-center">
-              Here's a quick recap of what you'll learn...
+              Key Takeaways from AMP
             </h2>
 
             <div className="space-y-6 mb-12">
               <div className="flex items-start gap-4">
                 <div className="w-2 h-2 bg-adsmagnify-blue rounded-full mt-3 flex-shrink-0"></div>
-                <p className="text-lg text-gray-700">How to avoid audience overlap, auction overlap, and ad fatigue for a more stable ad performance</p>
+                <p className="text-lg text-gray-700">Build campaigns with profit-first scaling systems</p>
               </div>
               <div className="flex items-start gap-4">
                 <div className="w-2 h-2 bg-adsmagnify-blue rounded-full mt-3 flex-shrink-0"></div>
-                <p className="text-lg text-gray-700">The ad scaling system we are using to spend 30K-50K per day on ad spend with peace</p>
+                <p className="text-lg text-gray-700">Confidently scale campaigns up to ₹50 Lakhs ad spend</p>
               </div>
               <div className="flex items-start gap-4">
                 <div className="w-2 h-2 bg-adsmagnify-blue rounded-full mt-3 flex-shrink-0"></div>
-                <p className="text-lg text-gray-700">Our proprietary Ad Testing Framework 1:1:3 and 1:1:2</p>
+                <p className="text-lg text-gray-700">Learn daily routines & checklists to keep results consistent</p>
               </div>
               <div className="flex items-start gap-4">
                 <div className="w-2 h-2 bg-adsmagnify-blue rounded-full mt-3 flex-shrink-0"></div>
-                <p className="text-lg text-gray-700">The AMP Ad campaign launch framework</p>
+                <p className="text-lg text-gray-700">Discover creative testing systems that reduce wasted ad spend</p>
               </div>
               <div className="flex items-start gap-4">
                 <div className="w-2 h-2 bg-adsmagnify-blue rounded-full mt-3 flex-shrink-0"></div>
-                <p className="text-lg text-gray-700">The future of Meta Ads interest-targeting to get the best ROI in 2025</p>
+                <p className="text-lg text-gray-700">Become an advanced Meta Ads specialist who can deliver results for businesses or clients</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl lg:text-4xl font-bold text-navy-900 mb-12 text-center">
+              Frequently Asked Questions (FAQs)
+            </h2>
+            
+            <div className="space-y-8">
+              <div className="bg-gray-50 p-6 rounded-xl">
+                <h3 className="text-lg font-bold text-navy-900 mb-3">1. What's the difference between the Performance Marketing Course and the AdProfit Mastery Program (AMP)?</h3>
+                <p className="text-gray-700 mb-2">The Performance Marketing Course is a basic-to-advance training that covers Meta Ads + Google Ads foundations. Perfect for beginners or those with up to 1 year of experience.</p>
+                <p className="text-gray-700">The AdProfit Mastery Program (AMP) is an advanced scaling program for those who already run campaigns and want to learn how to confidently scale campaigns to ₹50 Lakhs+ ad spend while protecting ROI.</p>
+              </div>
+
+              <div className="bg-gray-50 p-6 rounded-xl">
+                <h3 className="text-lg font-bold text-navy-900 mb-3">2. Who should join the Performance Marketing Course?</h3>
+                <ul className="text-gray-700 space-y-1">
+                  <li>• Beginners in digital marketing who want to start with paid ads</li>
+                  <li>• Freelancers with 6–12 months of experience who want structured learning</li>
+                  <li>• Business owners who want to learn how ads really work instead of outsourcing blindly</li>
+                </ul>
+              </div>
+
+              <div className="bg-gray-50 p-6 rounded-xl">
+                <h3 className="text-lg font-bold text-navy-900 mb-3">3. Who should join AMP?</h3>
+                <ul className="text-gray-700 space-y-1">
+                  <li>• Marketers, freelancers, or agency owners already running Meta Ads</li>
+                  <li>• People who know the basics but struggle with scaling beyond small budgets</li>
+                  <li>• Those who want pro-level frameworks like the Single-Campaign Profit System, Creative Trio Formula, and Goalpost Tracking</li>
+                </ul>
+              </div>
+
+              <div className="bg-gray-50 p-6 rounded-xl">
+                <h3 className="text-lg font-bold text-navy-900 mb-3">4. I'm not sure if I'm beginner or advanced. How do I choose?</h3>
+                <p className="text-gray-700 mb-2">If you've never run ads or only dabbled a little → Performance Marketing Course.</p>
+                <p className="text-gray-700">If you've already run campaigns, spent money, and now want to scale profitably → AMP.</p>
+              </div>
+
+              <div className="bg-gray-50 p-6 rounded-xl">
+                <h3 className="text-lg font-bold text-navy-900 mb-3">5. Do I need technical skills before joining?</h3>
+                <p className="text-gray-700">No. You just need a basic understanding of how digital ads work (which we also cover in the foundation modules). If you're completely new, start with the Performance Marketing Course.</p>
+              </div>
+
+              <div className="bg-gray-50 p-6 rounded-xl">
+                <h3 className="text-lg font-bold text-navy-900 mb-3">6. Will I get lifetime access?</h3>
+                <p className="text-gray-700">Yes, you'll have lifetime access to all lessons, tools, and updates in both courses.</p>
+              </div>
+
+              <div className="bg-gray-50 p-6 rounded-xl">
+                <h3 className="text-lg font-bold text-navy-900 mb-3">7. Are there live sessions or is it pre-recorded?</h3>
+                <p className="text-gray-700 mb-2">The Performance Marketing Course is a mix of structured lessons + live demo classes.</p>
+                <p className="text-gray-700">AMP has recorded step-by-step training with live Q&A / strategy calls for scaling questions.</p>
+              </div>
+
+              <div className="bg-gray-50 p-6 rounded-xl">
+                <h3 className="text-lg font-bold text-navy-900 mb-3">8. Do you give certificates?</h3>
+                <p className="text-gray-700">Yes. On completing either program, you'll receive a verified certificate from Adsmagnify that you can showcase on your LinkedIn / Resume / Portfolio.</p>
+              </div>
+
+              <div className="bg-gray-50 p-6 rounded-xl">
+                <h3 className="text-lg font-bold text-navy-900 mb-3">9. What support will I get if I'm stuck?</h3>
+                <p className="text-gray-700">You'll get access to a private WhatsApp/Community group where you can ask questions, share campaigns, and get feedback. Plus, we conduct regular doubt-solving sessions.</p>
+              </div>
+
+              <div className="bg-gray-50 p-6 rounded-xl">
+                <h3 className="text-lg font-bold text-navy-900 mb-3">10. What results can I expect after joining?</h3>
+                <p className="text-gray-700 mb-2">From the Performance Marketing Course: you'll be able to confidently set up, run, and optimize Meta + Google Ads campaigns for clients or your own business.</p>
+                <p className="text-gray-700">From AMP: you'll master scaling strategies, creative testing systems, and optimization routines that allow you to manage large ad budgets with profitability.</p>
+              </div>
+
+              <div className="bg-gray-50 p-6 rounded-xl">
+                <h3 className="text-lg font-bold text-navy-900 mb-3">11. How much time do I need to commit weekly?</h3>
+                <p className="text-gray-700 mb-2">Performance Marketing Course: 5–7 hours/week for 6–8 weeks.</p>
+                <p className="text-gray-700">AMP: 3–4 hours/week for 4 weeks (plus daily 10-min optimization routines you'll learn).</p>
+              </div>
+
+              <div className="bg-gray-50 p-6 rounded-xl">
+                <h3 className="text-lg font-bold text-navy-900 mb-3">12. What if I can't attend live sessions?</h3>
+                <p className="text-gray-700">No, we don't sell recorded lectures.</p>
+              </div>
+
+              <div className="bg-gray-50 p-6 rounded-xl">
+                <h3 className="text-lg font-bold text-navy-900 mb-3">13. Can I pay in installments?</h3>
+                <p className="text-gray-700">Yes. We offer EMI/payment plans for both courses to make it easier to join.</p>
+              </div>
+
+              <div className="bg-gray-50 p-6 rounded-xl">
+                <h3 className="text-lg font-bold text-navy-900 mb-3">14. Do you guarantee results?</h3>
+                <p className="text-gray-700">We don't guarantee exact numbers (since results depend on your business, offer, and execution). But we guarantee that if you implement what's taught, you'll be able to run ads confidently, avoid common mistakes, and scale smarter than 90% of marketers out there.</p>
               </div>
             </div>
           </div>
@@ -427,10 +616,10 @@ export default function AdProfitMasteryProgram() {
         <div className="container mx-auto px-4 text-center">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl text-adsmagnify-dark-yellow lg:text-4xl font-bold mb-6">
-              Ready to Transform Your Meta Ads Performance?
+              Ready to Scale Your Meta Ads to ₹50 Lakhs+?
             </h2>
             <p className="text-xl text-gray-200 mb-8 max-w-2xl mx-auto">
-              Join the AdProfit Mastery Program and learn the system that's helping businesses scale to ₹50K+ per day with peace and profitability.
+              Join the AdProfit Mastery Program (AMP) and learn the profit-first system that's helping businesses scale campaigns to ₹50 Lakhs+ ad spend with confidence and profitability.
             </p>
 
             <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20 max-w-2xl mx-auto mb-8">

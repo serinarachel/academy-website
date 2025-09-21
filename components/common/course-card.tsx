@@ -198,7 +198,18 @@ const CourseCard = ({
         <div className="space-y-3">
           <p className="text-sm font-medium text-visible-dark flex items-center gap-2 font-satoshi">
           <Zap className="h-4 w-4 text-visible-yellow" />
-          Marketing & SEO Tools You'll Use:
+          {(() => {
+            switch (slug) {
+              case "ai-performance-marketing":
+                return "Marketing Tools You'll Use:";
+              case "ai-seo":
+                return "SEO Tools You'll Use:";
+              case "advanced-digital-marketing":
+                return "Marketing & SEO Tools You'll Use:";
+              default:
+                return "Marketing & SEO Tools You'll Use:";
+            }
+          })()}
           </p>
           <div className={`grid gap-3 ${marketingTools.length <= 4 ? 'grid-cols-4' : marketingTools.length <= 6 ? 'grid-cols-3' : 'grid-cols-4'}`}>
             {marketingTools.map((tool, idx) => (

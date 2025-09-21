@@ -324,10 +324,34 @@ export default async function CoursePage({ params }: CoursePageProps) {
           <div className="max-w-4xl mx-auto text-center">
             <div className="flex items-center justify-center gap-2 mb-4">
               <h2 className="text-3xl lg:text-4xl font-bold text-navy-900">
-                Marketing & SEO Tools You'll Use
+                {(() => {
+                  switch (slug) {
+                    case "ai-performance-marketing":
+                      return "Marketing Tools You'll Use";
+                    case "ai-seo":
+                      return "SEO Tools You'll Use";
+                    case "advanced-digital-marketing":
+                      return "Marketing & SEO Tools You'll Use";
+                    default:
+                      return "Marketing & SEO Tools You'll Use";
+                  }
+                })()}
               </h2>
             </div>
-            <p className="text-lg text-gray-600 mb-8">Performance Marketing and SEO stack taught hands-on</p>
+            <p className="text-lg text-gray-600 mb-8">
+              {(() => {
+                switch (slug) {
+                  case "ai-performance-marketing":
+                    return "Performance Marketing tools taught hands-on";
+                  case "ai-seo":
+                    return "SEO tools and platforms taught hands-on";
+                  case "advanced-digital-marketing":
+                    return "Complete Marketing and SEO stack taught hands-on";
+                  default:
+                    return "Performance Marketing and SEO stack taught hands-on";
+                }
+              })()}
+            </p>
 
             <div className={`grid gap-6 ${marketingTools.length <= 4 ? 'md:grid-cols-2 lg:grid-cols-4' : marketingTools.length <= 6 ? 'md:grid-cols-3 lg:grid-cols-3' : 'md:grid-cols-3 lg:grid-cols-4'}`}>
               {marketingTools.map((tool) => (

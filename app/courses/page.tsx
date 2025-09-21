@@ -239,7 +239,20 @@ export default function CoursesPage() {
 
                     {/* Marketing Tools for This Course */}
                     <div>
-                      <h4 className="font-semibold text-navy-900 mb-2 text-sm">Marketing Tools:</h4>
+                      <h4 className="font-semibold text-navy-900 mb-2 text-sm">
+                        {(() => {
+                          switch (course.slug) {
+                            case "ai-performance-marketing":
+                              return "Marketing Tools:";
+                            case "ai-seo":
+                              return "SEO Tools:";
+                            case "advanced-digital-marketing":
+                              return "Marketing & SEO Tools:";
+                            default:
+                              return "Marketing Tools:";
+                          }
+                        })()}
+                      </h4>
                       <div className="flex flex-wrap gap-1">
                         {getMarketingToolsBySlug(course.slug).map((tool, idx2) => (
                           <Badge key={`${tool}-${idx2}` as any} className="text-xs">
@@ -312,7 +325,7 @@ export default function CoursesPage() {
                     <th className="p-4 text-adsmagnify-yellow font-semibold">Course</th>
                     <th className="p-4 text-adsmagnify-yellow font-semibold">Duration</th>
                     <th className="p-4 text-adsmagnify-yellow font-semibold">Price</th>
-                    <th className="p-4 text-adsmagnify-yellow font-semibold">Marketing Tools</th>
+                    <th className="p-4 text-adsmagnify-yellow font-semibold">Tools & Platforms</th>
                     <th className="p-4 text-adsmagnify-yellow font-semibold">Action</th>
                   </tr>
                 </thead>
