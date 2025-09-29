@@ -1,6 +1,4 @@
 // @ts-nocheck
-"use client";
-
 import { Metadata } from "next";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
@@ -9,7 +7,6 @@ import { Badge } from "@/components/ui/badge";
 import { ArrowRight, CheckCircle, Users, Clock, MapPin, IndianRupee, Star, Zap, Target, Award } from "lucide-react";
 import SpecialCourseBanner from "@/components/common/special-course-banner";
 import coursesData from "@/data/courses.json";
-import { useCTATracking } from "@/hooks/use-tracking";
 
 export const metadata: Metadata = {
   title: "Best Digital Marketing Course in Mumbai | Adsmagnify",
@@ -23,7 +20,6 @@ export const metadata: Metadata = {
 };
 
 export default function CoursesPage() {
-  const { trackCTAClick } = useCTATracking();
 
   // Define marketing tools based on course slug
   const getMarketingToolsBySlug = (courseSlug: string): string[] => {
@@ -295,7 +291,6 @@ export default function CoursesPage() {
                         <Button 
                           asChild 
                           className="w-full bg-adsmagnify-yellow hover:bg-adsmagnify-dark-yellow text-adsmagnify-blue font-semibold hover:scale-105 transform transition-all duration-200"
-                          onClick={() => trackCTAClick('view_full_details', 'courses_page', course.slug)}
                         >
                           <Link href={`/courses/${course.slug}`} className="flex items-center justify-center gap-2">
                             View Full Details
@@ -306,7 +301,6 @@ export default function CoursesPage() {
                           asChild 
                           variant="outline" 
                           className="w-full text-adsmagnify-blue hover:bg-adsmagnify-yellow hover:text-adsmagnify-blue hover:border-adsmagnify-yellow"
-                          onClick={() => trackCTAClick('book_demo', 'courses_page', course.slug)}
                         >
                           <Link href="/contact">Book Demo</Link>
                         </Button>
