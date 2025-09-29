@@ -9,16 +9,16 @@ import { Calendar, Clock, User } from "lucide-react";
 import blogData from "@/data/blog.json";
 
 export const metadata: Metadata = {
-  title: "Blog | Adsmagnify Academy - AI Marketing Insights & Strategies",
-  description: "Stay updated with the latest AI-powered marketing trends, strategies, and insights from industry experts at Adsmagnify Academy.",
-  keywords: "digital marketing blog, AI marketing, performance marketing, SEO, paid advertising, marketing trends",
+  title: "Blog – Digital Marketing Tips & Insights",
+  description: "Stay updated with Adsmagnify Academy Blog. Explore expert insights, tips, and strategies on digital marketing, SEO, AI, and performance marketing.",
+  keywords: "digital marketing blog, marketing tips, SEO insights, AI marketing, performance marketing strategies",
   openGraph: {
-    title: "Blog | Adsmagnify Academy",
-    description: "Latest AI marketing insights and strategies",
-    url: "https://adsmagnify.vercel.app/blog",
+    title: "Blog – Digital Marketing Tips & Insights",
+    description: "Stay updated with Adsmagnify Academy Blog. Explore expert insights, tips, and strategies on digital marketing, SEO, AI, and performance marketing.",
+    url: "https://adsmagnifyacademy.com/blog/",
     images: [
       {
-        url: "https://adsmagnify.vercel.app/images/blog-hero.jpg",
+        url: "https://adsmagnifyacademy.com/images/blog-hero.jpg",
         width: 1200,
         height: 630,
       },
@@ -27,9 +27,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Blog | Adsmagnify Academy",
-    description: "Latest AI marketing insights and strategies",
-    images: ["https://adsmagnify.vercel.app/images/blog-hero.jpg"],
+    title: "Blog – Digital Marketing Tips & Insights",
+    description: "Stay updated with Adsmagnify Academy Blog. Explore expert insights, tips, and strategies on digital marketing, SEO, AI, and performance marketing.",
+    images: ["https://adsmagnifyacademy.com/images/blog-hero.jpg"],
   },
 };
 
@@ -49,7 +49,7 @@ export default function BlogPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-5xl lg:text-6xl font-bold mb-6 text-adsmagnify-dark-yellow">
-              Marketing Insights & Strategies
+              Blog – Digital Marketing Insights
             </h1>
             <p className="text-xl text-gray-300 mb-8 leading-relaxed">
               Stay ahead with AI-powered marketing trends, actionable strategies, 

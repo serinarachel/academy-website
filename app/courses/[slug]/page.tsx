@@ -46,14 +46,39 @@ export async function generateMetadata({ params }: CoursePageProps): Promise<Met
     };
   }
 
+  // Custom metadata for specific courses
+  let title, description, keywords;
+  
+  switch (slug) {
+    case "ai-performance-marketing":
+      title = "AI Performance Marketing Course | Adsmagnify Academy";
+      description = "Master AI Performance Marketing with Adsmagnify Academy. Learn cutting-edge ad strategies, analytics, and automation at a top performance marketing academy.";
+      keywords = "ai performance marketing course, performance marketing academy";
+      break;
+    case "advanced-digital-marketing":
+      title = "Advanced Digital Marketing Course | Adsmagnify Academy";
+      description = "Join our Advance Digital Marketing Course. Learn with the Advanced Digital Marketing program to grow your skills and career effectively.";
+      keywords = "Advance Digital Marketing Course";
+      break;
+    case "ai-seo":
+      title = "AI SEO – Master the SEO Course for 2025";
+      description = "Learn AI SEO with our comprehensive SEO Course. Master AI-driven strategies to boost rankings, traffic, and digital marketing skills.";
+      keywords = "ai seo course, seo course 2025";
+      break;
+    default:
+      title = `${course.name} in Mumbai | AI-Powered Digital Marketing Training`;
+      description = `${course.overview} Weekend batches in Churchgate, Mumbai. Only 4 students per batch with live projects and shadow internship included.`;
+      keywords = `${course.name.toLowerCase()}, digital marketing course Mumbai, AI marketing training, ${course.slug.replace('-', ' ')}, Churchgate courses`;
+  }
+
   return {
-    title: `${course.name} in Mumbai | AI-Powered Digital Marketing Training`,
-    description: `${course.overview} Weekend batches in Churchgate, Mumbai. Only 4 students per batch with live projects and shadow internship included.`,
-    keywords: `${course.name.toLowerCase()}, digital marketing course Mumbai, AI marketing training, ${course.slug.replace('-', ' ')}, Churchgate courses`,
+    title,
+    description,
+    keywords,
     openGraph: {
-      title: `${course.name} | Adsmagnify Academy`,
-      description: course.overview,
-      url: `https://adsmagnify.vercel.app/courses/${slug}`
+      title,
+      description,
+      url: `https://adsmagnifyacademy.com/courses/${slug}`
     }
   };
 }
@@ -135,7 +160,12 @@ export default async function CoursePage({ params }: CoursePageProps) {
             <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
               <div className="lg:w-2/3">
                 <Badge className="bg-adsmagnify-yellow text-adsmagnify-blue mb-4">{course.mode}</Badge>
-                <h1 className="text-4xl lg:text-5xl font-bold mb-4 text-adsmagnify-yellow">{course.name}</h1>
+                <h1 className="text-4xl lg:text-5xl font-bold mb-4 text-adsmagnify-yellow">
+                  {slug === "ai-performance-marketing" ? "AI Performance Marketing Course" :
+                   slug === "advanced-digital-marketing" ? "Advanced Digital Marketing Course - Adsmagnify Academy" :
+                   slug === "ai-seo" ? "AI SEO – SEO Course" :
+                   course.name}
+                </h1>
                 <p className="text-xl text-gray-300 mb-6">{course.overview}</p>
                 
                 <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 text-sm">

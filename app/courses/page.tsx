@@ -1,6 +1,7 @@
 // @ts-nocheck
 "use client";
 
+import { Metadata } from "next";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -9,6 +10,17 @@ import { ArrowRight, CheckCircle, Users, Clock, MapPin, IndianRupee, Star, Zap, 
 import SpecialCourseBanner from "@/components/common/special-course-banner";
 import coursesData from "@/data/courses.json";
 import { useCTATracking } from "@/hooks/use-tracking";
+
+export const metadata: Metadata = {
+  title: "Best Digital Marketing Course in Mumbai | Adsmagnify",
+  description: "Join the best digital marketing course in Mumbai at Adsmagnify Academy. Learn digital marketing with expert-led SEO, ads, AI tools, and hands-on training.",
+  keywords: "best digital marketing course in mumbai, learn digital marketing digital marketing course",
+  openGraph: {
+    title: "Best Digital Marketing Course in Mumbai | Adsmagnify",
+    description: "Join the best digital marketing course in Mumbai at Adsmagnify Academy. Learn digital marketing with expert-led SEO, ads, AI tools, and hands-on training.",
+    url: "https://adsmagnifyacademy.com/courses/"
+  }
+};
 
 export default function CoursesPage() {
   const { trackCTAClick } = useCTATracking();
@@ -89,7 +101,7 @@ export default function CoursesPage() {
           <div className="max-w-4xl mx-auto text-center">
             
             <h1 className="text-4xl lg:text-6xl font-bold mb-6 text-adsmagnify-yellow">
-              Digital Marketing AI Courses
+              Best Digital Marketing Course in Mumbai
             </h1>
             <p className="text-xl lg:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto">
               Master AI-driven marketing with live client projects, shadow internships, and guaranteed job placement support in Mumbai's premier training academy.

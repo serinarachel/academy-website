@@ -34,7 +34,7 @@ export default function Home() {
     <div className="min-h-screen">
       {/* Hero Section */}
       <HeroSection
-        title="Master AI-Powered Digital Marketing"
+        title="Best AI Digital Marketing Academy – Adsmagnify"
         subtitle="Live Projects + Shadow Internships"
         description="Learn from industry experts with hands-on experience. Only 4 students per batch. Weekend classes in Churchgate, Mumbai."
         ctaText="Book Your Demo Lecture"

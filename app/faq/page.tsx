@@ -7,13 +7,13 @@ import Link from "next/link";
 import { MessageCircle, Phone, HelpCircle } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Frequently Asked Questions | Adsmagnify Academy",
-  description: "Get answers to common questions about our AI digital marketing courses, admissions, fees, placement support, and more at Adsmagnify Academy Mumbai.",
-  keywords: "digital marketing course FAQ, AI marketing training questions, course fees Mumbai, placement support, batch size",
+  title: "FAQ – Adsmagnify Academy Course Questions",
+  description: "Find answers to frequently asked questions about Adsmagnify Academy courses, enrollment, fees, and learning outcomes in our detailed FAQ section.",
+  keywords: "adsmagnify academy faq, course questions, enrollment, fees, learning outcomes",
   openGraph: {
-    title: "Frequently Asked Questions | Adsmagnify Academy",
-    description: "Get answers to common questions about our AI digital marketing courses, admissions, fees, placement support, and more.",
-    url: "https://adsmagnify.vercel.app/faq"
+    title: "FAQ – Adsmagnify Academy Course Questions",
+    description: "Find answers to frequently asked questions about Adsmagnify Academy courses, enrollment, fees, and learning outcomes in our detailed FAQ section.",
+    url: "https://adsmagnifyacademy.com/faq/"
   }
 };
 
@@ -129,7 +129,7 @@ export default function FAQPage() {
   return (
     <div className="min-h-screen">
       <HeroSection
-        title="Frequently Asked Questions"
+        title="FAQ – Frequently Asked Questions"
         subtitle="Get All Your Questions Answered"
         description="Find answers to common questions about our AI-powered digital marketing courses, admissions process, fees, and career support."
         ctaText="Still Have Questions?"

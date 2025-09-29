@@ -11,13 +11,13 @@ import CountUp from "@/components/common/count-up";
 import testimonialsData from "@/data/testimonials.json";
 
 export const metadata: Metadata = {
-  title: "Student Success Stories & Testimonials | Adsmagnify Academy",
-  description: "Read success stories from our AI digital marketing course graduates now working at top companies like Reliance, Nykaa, Swiggy, and Paytm in Mumbai.",
-  keywords: "digital marketing course testimonials Mumbai, student success stories, AI marketing training reviews, performance marketing course feedback",
+  title: "Testimonials – Hear From Our Students",
+  description: "Read testimonials from Adsmagnify Academy students. Discover how our courses transformed their skills, careers, and digital marketing expertise.",
+  keywords: "adsmagnify academy testimonials, student reviews, course feedback, success stories",
   openGraph: {
-    title: "Student Success Stories & Testimonials | Adsmagnify Academy",
-    description: "Read success stories from our AI digital marketing course graduates now working at top companies like Reliance, Nykaa, Swiggy, and Paytm in Mumbai.",
-    url: "https://adsmagnify.vercel.app/testimonials"
+    title: "Testimonials – Hear From Our Students",
+    description: "Read testimonials from Adsmagnify Academy students. Discover how our courses transformed their skills, careers, and digital marketing expertise.",
+    url: "https://adsmagnifyacademy.com/testimonials/"
   }
 };
 
@@ -25,7 +25,7 @@ export default function TestimonialsPage() {
   return (
     <div className="min-h-screen">
       <HeroSection
-        title="Success Stories from Our Alumni"
+        title="Testimonials – What Our Students Say"
         subtitle="Real Results from Real Students"
         description="Our graduates are now leading digital marketing teams at top companies across Mumbai and India. Read their journey from beginner to expert."
         ctaText="Join Our Next Batch"

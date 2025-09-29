@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { Metadata } from "next";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -21,6 +22,17 @@ import { navigateToInternal } from "@/utils/navigation";
 
 // Import course data for the form
 import coursesData from "@/data/courses.json";
+
+export const metadata: Metadata = {
+  title: "Contact – Get in Touch with Adsmagnify Academy",
+  description: "Reach out to Adsmagnify Academy. Contact us for course inquiries, support, or guidance and start your journey in advanced digital marketing today.",
+  keywords: "contact adsmagnify academy, course inquiries, digital marketing support, guidance",
+  openGraph: {
+    title: "Contact – Get in Touch with Adsmagnify Academy",
+    description: "Reach out to Adsmagnify Academy. Contact us for course inquiries, support, or guidance and start your journey in advanced digital marketing today.",
+    url: "https://adsmagnifyacademy.com/contact/"
+  }
+};
 
 export default function ContactPage() {
   const { trackFormSubmit } = useFormTracking();
@@ -62,7 +74,7 @@ export default function ContactPage() {
         {/* Header */}
         <div className="text-center mb-12">
           <h1 className="text-4xl lg:text-5xl font-bold text-navy-900 mb-4">
-            Book Your Demo Lecture
+            Contact – Adsmagnify Academy
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Experience our unique teaching methodology before you commit. 

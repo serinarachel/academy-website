@@ -8,13 +8,13 @@ import { Camera, Users, Laptop, Award, BookOpen, Coffee } from "lucide-react";
 import CountUp from "@/components/common/count-up";
 
 export const metadata: Metadata = {
-  title: "Gallery - Classroom Photos & Student Activities | Adsmagnify Academy",
-  description: "See our state-of-the-art classroom facilities, live project sessions, and student activities at Adsmagnify Academy in Churchgate, Mumbai.",
-  keywords: "digital marketing classroom Mumbai, training facility photos, student activities, live projects, Churchgate academy",
+  title: "Gallery – Adsmagnify Academy Highlights",
+  description: "Explore the Adsmagnify Academy Gallery. See our events, workshops, and student achievements captured in exclusive photos and videos.",
+  keywords: "adsmagnify academy gallery, student achievements, events, workshops, photos, videos",
   openGraph: {
-    title: "Gallery - Classroom Photos & Student Activities | Adsmagnify Academy",
-    description: "See our state-of-the-art classroom facilities, live project sessions, and student activities at Adsmagnify Academy in Churchgate, Mumbai.",
-    url: "https://adsmagnify.vercel.app/gallery"
+    title: "Gallery – Adsmagnify Academy Highlights",
+    description: "Explore the Adsmagnify Academy Gallery. See our events, workshops, and student achievements captured in exclusive photos and videos.",
+    url: "https://adsmagnifyacademy.com/gallery/"
   }
 };
 
@@ -69,7 +69,7 @@ export default function GalleryPage() {
   return (
     <div className="min-h-screen">
       <HeroSection
-        title="Our Learning Environment"
+        title="Gallery – Adsmagnify Academy"
         subtitle="See Where Digital Marketing Excellence Happens"
         description="Take a virtual tour of our modern facilities, see our students in action, and witness the collaborative learning environment that makes Adsmagnify Academy special."
         ctaText="Visit Our Campus"

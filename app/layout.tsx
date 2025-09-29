@@ -10,13 +10,13 @@ import TrackingWrapper from "@/components/tracking/tracking-wrapper";
 
 export const metadata: Metadata = {
   title: {
-    default: "AI Digital Marketing Courses in Mumbai | Adsmagnify Academy",
+    default: "Best AI Digital Marketing Academy | Adsmagnify",
     template: "%s | Adsmagnify Academy",
   },
   description:
-    "Learn AI-powered digital marketing with live projects and shadow internships in South Bombay. Performance Marketing & SEO courses with only 4 students per batch.",
+    "Learn SEO, ads, and automation at the best AI digital marketing academy. Adsmagnify Academy blends AI with strategy to help you master digital growth.",
   keywords:
-    "digital marketing courses Mumbai, AI marketing training, performance marketing course, SEO training Mumbai, Google Ads course, Meta Ads training, Churchgate digital marketing",
+    "best AI digital marketing academy",
   authors: [{ name: "Adsmagnify Academy" }],
   creator: "Adsmagnify Academy",
   publisher: "Adsmagnify Academy",
