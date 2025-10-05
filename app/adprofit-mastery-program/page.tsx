@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -37,26 +36,10 @@ import {
 
 export default function AdProfitMasteryProgram() {
   const router = useRouter();
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    mobile: "",
-    designation: "",
-    city: ""
-  });
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-  };
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Redirect to thank you page
-    router.push('/thank-you');
+    // FormSubmit.co will handle the submission and redirect
+    // No need for preventDefault or async handling
   };
 
   return (
@@ -691,7 +674,19 @@ export default function AdProfitMasteryProgram() {
                 <CardTitle className="text-center text-adsmagnify-blue">Enquiry Form</CardTitle>
               </CardHeader>
               <CardContent>
-                <form onSubmit={handleSubmit} className="space-y-6">
+                <form 
+                  action="https://formsubmit.co/vinay.h@adsmagnify.in" 
+                  method="POST" 
+                  target="_blank"
+                  onSubmit={handleSubmit} 
+                  className="space-y-6"
+                >
+                  {/* FormSubmit.co configuration */}
+                  <input type="hidden" name="_subject" value="New Enquiry from AMP Course Page of Website" />
+                  <input type="hidden" name="_replyto" value="" />
+                  <input type="hidden" name="_captcha" value="false" />
+                  <input type="hidden" name="_template" value="table" />
+                  <input type="hidden" name="_next" value="https://adsmagnifyacademy.com/thank-you" />
                   <div className="grid md:grid-cols-2 gap-6">
                     <div className="space-y-2">
                       <Label htmlFor="name">Name *</Label>
@@ -700,8 +695,6 @@ export default function AdProfitMasteryProgram() {
                         name="name"
                         type="text"
                         required
-                        value={formData.name}
-                        onChange={handleInputChange}
                         className="border-gray-300 focus:border-adsmagnify-blue focus:ring-adsmagnify-blue"
                       />
                     </div>
@@ -712,8 +705,6 @@ export default function AdProfitMasteryProgram() {
                         name="email"
                         type="email"
                         required
-                        value={formData.email}
-                        onChange={handleInputChange}
                         className="border-gray-300 focus:border-adsmagnify-blue focus:ring-adsmagnify-blue"
                       />
                     </div>
@@ -727,8 +718,6 @@ export default function AdProfitMasteryProgram() {
                         name="mobile"
                         type="tel"
                         required
-                        value={formData.mobile}
-                        onChange={handleInputChange}
                         className="border-gray-300 focus:border-adsmagnify-blue focus:ring-adsmagnify-blue"
                       />
                     </div>
@@ -739,8 +728,6 @@ export default function AdProfitMasteryProgram() {
                         name="designation"
                         type="text"
                         required
-                        value={formData.designation}
-                        onChange={handleInputChange}
                         className="border-gray-300 focus:border-adsmagnify-blue focus:ring-adsmagnify-blue"
                       />
                     </div>
@@ -753,8 +740,6 @@ export default function AdProfitMasteryProgram() {
                       name="city"
                       type="text"
                       required
-                      value={formData.city}
-                      onChange={handleInputChange}
                       className="border-gray-300 focus:border-adsmagnify-blue focus:ring-adsmagnify-blue"
                     />
                   </div>

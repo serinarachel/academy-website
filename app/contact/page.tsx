@@ -1,12 +1,9 @@
 "use client";
 
-import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { 
   Phone, 
   Mail, 
@@ -24,36 +21,13 @@ import coursesData from "@/data/courses.json";
 
 export default function ContactPage() {
   const { trackFormSubmit } = useFormTracking();
-  
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    course: "not-sure",
-    message: "",
-    preferredTime: "no-preference"
-  });
 
-  const handleInputChange = (field: string, value: string) => {
-    setFormData(prev => ({ ...prev, [field]: value }));
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    
+  const handleSubmit = (e: React.FormEvent) => {
     // Track form submission
     trackFormSubmit('demo_booking', 'contact_page');
     
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
-      
-      // Use full page navigation for tracking purposes
-      // This ensures the page change is tracked as a full navigation, not just history
-      navigateToInternal('/thank-you');
-    }, 1500);
+    // FormSubmit.co will handle the submission and redirect
+    // No need for preventDefault or async handling
   };
 
   return (
@@ -81,28 +55,38 @@ export default function ContactPage() {
                 </p>
               </CardHeader>
               <CardContent>
-                <form onSubmit={handleSubmit} className="space-y-6">
+                <form 
+                  action="https://formsubmit.co/vinay.h@adsmagnify.in" 
+                  method="POST" 
+                  target="_blank"
+                  onSubmit={handleSubmit} 
+                  className="space-y-6"
+                >
+                  {/* FormSubmit.co configuration */}
+                  <input type="hidden" name="_subject" value="New Enquiry from Contact Page of Website" />
+                  <input type="hidden" name="_replyto" value="" />
+                  <input type="hidden" name="_captcha" value="false" />
+                  <input type="hidden" name="_template" value="table" />
+                  <input type="hidden" name="_next" value="https://adsmagnifyacademy.com/thank-you" />
                   <div className="grid md:grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <Label htmlFor="name">Full Name *</Label>
                       <Input
                         id="name"
+                        name="name"
                         type="text"
                         placeholder="Enter your full name"
                         required
-                        value={formData.name}
-                        onChange={(e) => handleInputChange('name', e.target.value)}
                       />
                     </div>
                     <div className="space-y-2">
                       <Label htmlFor="phone">Phone Number *</Label>
                       <Input
                         id="phone"
+                        name="phone"
                         type="tel"
                         placeholder="+91 XXXXX XXXXX"
                         required
-                        value={formData.phone}
-                        onChange={(e) => handleInputChange('phone', e.target.value)}
                       />
                     </div>
                   </div>
@@ -112,73 +96,53 @@ export default function ContactPage() {
                       <Label htmlFor="email">Email Address</Label>
                       <Input
                         id="email"
+                        name="email"
                         type="email"
                         placeholder="your.email@example.com"
-                        value={formData.email}
-                        onChange={(e) => handleInputChange('email', e.target.value)}
+                        required
                       />
                     </div>
                     <div className="space-y-2">
                       <Label htmlFor="course">Course Interest</Label>
-                      <Select value={formData.course} onValueChange={(value) => handleInputChange('course', value)}>
-                        <SelectTrigger>
-                          <SelectValue placeholder="Select a course" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="not-sure">Not sure yet</SelectItem>
-                          {coursesData.map((course) => (
-                            <SelectItem key={course.slug} value={course.slug}>
-                              {course.name}
-                            </SelectItem>
-                          ))}
-                        </SelectContent>
-                      </Select>
+                      <select name="course" className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <option value="not-sure">Not sure yet</option>
+                        {coursesData.map((course) => (
+                          <option key={course.slug} value={course.name}>
+                            {course.name}
+                          </option>
+                        ))}
+                      </select>
                     </div>
                   </div>
 
                   <div className="space-y-2">
                     <Label htmlFor="preferredTime">Preferred Demo Time</Label>
-                    <Select value={formData.preferredTime} onValueChange={(value) => handleInputChange('preferredTime', value)}>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select preferred time" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="no-preference">No preference</SelectItem>
-                        <SelectItem value="weekend-morning">Weekend Morning (10 AM - 12 PM)</SelectItem>
-                        <SelectItem value="weekend-afternoon">Weekend Afternoon (2 PM - 4 PM)</SelectItem>
-                        <SelectItem value="weekend-evening">Weekend Evening (4 PM - 6 PM)</SelectItem>
-                        <SelectItem value="weekday-evening">Weekday Evening (6 PM - 8 PM)</SelectItem>
-                      </SelectContent>
-                    </Select>
+                    <select name="preferredTime" className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                      <option value="no-preference">No preference</option>
+                      <option value="weekend-morning">Weekend Morning (10 AM - 12 PM)</option>
+                      <option value="weekend-afternoon">Weekend Afternoon (2 PM - 4 PM)</option>
+                      <option value="weekend-evening">Weekend Evening (4 PM - 6 PM)</option>
+                      <option value="weekday-evening">Weekday Evening (6 PM - 8 PM)</option>
+                    </select>
                   </div>
 
                   <div className="space-y-2">
                     <Label htmlFor="message">Additional Message</Label>
-                    <Textarea
+                    <textarea
                       id="message"
+                      name="message"
                       placeholder="Tell us about your goals, experience level, or any specific questions..."
                       rows={4}
-                      value={formData.message}
-                      onChange={(e) => handleInputChange('message', e.target.value)}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                     />
                   </div>
 
                   <Button 
                     type="submit" 
-                    disabled={isSubmitting}
                     className="w-full bg-adsmagnify-blue hover:bg-adsmagnify-dark-blue text-white font-bold py-3 px-6 rounded-xl shadow-lg hover:scale-105 transform transition-all duration-300"
                   >
-                    {isSubmitting ? (
-                      <>
-                        <Send className="h-4 w-4 mr-2 animate-pulse" />
-                        Submitting...
-                      </>
-                    ) : (
-                      <>
-                        <Send className="h-4 w-4 mr-2" />
-                        Book Demo Lecture
-                      </>
-                    )}
+                    <Send className="h-4 w-4 mr-2" />
+                    Book Demo Lecture
                   </Button>
                 </form>
               </CardContent>
