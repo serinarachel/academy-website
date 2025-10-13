@@ -8,7 +8,7 @@
     
     <!-- Homepage -->
     <url>
-        <loc>https://adsmagnify.vercel.app/</loc>
+        <loc>https://adsmagnifyacademy.com/</loc>
         <lastmod>2025-01-15T12:00:00+05:30</lastmod>
         <priority>1.0</priority>
         <changefreq>weekly</changefreq>
@@ -16,28 +16,28 @@
     
     <!-- Courses -->
     <url>
-        <loc>https://adsmagnify.vercel.app/courses</loc>
+        <loc>https://adsmagnifyacademy.com/courses</loc>
         <lastmod>2025-01-15T12:00:00+05:30</lastmod>
         <priority>0.9</priority>
         <changefreq>weekly</changefreq>
     </url>
     
     <url>
-        <loc>https://adsmagnify.vercel.app/courses/ai-performance-marketing</loc>
+        <loc>https://adsmagnifyacademy.com/courses/ai-performance-marketing</loc>
         <lastmod>2025-01-15T12:00:00+05:30</lastmod>
         <priority>0.9</priority>
         <changefreq>monthly</changefreq>
     </url>
     
     <url>
-        <loc>https://adsmagnify.vercel.app/courses/ai-seo</loc>
+        <loc>https://adsmagnifyacademy.com/courses/ai-seo</loc>
         <lastmod>2025-01-15T12:00:00+05:30</lastmod>
         <priority>0.9</priority>
         <changefreq>monthly</changefreq>
     </url>
     
     <url>
-        <loc>https://adsmagnify.vercel.app/courses/advanced-digital-marketing</loc>
+        <loc>https://adsmagnifyacademy.com/courses/advanced-digital-marketing</loc>
         <lastmod>2025-01-15T12:00:00+05:30</lastmod>
         <priority>0.9</priority>
         <changefreq>monthly</changefreq>
@@ -45,21 +45,21 @@
     
     <!-- Main Pages -->
     <url>
-        <loc>https://adsmagnify.vercel.app/testimonials</loc>
+        <loc>https://adsmagnifyacademy.com/testimonials</loc>
         <lastmod>2025-01-15T12:00:00+05:30</lastmod>
         <priority>0.7</priority>
         <changefreq>weekly</changefreq>
     </url>
     
     <url>
-        <loc>https://adsmagnify.vercel.app/gallery</loc>
+        <loc>https://adsmagnifyacademy.com/gallery</loc>
         <lastmod>2025-01-15T12:00:00+05:30</lastmod>
         <priority>0.6</priority>
         <changefreq>monthly</changefreq>
     </url>
     
     <url>
-        <loc>https://adsmagnify.vercel.app/faq</loc>
+        <loc>https://adsmagnifyacademy.com/faq</loc>
         <lastmod>2025-01-15T12:00:00+05:30</lastmod>
         <priority>0.7</priority>
         <changefreq>monthly</changefreq>
@@ -67,35 +67,35 @@
     
     <!-- Location Pages -->
     <url>
-        <loc>https://adsmagnify.vercel.app/locations/south-bombay</loc>
+        <loc>https://adsmagnifyacademy.com/locations/south-bombay</loc>
         <lastmod>2025-01-15T12:00:00+05:30</lastmod>
         <priority>0.7</priority>
         <changefreq>monthly</changefreq>
     </url>
     
     <url>
-        <loc>https://adsmagnify.vercel.app/locations/churchgate</loc>
+        <loc>https://adsmagnifyacademy.com/locations/churchgate</loc>
         <lastmod>2025-01-15T12:00:00+05:30</lastmod>
         <priority>0.7</priority>
         <changefreq>monthly</changefreq>
     </url>
     
     <url>
-        <loc>https://adsmagnify.vercel.app/locations/marine-lines</loc>
+        <loc>https://adsmagnifyacademy.com/locations/marine-lines</loc>
         <lastmod>2025-01-15T12:00:00+05:30</lastmod>
         <priority>0.7</priority>
         <changefreq>monthly</changefreq>
     </url>
     
     <url>
-        <loc>https://adsmagnify.vercel.app/locations/colaba</loc>
+        <loc>https://adsmagnifyacademy.com/locations/colaba</loc>
         <lastmod>2025-01-15T12:00:00+05:30</lastmod>
         <priority>0.7</priority>
         <changefreq>monthly</changefreq>
     </url>
     
     <url>
-        <loc>https://adsmagnify.vercel.app/locations/nariman-point</loc>
+        <loc>https://adsmagnifyacademy.com/locations/nariman-point</loc>
         <lastmod>2025-01-15T12:00:00+05:30</lastmod>
         <priority>0.7</priority>
         <changefreq>monthly</changefreq>
@@ -103,28 +103,28 @@
     
     <!-- Blog -->
     <url>
-        <loc>https://adsmagnify.vercel.app/blog</loc>
+        <loc>https://adsmagnifyacademy.com/blog</loc>
         <lastmod>2025-01-15T12:00:00+05:30</lastmod>
         <priority>0.8</priority>
         <changefreq>weekly</changefreq>
     </url>
     
     <url>
-        <loc>https://adsmagnify.vercel.app/blog/ai-performance-marketing-trends-2025</loc>
+        <loc>https://adsmagnifyacademy.com/blog/ai-performance-marketing-trends-2025</loc>
         <lastmod>2025-01-15T12:00:00+05:30</lastmod>
         <priority>0.7</priority>
         <changefreq>yearly</changefreq>
     </url>
     
     <url>
-        <loc>https://adsmagnify.vercel.app/blog/local-seo-mumbai-businesses-2025</loc>
+        <loc>https://adsmagnifyacademy.com/blog/local-seo-mumbai-businesses-2025</loc>
         <lastmod>2025-01-08T12:00:00+05:30</lastmod>
         <priority>0.7</priority>
         <changefreq>yearly</changefreq>
     </url>
     
     <url>
-        <loc>https://adsmagnify.vercel.app/blog/google-ads-vs-meta-ads-2025-comparison</loc>
+        <loc>https://adsmagnifyacademy.com/blog/google-ads-vs-meta-ads-2025-comparison</loc>
         <lastmod>2025-01-01T12:00:00+05:30</lastmod>
         <priority>0.7</priority>
         <changefreq>yearly</changefreq>
@@ -132,21 +132,21 @@
     
     <!-- Contact & Legal -->
     <url>
-        <loc>https://adsmagnify.vercel.app/contact</loc>
+        <loc>https://adsmagnifyacademy.com/contact</loc>
         <lastmod>2025-01-15T12:00:00+05:30</lastmod>
         <priority>0.8</priority>
         <changefreq>weekly</changefreq>
     </url>
     
     <url>
-        <loc>https://adsmagnify.vercel.app/privacy-policy</loc>
+        <loc>https://adsmagnifyacademy.com/privacy-policy</loc>
         <lastmod>2025-01-15T12:00:00+05:30</lastmod>
         <priority>0.3</priority>
         <changefreq>yearly</changefreq>
     </url>
     
     <url>
-        <loc>https://adsmagnify.vercel.app/terms-and-conditions</loc>
+        <loc>https://adsmagnifyacademy.com/terms-and-conditions</loc>
         <lastmod>2025-01-15T12:00:00+05:30</lastmod>
         <priority>0.3</priority>
         <changefreq>yearly</changefreq>
