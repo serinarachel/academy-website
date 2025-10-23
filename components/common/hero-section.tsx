@@ -82,7 +82,7 @@ const HeroSection = ({
           {/* Floating elements */}
           <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             <div className="bg-white-contrast p-6 rounded-xl animate-fade-in-up stagger-5 hover-lift">
-              <CountUp value={15} suffix="+" className="text-3xl font-bold text-visible-blue mb-2 font-unbounded" />
+              <CountUp value={50} suffix="+" className="text-3xl font-bold text-visible-blue mb-2 font-unbounded" />
               <div className="text-sm text-visible-dark font-satoshi">Students Trained</div>
             </div>
             <div className="bg-white-contrast p-6 rounded-xl animate-fade-in-up stagger-6 hover-lift">
