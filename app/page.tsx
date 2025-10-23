@@ -41,30 +41,6 @@ export default function Home() {
         ctaLink="/contact"
       />
 
-      {/* Stats Section */}
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-4 gap-8 text-center max-w-4xl mx-auto">
-            <div>
-              <CountUp value={500} suffix="+" className="text-4xl font-bold text-navy-900 mb-2" />
-              <div className="text-gray-600 font-medium">Students Trained</div>
-            </div>
-            <div>
-              <CountUp value={50} suffix="+" className="text-4xl font-bold text-navy-900 mb-2" />
-              <div className="text-gray-600 font-medium">Live Projects</div>
-            </div>
-            <div>
-              <CountUp value={95} suffix="%" className="text-4xl font-bold text-navy-900 mb-2" />
-              <div className="text-gray-600 font-medium">Placement Rate</div>
-            </div>
-            <div>
-              <CountUp value={4} className="text-4xl font-bold text-navy-900 mb-2" />
-              <div className="text-gray-600 font-medium">Students Per Batch</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Featured Courses */}
       <section className="py-20">
         <div className="container mx-auto px-4">
