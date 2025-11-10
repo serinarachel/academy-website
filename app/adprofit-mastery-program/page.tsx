@@ -82,7 +82,7 @@ export default function AdProfitMasteryProgram() {
               <div className="flex items-center justify-center gap-4 mb-6">
                 <Calendar className="h-6 w-6 text-adsmagnify-dark-yellow" />
                 <span className="text-lg font-semibold">Next Batch:</span>
-                <span className="text-lg">27th October 2025</span>
+                <span className="text-lg">6th December 2025</span>
               </div>
               <div className="flex items-center justify-center gap-4 mb-6">
                 <div className="flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full border border-white/30">
@@ -229,7 +229,7 @@ export default function AdProfitMasteryProgram() {
                       <Calendar className="h-6 w-6 text-adsmagnify-blue" />
                       <div className="text-left">
                         <span className="text-lg font-semibold block text-adsmagnify-blue">Next Batch</span>
-                        <span className="text-sm text-gray-600">27th October 2025</span>
+                        <span className="text-sm text-gray-600">6th December 2025</span>
                       </div>
                     </div>
                   </div>
@@ -455,7 +455,7 @@ export default function AdProfitMasteryProgram() {
                 <div className="flex items-center justify-center gap-4 mb-6">
                   <Calendar className="h-6 w-6 text-adsmagnify-blue" />
                   <span className="text-lg font-semibold">Next Batch:</span>
-                  <span className="text-lg">27th October 2025</span>
+                  <span className="text-lg">6th December 2025</span>
                 </div>
                 <div className="flex items-center justify-center gap-4 mb-6">
                   <div className="flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full border border-white/30">
@@ -631,7 +631,7 @@ export default function AdProfitMasteryProgram() {
               <div className="flex items-center justify-center gap-4 mb-6">
                 <Calendar className="h-6 w-6 text-adsmagnify-dark-yellow" />
                 <span className="text-lg font-semibold">Next Batch:</span>
-                <span className="text-lg">27th October 2025</span>
+                <span className="text-lg">6th December 2025</span>
               </div>
               <div className="flex items-center justify-center gap-4 mb-6">
                 <div className="flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full border border-white/30">
