@@ -97,7 +97,7 @@ export default function CoursesPage() {
 
   const allMarketingTools = getAllMarketingTools();
 
-  // Custom date formatter: "6th Dec" or "20th Dec"
+  // Custom date formatter: "6th Dec" or "20th Dec" (for upcoming batches)
   const formatDate = (dateString: string): string => {
     const date = new Date(dateString);
     const day = date.getDate();
@@ -119,6 +119,31 @@ export default function CoursesPage() {
     };
 
     return `${day}${getOrdinalSuffix(day)} ${month}`;
+  };
+
+  // Full date formatter for card: "6th December 2025"
+  const formatDateFull = (dateString: string): string => {
+    const date = new Date(dateString);
+    const day = date.getDate();
+    const month = date.toLocaleDateString("en-IN", { month: "long" });
+    const year = date.getFullYear();
+
+    // Add ordinal suffix
+    const getOrdinalSuffix = (n: number): string => {
+      if (n > 3 && n < 21) return "th";
+      switch (n % 10) {
+        case 1:
+          return "st";
+        case 2:
+          return "nd";
+        case 3:
+          return "rd";
+        default:
+          return "th";
+      }
+    };
+
+    return `${day}${getOrdinalSuffix(day)} ${month} ${year}`;
   };
 
   return (
@@ -355,7 +380,7 @@ export default function CoursesPage() {
                         </span>
                       </div>
                       <p className="text-sm text-green-700">
-                        {formatDate(course.upcomingBatches[0].startDate)}
+                        {formatDateFull(course.upcomingBatches[0].startDate)}
                       </p>
                       <p className="text-xs text-green-600">
                         {course.upcomingBatches[0].seats}
