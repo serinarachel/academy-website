@@ -160,18 +160,28 @@ export default async function CoursePage({ params }: CoursePageProps) {
 
   const marketingTools = getMarketingToolsBySlug(slug);
 
-  // Custom date formatter: "6 Dec" or "20th Dec"
+  // Custom date formatter: "6th Dec" or "20th Dec"
   const formatDate = (dateString: string): string => {
     const date = new Date(dateString);
     const day = date.getDate();
     const month = date.toLocaleDateString("en-IN", { month: "short" });
 
-    // Add ordinal suffix for 20th, but not for 6
-    if (day === 20) {
-      return `${day}th ${month}`;
-    } else {
-      return `${day} ${month}`;
-    }
+    // Add ordinal suffix
+    const getOrdinalSuffix = (n: number): string => {
+      if (n > 3 && n < 21) return "th";
+      switch (n % 10) {
+        case 1:
+          return "st";
+        case 2:
+          return "nd";
+        case 3:
+          return "rd";
+        default:
+          return "th";
+      }
+    };
+
+    return `${day}${getOrdinalSuffix(day)} ${month}`;
   };
 
   return (
