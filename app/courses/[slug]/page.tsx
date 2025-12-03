@@ -4,19 +4,24 @@ import HeroSection from "@/components/common/hero-section";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import Link from "next/link";
-import { 
-  IndianRupee, 
-  Clock, 
-  Users, 
-  MapPin, 
-  CheckCircle, 
-  Calendar, 
+import {
+  IndianRupee,
+  Clock,
+  Users,
+  MapPin,
+  CheckCircle,
+  Calendar,
   Brain,
   Target,
   Award,
-  Briefcase
+  Briefcase,
 } from "lucide-react";
 
 // Import data
@@ -36,10 +41,12 @@ export async function generateStaticParams() {
   }));
 }
 
-export async function generateMetadata({ params }: CoursePageProps): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: CoursePageProps): Promise<Metadata> {
   const { slug } = await params;
-  const course = coursesData.find(c => c.slug === slug);
-  
+  const course = coursesData.find((c) => c.slug === slug);
+
   if (!course) {
     return {
       title: "Course Not Found",
@@ -48,27 +55,34 @@ export async function generateMetadata({ params }: CoursePageProps): Promise<Met
 
   // Custom metadata for specific courses
   let title, description, keywords;
-  
+
   switch (slug) {
     case "ai-performance-marketing":
       title = "AI Performance Marketing Course | Adsmagnify Academy";
-      description = "Master AI Performance Marketing with Adsmagnify Academy. Learn cutting-edge ad strategies, analytics, and automation at a top performance marketing academy.";
-      keywords = "ai performance marketing course, performance marketing academy";
+      description =
+        "Master AI Performance Marketing with Adsmagnify Academy. Learn cutting-edge ad strategies, analytics, and automation at a top performance marketing academy.";
+      keywords =
+        "ai performance marketing course, performance marketing academy";
       break;
     case "advanced-digital-marketing":
       title = "Advanced Digital Marketing Course | Adsmagnify Academy";
-      description = "Join our Advance Digital Marketing Course. Learn with the Advanced Digital Marketing program to grow your skills and career effectively.";
+      description =
+        "Join our Advance Digital Marketing Course. Learn with the Advanced Digital Marketing program to grow your skills and career effectively.";
       keywords = "Advance Digital Marketing Course";
       break;
     case "ai-seo":
       title = "AI SEO – Master the SEO Course for 2025";
-      description = "Learn AI SEO with our comprehensive SEO Course. Master AI-driven strategies to boost rankings, traffic, and digital marketing skills.";
+      description =
+        "Learn AI SEO with our comprehensive SEO Course. Master AI-driven strategies to boost rankings, traffic, and digital marketing skills.";
       keywords = "ai seo course, seo course 2025";
       break;
     default:
       title = `${course.name} in Mumbai | AI-Powered Digital Marketing Training`;
       description = `${course.overview} Weekend batches in Churchgate, Mumbai. Only 4 students per batch with live projects and shadow internship included.`;
-      keywords = `${course.name.toLowerCase()}, digital marketing course Mumbai, AI marketing training, ${course.slug.replace('-', ' ')}, Churchgate courses`;
+      keywords = `${course.name.toLowerCase()}, digital marketing course Mumbai, AI marketing training, ${course.slug.replace(
+        "-",
+        " "
+      )}, Churchgate courses`;
   }
 
   return {
@@ -78,15 +92,15 @@ export async function generateMetadata({ params }: CoursePageProps): Promise<Met
     openGraph: {
       title,
       description,
-      url: `https://adsmagnifyacademy.com/courses/${slug}`
-    }
+      url: `https://adsmagnifyacademy.com/courses/${slug}`,
+    },
   };
 }
 
 export default async function CoursePage({ params }: CoursePageProps) {
   const { slug } = await params;
-  const course = coursesData.find(c => c.slug === slug);
-  
+  const course = coursesData.find((c) => c.slug === slug);
+
   if (!course) {
     notFound();
   }
@@ -99,36 +113,31 @@ export default async function CoursePage({ params }: CoursePageProps) {
       case "advanced-digital-marketing":
         return [
           "Meta Ads",
-          "Google Ads", 
+          "Google Ads",
           "LinkedIn Ads",
           "Pinterest",
           "Google Search Console",
           "Google My Business",
           "Google Analytics",
-          "SEMrush"
+          "SEMrush",
         ];
       case "ai-performance-marketing":
-        return [
-          "Meta Ads",
-          "Google Ads",
-          "LinkedIn Ads",
-          "Pinterest"
-        ];
+        return ["Meta Ads", "Google Ads", "LinkedIn Ads", "Pinterest"];
       case "ai-seo":
         return [
           "Google Search Console",
-          "Google My Business", 
+          "Google My Business",
           "Google Analytics",
-          "SEMrush"
+          "SEMrush",
         ];
       default:
         return [
           "Meta Ads",
-          "Google Ads", 
+          "Google Ads",
           "LinkedIn Ads",
           "Pinterest",
           "Google Analytics",
-          "SEMrush"
+          "SEMrush",
         ];
     }
   };
@@ -139,17 +148,31 @@ export default async function CoursePage({ params }: CoursePageProps) {
       "meta ads": "/meta.webp",
       "google ads": "/google.webp",
       "linkedin ads": "/linkedin.webp",
-      "pinterest": "/pinterest.webp",
+      pinterest: "/pinterest.webp",
       "google search console": "/google_search_console.webp",
       "google my business": "/google_my_business.webp",
       "google analytics": "/google_analytics.webp",
-      "semrush": "/semrush.webp"
+      semrush: "/semrush.webp",
     };
-    
+
     return logoMap[tool.toLowerCase()] || "/logo.webp";
   };
 
   const marketingTools = getMarketingToolsBySlug(slug);
+
+  // Custom date formatter: "6 Dec" or "20th Dec"
+  const formatDate = (dateString: string): string => {
+    const date = new Date(dateString);
+    const day = date.getDate();
+    const month = date.toLocaleDateString("en-IN", { month: "short" });
+
+    // Add ordinal suffix for 20th, but not for 6
+    if (day === 20) {
+      return `${day}th ${month}`;
+    } else {
+      return `${day} ${month}`;
+    }
+  };
 
   return (
     <div className="min-h-screen">
@@ -159,15 +182,20 @@ export default async function CoursePage({ params }: CoursePageProps) {
           <div className="max-w-4xl mx-auto">
             <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
               <div className="lg:w-2/3">
-                <Badge className="bg-adsmagnify-yellow text-adsmagnify-blue mb-4">{course.mode}</Badge>
+                <Badge className="bg-adsmagnify-yellow text-adsmagnify-blue mb-4">
+                  {course.mode}
+                </Badge>
                 <h1 className="text-4xl lg:text-5xl font-bold mb-4 text-adsmagnify-yellow">
-                  {slug === "ai-performance-marketing" ? "AI Performance Marketing Course" :
-                   slug === "advanced-digital-marketing" ? "Advanced Digital Marketing Course - Adsmagnify Academy" :
-                   slug === "ai-seo" ? "AI SEO – SEO Course" :
-                   course.name}
+                  {slug === "ai-performance-marketing"
+                    ? "AI Performance Marketing Course"
+                    : slug === "advanced-digital-marketing"
+                    ? "Advanced Digital Marketing Course - Adsmagnify Academy"
+                    : slug === "ai-seo"
+                    ? "AI SEO – SEO Course"
+                    : course.name}
                 </h1>
                 <p className="text-xl text-gray-300 mb-6">{course.overview}</p>
-                
+
                 <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 text-sm">
                   <div className="flex items-center gap-2">
                     <Clock className="h-4 w-4 text-adsmagnify-yellow" />
@@ -187,7 +215,7 @@ export default async function CoursePage({ params }: CoursePageProps) {
                   </div>
                 </div>
               </div>
-              
+
               <div className="lg:w-1/3">
                 <Card className="bg-white text-navy-900">
                   <CardContent className="p-6">
@@ -196,9 +224,16 @@ export default async function CoursePage({ params }: CoursePageProps) {
                         <IndianRupee className="h-6 w-6" />
                         {course.priceINR.toLocaleString()}
                       </div>
-                      <p className="text-sm text-gray-600">₹2000 registration + flexible EMI</p>
+                      <p className="text-sm text-gray-600">
+                        ₹2000 registration + flexible EMI
+                      </p>
+                      {slug === "ai-performance-marketing" && (
+                        <p className="text-sm font-semibold text-green-600 mt-2">
+                          5000₹ off when paid fully
+                        </p>
+                      )}
                     </div>
-                    
+
                     <div className="space-y-3 mb-6">
                       <div className="flex items-center gap-2 text-sm">
                         <CheckCircle className="h-4 w-4 text-green-500" />
@@ -221,12 +256,19 @@ export default async function CoursePage({ params }: CoursePageProps) {
                         <span>Job Placement Support</span>
                       </div>
                     </div>
-                    
+
                     <div className="space-y-3">
-                      <Button asChild className="w-full bg-adsmagnify-yellow hover:bg-adsmagnify-dark-yellow text-adsmagnify-blue font-semibold hover:scale-105 transform transition-all duration-200">
+                      <Button
+                        asChild
+                        className="w-full bg-adsmagnify-yellow hover:bg-adsmagnify-dark-yellow text-adsmagnify-blue font-semibold hover:scale-105 transform transition-all duration-200"
+                      >
                         <Link href="/contact">Book Demo Lecture</Link>
                       </Button>
-                      <Button asChild variant="outline" className="w-full bg-white text-adsmagnify-blue hover:bg-adsmagnify-yellow hover:text-adsmagnify-blue hover:border-adsmagnify-yellow hover:scale-105 transform transition-all duration-200">
+                      <Button
+                        asChild
+                        variant="outline"
+                        className="w-full bg-white text-adsmagnify-blue hover:bg-adsmagnify-yellow hover:text-adsmagnify-blue hover:border-adsmagnify-yellow hover:scale-105 transform transition-all duration-200"
+                      >
                         <a href="tel:+917700090236">Call +91 7700090236</a>
                       </Button>
                     </div>
@@ -245,10 +287,13 @@ export default async function CoursePage({ params }: CoursePageProps) {
             <h2 className="text-3xl lg:text-4xl font-bold text-navy-900 mb-8">
               Who Is This Course For?
             </h2>
-            
+
             <div className="grid md:grid-cols-2 gap-6">
               {course.whoItsFor.map((item, index) => (
-                <Card key={index} className="text-left hover:shadow-lg transition-shadow">
+                <Card
+                  key={index}
+                  className="text-left hover:shadow-lg transition-shadow"
+                >
                   <CardContent className="p-6">
                     <div className="flex items-start gap-4">
                       <div className="bg-adsmagnify-light-yellow p-2 rounded-full">
@@ -271,23 +316,32 @@ export default async function CoursePage({ params }: CoursePageProps) {
             <h2 className="text-3xl lg:text-4xl font-bold text-navy-900 mb-8 text-center">
               Course Curriculum
             </h2>
-            
+
             <Accordion type="multiple" className="space-y-4">
               {course.modules.map((module, index) => (
-                <AccordionItem key={index} value={`module-${index}`} className="border border-gray-200 rounded-lg px-6">
+                <AccordionItem
+                  key={index}
+                  value={`module-${index}`}
+                  className="border border-gray-200 rounded-lg px-6"
+                >
                   <AccordionTrigger className="hover:no-underline">
                     <div className="flex items-center gap-4">
                       <div className="bg-navy-900 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">
                         {index + 1}
                       </div>
-                      <span className="font-semibold text-left">{module.title}</span>
+                      <span className="font-semibold text-left">
+                        {module.title}
+                      </span>
                     </div>
                   </AccordionTrigger>
                   <AccordionContent className="pt-4 pb-6">
                     <div className="ml-12">
                       <ul className="space-y-2">
                         {module.topics.map((topic, topicIndex) => (
-                          <li key={topicIndex} className="flex items-center gap-2 text-gray-600">
+                          <li
+                            key={topicIndex}
+                            className="flex items-center gap-2 text-gray-600"
+                          >
                             <CheckCircle className="h-4 w-4 text-green-500 flex-shrink-0" />
                             <span>{topic}</span>
                           </li>
@@ -313,30 +367,38 @@ export default async function CoursePage({ params }: CoursePageProps) {
               </h2>
             </div>
             <p className="text-xl text-gray-300 mb-8">
-              Learn industry-leading AI tools that give you a competitive advantage
+              Learn industry-leading AI tools that give you a competitive
+              advantage
             </p>
-            
+
             <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-6">
               {(() => {
                 const logoSrcByTool: Record<string, string> = {
-                  "chatgpt": "/chatgpt5.webp",
+                  chatgpt: "/chatgpt5.webp",
                   "chatgpt-5": "/chatgpt5.webp",
-                  "gemini": "/gemini.webp",
+                  gemini: "/gemini.webp",
                   "bolt.ai": "/bolt.webp",
-                  "boltai": "/bolt.webp",
-                  "heygen": "/heygen.webp",
-                  "elevenlabs": "/elevenlabs.webp",
-                  "perplexity": "/perplexity.webp",
-                  "veo3": "/veo3.webp",
-                  "hera ai": "/hera_ai.webp"
+                  boltai: "/bolt.webp",
+                  heygen: "/heygen.webp",
+                  elevenlabs: "/elevenlabs.webp",
+                  perplexity: "/perplexity.webp",
+                  veo3: "/veo3.webp",
+                  "hera ai": "/hera_ai.webp",
                 };
                 return course.aiTools.map((tool) => {
                   const key = tool.toLowerCase().replace(/\s+/g, "");
                   const src = logoSrcByTool[key] || "/hera_ai.webp";
                   return (
-                    <div key={tool} className="bg-white p-4 rounded-lg text-center">
+                    <div
+                      key={tool}
+                      className="bg-white p-4 rounded-lg text-center"
+                    >
                       <div className="w-12 h-12 rounded-2xl flex items-center justify-center mx-auto mb-3 bg-white shadow-sm overflow-hidden">
-                        <img src={src} alt={`${tool} logo`} className="w-10 h-10 object-contain" />
+                        <img
+                          src={src}
+                          alt={`${tool} logo`}
+                          className="w-10 h-10 object-contain"
+                        />
                       </div>
                       <h3 className="font-bold text-adsmagnify-blue">{tool}</h3>
                     </div>
@@ -383,14 +445,25 @@ export default async function CoursePage({ params }: CoursePageProps) {
               })()}
             </p>
 
-            <div className={`grid gap-6 ${marketingTools.length <= 4 ? 'md:grid-cols-2 lg:grid-cols-4' : marketingTools.length <= 6 ? 'md:grid-cols-3 lg:grid-cols-3' : 'md:grid-cols-3 lg:grid-cols-4'}`}>
+            <div
+              className={`grid gap-6 ${
+                marketingTools.length <= 4
+                  ? "md:grid-cols-2 lg:grid-cols-4"
+                  : marketingTools.length <= 6
+                  ? "md:grid-cols-3 lg:grid-cols-3"
+                  : "md:grid-cols-3 lg:grid-cols-4"
+              }`}
+            >
               {marketingTools.map((tool) => (
-                <div key={tool} className="bg-white p-6 rounded-lg text-center border border-gray-200">
+                <div
+                  key={tool}
+                  className="bg-white p-6 rounded-lg text-center border border-gray-200"
+                >
                   <div className="w-12 h-12 rounded-2xl flex items-center justify-center mx-auto mb-3 bg-white shadow-sm overflow-hidden">
-                    <img 
-                      src={getMarketingToolLogo(tool)} 
-                      alt={`${tool} logo`} 
-                      className="w-10 h-10 object-contain" 
+                    <img
+                      src={getMarketingToolLogo(tool)}
+                      alt={`${tool} logo`}
+                      className="w-10 h-10 object-contain"
                     />
                   </div>
                   <h3 className="font-bold text-navy-900 text-sm">{tool}</h3>
@@ -408,10 +481,13 @@ export default async function CoursePage({ params }: CoursePageProps) {
             <h2 className="text-3xl lg:text-4xl font-bold text-navy-900 mb-8">
               What You'll Achieve
             </h2>
-            
+
             <div className="grid md:grid-cols-2 gap-6">
               {course.outcomes.map((outcome, index) => (
-                <Card key={index} className="text-left hover:shadow-lg transition-shadow">
+                <Card
+                  key={index}
+                  className="text-left hover:shadow-lg transition-shadow"
+                >
                   <CardContent className="p-6">
                     <div className="flex items-start gap-4">
                       <div className="bg-green-100 p-2 rounded-full">
@@ -434,7 +510,7 @@ export default async function CoursePage({ params }: CoursePageProps) {
             <h2 className="text-3xl lg:text-4xl font-bold text-navy-900 mb-8 text-center">
               Meet Your Instructors
             </h2>
-            
+
             <div className="grid md:grid-cols-2 gap-8">
               <Card className="hover:shadow-lg transition-shadow">
                 <CardContent className="p-8 text-center">
@@ -443,24 +519,40 @@ export default async function CoursePage({ params }: CoursePageProps) {
                     alt={mainInstructor.name}
                     className="w-32 h-32 rounded-full object-cover mx-auto mb-4"
                   />
-                  <h3 className="text-xl font-bold text-navy-900 mb-2">{mainInstructor.name}</h3>
-                  <p className="text-adsmagnify-yellow font-medium mb-3">{mainInstructor.title}</p>
-                  <p className="text-gray-600 text-sm mb-4 leading-relaxed">{mainInstructor.bio}</p>
-                  
+                  <h3 className="text-xl font-bold text-navy-900 mb-2">
+                    {mainInstructor.name}
+                  </h3>
+                  <p className="text-adsmagnify-yellow font-medium mb-3">
+                    {mainInstructor.title}
+                  </p>
+                  <p className="text-gray-600 text-sm mb-4 leading-relaxed">
+                    {mainInstructor.bio}
+                  </p>
+
                   <div className="mb-4">
-                    <h4 className="font-semibold text-navy-900 mb-2">Expertise:</h4>
+                    <h4 className="font-semibold text-navy-900 mb-2">
+                      Expertise:
+                    </h4>
                     <div className="flex flex-wrap gap-1 justify-center">
                       {mainInstructor.expertise.slice(0, 4).map((skill) => (
-                        <Badge key={skill} variant="outline" className="text-xs">
+                        <Badge
+                          key={skill}
+                          variant="outline"
+                          className="text-xs"
+                        >
                           {skill}
                         </Badge>
                       ))}
                     </div>
                   </div>
-                  
+
                   <div>
-                    <h4 className="font-semibold text-navy-900 mb-2">Brands Worked With:</h4>
-                    <p className="text-gray-600 text-sm">{mainInstructor.brandsWorkedWith.slice(0, 3).join(', ')}</p>
+                    <h4 className="font-semibold text-navy-900 mb-2">
+                      Brands Worked With:
+                    </h4>
+                    <p className="text-gray-600 text-sm">
+                      {mainInstructor.brandsWorkedWith.slice(0, 3).join(", ")}
+                    </p>
                   </div>
                 </CardContent>
               </Card>
@@ -472,24 +564,44 @@ export default async function CoursePage({ params }: CoursePageProps) {
                     alt={partnerInstructor.name}
                     className="w-32 h-32 rounded-full object-cover mx-auto mb-4"
                   />
-                  <h3 className="text-xl font-bold text-navy-900 mb-2">{partnerInstructor.name}</h3>
-                  <p className="text-adsmagnify-yellow font-medium mb-3">{partnerInstructor.title}</p>
-                  <p className="text-gray-600 text-sm mb-4 leading-relaxed">{partnerInstructor.bio}</p>
+                  <h3 className="text-xl font-bold text-navy-900 mb-2">
+                    {partnerInstructor.name}
+                  </h3>
+                  <p className="text-adsmagnify-yellow font-medium mb-3">
+                    {partnerInstructor.title}
+                  </p>
+                  <p className="text-gray-600 text-sm mb-4 leading-relaxed">
+                    {partnerInstructor.bio}
+                  </p>
 
                   <div className="mb-4">
-                    <h4 className="font-semibold text-navy-900 mb-2">Expertise:</h4>
+                    <h4 className="font-semibold text-navy-900 mb-2">
+                      Expertise:
+                    </h4>
                     <div className="flex flex-wrap gap-1 justify-center">
-                      {partnerInstructor.expertise.slice(0, 4).map((skill: string) => (
-                        <Badge key={skill} variant="outline" className="text-xs">
-                          {skill}
-                        </Badge>
-                      ))}
+                      {partnerInstructor.expertise
+                        .slice(0, 4)
+                        .map((skill: string) => (
+                          <Badge
+                            key={skill}
+                            variant="outline"
+                            className="text-xs"
+                          >
+                            {skill}
+                          </Badge>
+                        ))}
                     </div>
                   </div>
 
                   <div>
-                    <h4 className="font-semibold text-navy-900 mb-2">Brands Worked With:</h4>
-                    <p className="text-gray-600 text-sm">{partnerInstructor.brandsWorkedWith.slice(0, 3).join(', ')}</p>
+                    <h4 className="font-semibold text-navy-900 mb-2">
+                      Brands Worked With:
+                    </h4>
+                    <p className="text-gray-600 text-sm">
+                      {partnerInstructor.brandsWorkedWith
+                        .slice(0, 3)
+                        .join(", ")}
+                    </p>
                   </div>
                 </CardContent>
               </Card>
@@ -505,7 +617,7 @@ export default async function CoursePage({ params }: CoursePageProps) {
             <h2 className="text-3xl lg:text-4xl font-bold text-navy-900 mb-8 text-center">
               Upcoming Batches
             </h2>
-            
+
             <div className="grid md:grid-cols-2 gap-6">
               {course.upcomingBatches.map((batch, index) => (
                 <Card key={index} className="hover:shadow-lg transition-shadow">
@@ -513,24 +625,27 @@ export default async function CoursePage({ params }: CoursePageProps) {
                     <div className="flex items-center gap-2 mb-4">
                       <Calendar className="h-5 w-5 text-adsmagnify-yellow" />
                       <span className="font-bold text-lg">
-                        {new Date(batch.startDate).toLocaleDateString('en-IN', { 
-                          day: 'numeric',
-                          month: 'long',
-                          year: 'numeric'
-                        })}
+                        {formatDate(batch.startDate)}
                       </span>
                     </div>
                     <p className="text-gray-600 mb-2">{batch.schedule}</p>
-                    <Badge variant="outline" className="text-red-600 border-red-600">
+                    <Badge
+                      variant="outline"
+                      className="text-red-600 border-red-600"
+                    >
                       {batch.seats}
                     </Badge>
                   </CardContent>
                 </Card>
               ))}
             </div>
-            
+
             <div className="text-center mt-8">
-              <Button asChild size="lg" className="bg-adsmagnify-yellow hover:bg-adsmagnify-dark-yellow text-adsmagnify-blue font-semibold hover:scale-105 transform transition-all duration-200">
+              <Button
+                asChild
+                size="lg"
+                className="bg-adsmagnify-yellow hover:bg-adsmagnify-dark-yellow text-adsmagnify-blue font-semibold hover:scale-105 transform transition-all duration-200"
+              >
                 <Link href="/contact">Secure Your Seat</Link>
               </Button>
             </div>
@@ -545,40 +660,54 @@ export default async function CoursePage({ params }: CoursePageProps) {
             <h2 className="text-3xl lg:text-4xl font-bold text-navy-900 mb-8 text-center">
               Frequently Asked Questions
             </h2>
-            
+
             <Accordion type="single" collapsible className="space-y-4">
               {[
                 {
-                  question: "What makes this course different from online courses?",
-                  answer: "Our course offers in-person instruction with only 4 students per batch, live client projects with real budgets, and a 10-hour shadow internship where you work alongside our team on actual client campaigns."
+                  question:
+                    "What makes this course different from online courses?",
+                  answer:
+                    "Our course offers in-person instruction with only 4 students per batch, live client projects with real budgets, and a 10-hour shadow internship where you work alongside our team on actual client campaigns.",
                 },
                 {
                   question: "Do I need prior experience in marketing?",
-                  answer: "No prior experience required. Our course is designed for beginners, but we also accommodate students with some marketing background by customizing the pace and depth of content."
+                  answer:
+                    "No prior experience required. Our course is designed for beginners, but we also accommodate students with some marketing background by customizing the pace and depth of content.",
                 },
                 {
                   question: "What AI tools will I learn?",
-                  answer: `You'll master ${course.aiTools.join(', ')} and learn how to integrate them into your marketing workflows for maximum efficiency and results.`
+                  answer: `You'll master ${course.aiTools.join(
+                    ", "
+                  )} and learn how to integrate them into your marketing workflows for maximum efficiency and results.`,
                 },
                 {
                   question: "Is job placement guaranteed?",
-                  answer: "While we can't guarantee placement, 95% of our graduates secure marketing roles within 3 months. We provide resume building, interview preparation, and direct connections to hiring companies."
+                  answer:
+                    "While we can't guarantee placement, 95% of our graduates secure marketing roles within 3 months. We provide resume building, interview preparation, and direct connections to hiring companies.",
                 },
                 {
                   question: "Can I pay in installments?",
-                  answer: "Yes! Pay ₹2,000 as registration fee and the remaining amount in flexible monthly installments. We work with you to create a payment plan that fits your budget."
+                  answer:
+                    "Yes! Pay ₹2,000 as registration fee and the remaining amount in flexible monthly installments. We work with you to create a payment plan that fits your budget.",
                 },
                 {
                   question: "What if I miss a class?",
-                  answer: "With our small batch size, we can accommodate make-up sessions. We also provide recordings of key sessions and one-on-one catch-up time with the instructor."
-                }
+                  answer:
+                    "With our small batch size, we can accommodate make-up sessions. We also provide recordings of key sessions and one-on-one catch-up time with the instructor.",
+                },
               ].map((faq, index) => (
-                <AccordionItem key={index} value={`faq-${index}`} className="border border-gray-200 rounded-lg px-6">
+                <AccordionItem
+                  key={index}
+                  value={`faq-${index}`}
+                  className="border border-gray-200 rounded-lg px-6"
+                >
                   <AccordionTrigger className="hover:no-underline text-left">
                     <span className="font-semibold">{faq.question}</span>
                   </AccordionTrigger>
                   <AccordionContent className="pt-4 pb-6">
-                    <p className="text-gray-600 leading-relaxed">{faq.answer}</p>
+                    <p className="text-gray-600 leading-relaxed">
+                      {faq.answer}
+                    </p>
                   </AccordionContent>
                 </AccordionItem>
               ))}
@@ -594,15 +723,29 @@ export default async function CoursePage({ params }: CoursePageProps) {
             Ready to Transform Your Career with AI Marketing?
           </h2>
           <p className="text-lg mb-6 max-w-2xl mx-auto">
-            Book your demo lecture today. Experience our teaching methodology and see real campaign results before you commit.
+            Book your demo lecture today. Experience our teaching methodology
+            and see real campaign results before you commit.
           </p>
-          
+
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild size="lg" className="bg-adsmagnify-blue hover:bg-navy-800 text-white hover:scale-105 transform transition-all duration-200">
+            <Button
+              asChild
+              size="lg"
+              className="bg-adsmagnify-blue hover:bg-navy-800 text-white hover:scale-105 transform transition-all duration-200"
+            >
               <Link href="/contact">Book Demo Lecture Now</Link>
             </Button>
-            <Button asChild variant="outline" size="lg" className="text-adsmagnify-blue hover:bg-white hover:bg-adsmagnify-blue hover:text-adsmagnify-yellow hover:scale-105 transform transition-all duration-200">
-              <a href="https://wa.me/917700090236" target="_blank" rel="noopener noreferrer">
+            <Button
+              asChild
+              variant="outline"
+              size="lg"
+              className="text-adsmagnify-blue hover:bg-white hover:bg-adsmagnify-blue hover:text-adsmagnify-yellow hover:scale-105 transform transition-all duration-200"
+            >
+              <a
+                href="https://wa.me/917700090236"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 WhatsApp +91 7700090236
               </a>
             </Button>
@@ -618,82 +761,88 @@ export default async function CoursePage({ params }: CoursePageProps) {
             {
               "@context": "https://schema.org",
               "@type": "Course",
-              "name": course.name,
-              "description": course.overview,
-              "provider": {
+              name: course.name,
+              description: course.overview,
+              provider: {
                 "@type": "Organization",
-                "name": "Adsmagnify Academy",
-                "address": {
+                name: "Adsmagnify Academy",
+                address: {
                   "@type": "PostalAddress",
-                  "streetAddress": "PIL Court, G12, near New Central Excise Building, New Marine Lines",
-                  "addressLocality": "Churchgate",
-                  "addressRegion": "Mumbai",
-                  "postalCode": "400020",
-                  "addressCountry": "IN"
+                  streetAddress:
+                    "PIL Court, G12, near New Central Excise Building, New Marine Lines",
+                  addressLocality: "Churchgate",
+                  addressRegion: "Mumbai",
+                  postalCode: "400020",
+                  addressCountry: "IN",
                 },
-                "telephone": "+91 7700090236"
+                telephone: "+91 7700090236",
               },
-              "hasCourseInstance": course.upcomingBatches.map(batch => ({
+              hasCourseInstance: course.upcomingBatches.map((batch) => ({
                 "@type": "CourseInstance",
-                "courseMode": "offline",
-                "startDate": batch.startDate,
-                "duration": course.duration,
-                "price": course.priceINR,
-                "priceCurrency": "INR",
-                "location": {
+                courseMode: "offline",
+                startDate: batch.startDate,
+                duration: course.duration,
+                price: course.priceINR,
+                priceCurrency: "INR",
+                location: {
                   "@type": "Place",
-                  "name": "Adsmagnify Academy",
-                  "address": "Churchgate, Mumbai"
+                  name: "Adsmagnify Academy",
+                  address: "Churchgate, Mumbai",
                 },
-                "maximumAttendeeCapacity": 4
+                maximumAttendeeCapacity: 4,
               })),
-              "courseCode": course.slug.toUpperCase(),
-              "educationalLevel": "Beginner to Intermediate",
-              "teaches": course.outcomes,
-              "audience": {
+              courseCode: course.slug.toUpperCase(),
+              educationalLevel: "Beginner to Intermediate",
+              teaches: course.outcomes,
+              audience: {
                 "@type": "Audience",
-                "audienceType": course.whoItsFor
-              }
+                audienceType: course.whoItsFor,
+              },
             },
             {
-              "@context": "https://schema.org", 
+              "@context": "https://schema.org",
               "@type": "FAQPage",
-              "mainEntity": [
+              mainEntity: [
                 {
-                  question: "What makes this course different from online courses?",
-                  answer: "Our course offers in-person instruction with only 4 students per batch, live client projects with real budgets, and a 10-hour shadow internship where you work alongside our team on actual client campaigns."
+                  question:
+                    "What makes this course different from online courses?",
+                  answer:
+                    "Our course offers in-person instruction with only 4 students per batch, live client projects with real budgets, and a 10-hour shadow internship where you work alongside our team on actual client campaigns.",
                 },
                 {
                   question: "Do I need prior experience in marketing?",
-                  answer: "No prior experience required. Our course is designed for beginners, but we also accommodate students with some marketing background by customizing the pace and depth of content."
+                  answer:
+                    "No prior experience required. Our course is designed for beginners, but we also accommodate students with some marketing background by customizing the pace and depth of content.",
                 },
                 {
                   question: "What AI tools will I learn?",
-                  answer: `You'll master ${course.aiTools.join(', ')} and learn how to integrate them into your marketing workflows for maximum efficiency and results.`
-                }
-              ].map(faq => ({
+                  answer: `You'll master ${course.aiTools.join(
+                    ", "
+                  )} and learn how to integrate them into your marketing workflows for maximum efficiency and results.`,
+                },
+              ].map((faq) => ({
                 "@type": "Question",
-                "name": faq.question,
-                "acceptedAnswer": {
+                name: faq.question,
+                acceptedAnswer: {
                   "@type": "Answer",
-                  "text": faq.answer
-                }
-              }))
+                  text: faq.answer,
+                },
+              })),
             },
             {
               "@context": "https://schema.org",
               "@type": "Person",
-              "name": mainInstructor.name,
-              "jobTitle": mainInstructor.title,
-              "worksFor": {
+              name: mainInstructor.name,
+              jobTitle: mainInstructor.title,
+              worksFor: {
                 "@type": "Organization",
-                "name": "Adsmagnify Academy"
+                name: "Adsmagnify Academy",
               },
-              "description": mainInstructor.bio,
-              "knowsAbout": mainInstructor.expertise,
-              "image": mainInstructor.image
-            }
-          ])
+              description: mainInstructor.bio,
+              knowsAbout: mainInstructor.expertise,
+              image: mainInstructor.image,
+            },
+          ]),
         }}
       />
     </div>
