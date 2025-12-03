@@ -234,13 +234,13 @@
     ],
     "upcomingBatches": [
       {
-        "startDate": "2025-12-20",
-        "schedule": "Saturdays & Sundays, 10:00 AM - 6:00 PM",
+        "startDate": "2025-12-6",
+        "schedule": "Saturdays & Sundays, 4:00 PM - 6:00 PM",
         "seats": "4 students only"
       },
       {
-        "startDate": "2025-12-6",
-        "schedule": "Saturdays & Sundays, 10:00 AM - 6:00 PM",
+        "startDate": "2025-12-20",
+        "schedule": "Saturdays & Sundays, 1:00 PM - 3:00 PM",
         "seats": "4 students only"
       }
     ]
