@@ -4,59 +4,67 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { ArrowRight, CheckCircle, Users, Clock, MapPin, IndianRupee, Star, Zap, Target, Award } from "lucide-react";
+import {
+  ArrowRight,
+  CheckCircle,
+  Users,
+  Clock,
+  MapPin,
+  IndianRupee,
+  Star,
+  Zap,
+  Target,
+  Award,
+} from "lucide-react";
 import SpecialCourseBanner from "@/components/common/special-course-banner";
 import coursesData from "@/data/courses.json";
 
 export const metadata: Metadata = {
   title: "Best Digital Marketing Course in Mumbai | Adsmagnify",
-  description: "Join the best digital marketing course in Mumbai at Adsmagnify Academy. Learn digital marketing with expert-led SEO, ads, AI tools, and hands-on training.",
-  keywords: "best digital marketing course in mumbai, learn digital marketing digital marketing course",
+  description:
+    "Join the best digital marketing course in Mumbai at Adsmagnify Academy. Learn digital marketing with expert-led SEO, ads, AI tools, and hands-on training.",
+  keywords:
+    "best digital marketing course in mumbai, learn digital marketing digital marketing course",
   openGraph: {
     title: "Best Digital Marketing Course in Mumbai | Adsmagnify",
-    description: "Join the best digital marketing course in Mumbai at Adsmagnify Academy. Learn digital marketing with expert-led SEO, ads, AI tools, and hands-on training.",
-    url: "https://adsmagnifyacademy.com/courses/"
-  }
+    description:
+      "Join the best digital marketing course in Mumbai at Adsmagnify Academy. Learn digital marketing with expert-led SEO, ads, AI tools, and hands-on training.",
+    url: "https://adsmagnifyacademy.com/courses/",
+  },
 };
 
 export default function CoursesPage() {
-
   // Define marketing tools based on course slug
   const getMarketingToolsBySlug = (courseSlug: string): string[] => {
     switch (courseSlug) {
       case "advanced-digital-marketing":
         return [
           "Meta Ads",
-          "Google Ads", 
+          "Google Ads",
           "LinkedIn Ads",
           "Pinterest",
           "Google Search Console",
           "Google My Business",
           "Google Analytics",
-          "SEMrush"
+          "SEMrush",
         ];
       case "ai-performance-marketing":
-        return [
-          "Meta Ads",
-          "Google Ads",
-          "LinkedIn Ads",
-          "Pinterest"
-        ];
+        return ["Meta Ads", "Google Ads", "LinkedIn Ads", "Pinterest"];
       case "ai-seo":
         return [
           "Google Search Console",
-          "Google My Business", 
+          "Google My Business",
           "Google Analytics",
-          "SEMrush"
+          "SEMrush",
         ];
       default:
         return [
           "Meta Ads",
-          "Google Ads", 
+          "Google Ads",
           "LinkedIn Ads",
           "Pinterest",
           "Google Analytics",
-          "SEMrush"
+          "SEMrush",
         ];
     }
   };
@@ -67,22 +75,22 @@ export default function CoursesPage() {
       "meta ads": "/meta.webp",
       "google ads": "/google.webp",
       "linkedin ads": "/linkedin.webp",
-      "pinterest": "/pinterest.webp",
+      pinterest: "/pinterest.webp",
       "google search console": "/google_search_console.webp",
       "google my business": "/google_my_business.webp",
       "google analytics": "/google_analytics.webp",
-      "semrush": "/semrush.webp"
+      semrush: "/semrush.webp",
     };
-    
+
     return logoMap[tool.toLowerCase()] || "/logo.webp";
   };
 
   // Get all unique marketing tools across all courses
   const getAllMarketingTools = (): string[] => {
     const allTools = new Set<string>();
-    coursesData.forEach(course => {
+    coursesData.forEach((course) => {
       const tools = getMarketingToolsBySlug(course.slug);
-      tools.forEach(tool => allTools.add(tool));
+      tools.forEach((tool) => allTools.add(tool));
     });
     return Array.from(allTools);
   };
@@ -95,14 +103,15 @@ export default function CoursesPage() {
       <section className="bg-gradient-to-br from-navy-900 via-navy-800 to-navy-900 text-white py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            
             <h1 className="text-4xl lg:text-6xl font-bold mb-6 text-adsmagnify-yellow">
               Best Digital Marketing Course in Mumbai
             </h1>
             <p className="text-xl lg:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto">
-              Master AI-driven marketing with live client projects, shadow internships, and guaranteed job placement support in Mumbai's premier training academy.
+              Master AI-driven marketing with live client projects, shadow
+              internships, and guaranteed job placement support in Mumbai's
+              premier training academy.
             </p>
-            
+
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 text-center mb-8">
               <div className="flex flex-col items-center gap-2">
                 <Users className="h-8 w-8 text-adsmagnify-yellow" />
@@ -126,7 +135,11 @@ export default function CoursesPage() {
               </div>
             </div>
 
-            <Button asChild size="lg" className="bg-adsmagnify-yellow hover:bg-adsmagnify-dark-yellow text-adsmagnify-blue font-semibold hover:scale-105 transform transition-all duration-200">
+            <Button
+              asChild
+              size="lg"
+              className="bg-adsmagnify-yellow hover:bg-adsmagnify-dark-yellow text-adsmagnify-blue font-semibold hover:scale-105 transform transition-all duration-200"
+            >
               <Link href="/contact">Book Free Demo Lecture</Link>
             </Button>
           </div>
@@ -144,20 +157,26 @@ export default function CoursesPage() {
               </h2>
             </div>
             <p className="text-xl text-gray-300 mb-8">
-            Master the essential Marketing & SEO tools used by top performance marketers
+              Master the essential Marketing & SEO tools used by top performance
+              marketers
             </p>
 
             <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-6">
               {allMarketingTools.map((tool, index) => (
-                <div key={tool} className="bg-white p-6 rounded-lg text-center hover:shadow-lg transition-shadow">
+                <div
+                  key={tool}
+                  className="bg-white p-6 rounded-lg text-center hover:shadow-lg transition-shadow"
+                >
                   <div className="w-12 h-12 rounded-2xl flex items-center justify-center mx-auto mb-3 bg-white shadow-sm overflow-hidden">
-                    <img 
-                      src={getMarketingToolLogo(tool)} 
-                      alt={`${tool} logo`} 
-                      className="w-10 h-10 object-contain" 
+                    <img
+                      src={getMarketingToolLogo(tool)}
+                      alt={`${tool} logo`}
+                      className="w-10 h-10 object-contain"
                     />
                   </div>
-                  <h3 className="font-bold text-adsmagnify-blue text-sm">{tool}</h3>
+                  <h3 className="font-bold text-adsmagnify-blue text-sm">
+                    {tool}
+                  </h3>
                 </div>
               ))}
             </div>
@@ -174,22 +193,32 @@ export default function CoursesPage() {
                 Choose Your Learning Path
               </h2>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                Each course includes live client projects, AI tools training, and a 10-hour shadow internship for real-world experience.
+                Each course includes live client projects, AI tools training,
+                and a 10-hour shadow internship for real-world experience.
               </p>
             </div>
 
             <div className="grid lg:grid-cols-3 gap-8">
               {coursesData.map((course, index) => (
-                <Card key={course.slug} className={`hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 ${index === 1 ? 'lg:scale-105 border-2 border-adsmagnify-yellow' : ''}`}>
+                <Card
+                  key={course.slug}
+                  className={`hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 ${
+                    index === 1
+                      ? "lg:scale-105 border-2 border-adsmagnify-yellow"
+                      : ""
+                  }`}
+                >
                   {index === 1 && (
                     <div className="bg-adsmagnify-yellow text-adsmagnify-blue text-center py-2 text-sm font-bold">
                       MOST POPULAR
                     </div>
                   )}
-                  
+
                   <CardHeader className="pb-4">
                     <div className="flex items-center justify-between mb-2">
-                      <Badge className="bg-navy-900 text-white">{course.mode}</Badge>
+                      <Badge className="bg-navy-900 text-white">
+                        {course.mode}
+                      </Badge>
                       <div className="flex items-center gap-1">
                         <Star className="h-4 w-4 text-adsmagnify-yellow fill-current" />
                         <span className="text-sm font-medium">4.9/5</span>
@@ -208,9 +237,16 @@ export default function CoursesPage() {
                     <div className="text-center py-4 bg-gray-50 rounded-lg">
                       <div className="flex items-center justify-center text-3xl font-bold text-navy-900 mb-1">
                         <IndianRupee className="h-6 w-6" />
-                        {course.priceINR.toLocaleString('en-IN')}
+                        {course.priceINR.toLocaleString("en-IN")}
                       </div>
-                      <p className="text-sm text-gray-600">₹2000 registration + EMI available</p>
+                      <p className="text-sm text-gray-600">
+                        ₹2000 registration + EMI available
+                      </p>
+                      {course.slug === "ai-performance-marketing" && (
+                        <p className="text-sm font-semibold text-green-600 mt-2">
+                          5000₹ off when paid fully
+                        </p>
+                      )}
                     </div>
 
                     {/* Key Details */}
@@ -221,24 +257,35 @@ export default function CoursesPage() {
                       </div>
                       <div className="flex items-center gap-3 text-sm">
                         <Users className="h-4 w-4 text-adsmagnify-yellow flex-shrink-0" />
-                        <span className="text-gray-700">Only 4 Students Per Batch</span>
+                        <span className="text-gray-700">
+                          Only 4 Students Per Batch
+                        </span>
                       </div>
                       <div className="flex items-center gap-3 text-sm">
                         <MapPin className="h-4 w-4 text-adsmagnify-yellow flex-shrink-0" />
-                        <span className="text-gray-700">Churchgate, Mumbai</span>
+                        <span className="text-gray-700">
+                          Churchgate, Mumbai
+                        </span>
                       </div>
                       <div className="flex items-center gap-3 text-sm">
                         <CheckCircle className="h-4 w-4 text-adsmagnify-yellow flex-shrink-0" />
-                        <span className="text-gray-700">Certificate + Shadow Internship</span>
+                        <span className="text-gray-700">
+                          Certificate + Shadow Internship
+                        </span>
                       </div>
                     </div>
 
                     {/* AI Tools */}
                     <div>
-                      <h4 className="font-semibold text-navy-900 mb-2 text-sm">AI Tools You'll Master:</h4>
+                      <h4 className="font-semibold text-navy-900 mb-2 text-sm">
+                        AI Tools You'll Master:
+                      </h4>
                       <div className="flex flex-wrap gap-1">
                         {course.aiTools.map((tool) => (
-                          <Badge key={`${tool}-${index}` as any} className="text-xs">
+                          <Badge
+                            key={`${tool}-${index}` as any}
+                            className="text-xs"
+                          >
                             {tool}
                           </Badge>
                         ))}
@@ -262,11 +309,16 @@ export default function CoursesPage() {
                         })()}
                       </h4>
                       <div className="flex flex-wrap gap-1">
-                        {getMarketingToolsBySlug(course.slug).map((tool, idx2) => (
-                          <Badge key={`${tool}-${idx2}` as any} className="text-xs">
-                            {tool}
-                          </Badge>
-                        ))}
+                        {getMarketingToolsBySlug(course.slug).map(
+                          (tool, idx2) => (
+                            <Badge
+                              key={`${tool}-${idx2}` as any}
+                              className="text-xs"
+                            >
+                              {tool}
+                            </Badge>
+                          )
+                        )}
                       </div>
                     </div>
 
@@ -274,37 +326,46 @@ export default function CoursesPage() {
                     <div className="bg-green-50 p-3 rounded-lg">
                       <div className="flex items-center gap-2 mb-1">
                         <Clock className="h-4 w-4 text-green-600" />
-                        <span className="text-sm font-medium text-green-800">Next Batch Starts:</span>
+                        <span className="text-sm font-medium text-green-800">
+                          Next Batch Starts:
+                        </span>
                       </div>
                       <p className="text-sm text-green-700">
-                        {new Date(course.upcomingBatches[0].startDate).toLocaleDateString('en-IN', { 
-                          day: 'numeric',
-                          month: 'long',
-                          year: 'numeric'
+                        {new Date(
+                          course.upcomingBatches[0].startDate
+                        ).toLocaleDateString("en-IN", {
+                          day: "numeric",
+                          month: "long",
+                          year: "numeric",
                         })}
                       </p>
-                      <p className="text-xs text-green-600">{course.upcomingBatches[0].seats}</p>
+                      <p className="text-xs text-green-600">
+                        {course.upcomingBatches[0].seats}
+                      </p>
                     </div>
 
-                                          {/* CTA Buttons */}
-                      <div className="space-y-3 pt-2">
-                        <Button 
-                          asChild 
-                          className="w-full bg-adsmagnify-yellow hover:bg-adsmagnify-dark-yellow text-adsmagnify-blue font-semibold hover:scale-105 transform transition-all duration-200"
+                    {/* CTA Buttons */}
+                    <div className="space-y-3 pt-2">
+                      <Button
+                        asChild
+                        className="w-full bg-adsmagnify-yellow hover:bg-adsmagnify-dark-yellow text-adsmagnify-blue font-semibold hover:scale-105 transform transition-all duration-200"
+                      >
+                        <Link
+                          href={`/courses/${course.slug}`}
+                          className="flex items-center justify-center gap-2"
                         >
-                          <Link href={`/courses/${course.slug}`} className="flex items-center justify-center gap-2">
-                            View Full Details
-                            <ArrowRight className="h-4 w-4" />
-                          </Link>
-                        </Button>
-                        <Button 
-                          asChild 
-                          variant="outline" 
-                          className="w-full text-adsmagnify-blue hover:bg-adsmagnify-yellow hover:text-adsmagnify-blue hover:border-adsmagnify-yellow"
-                        >
-                          <Link href="/contact">Book Demo</Link>
-                        </Button>
-                      </div>
+                          View Full Details
+                          <ArrowRight className="h-4 w-4" />
+                        </Link>
+                      </Button>
+                      <Button
+                        asChild
+                        variant="outline"
+                        className="w-full text-adsmagnify-blue hover:bg-adsmagnify-yellow hover:text-adsmagnify-blue hover:border-adsmagnify-yellow"
+                      >
+                        <Link href="/contact">Book Demo</Link>
+                      </Button>
+                    </div>
                   </CardContent>
                 </Card>
               ))}
@@ -321,45 +382,70 @@ export default function CoursesPage() {
               Compare Our Courses
             </h2>
             <p className="text-center text-gray-300 mb-12 max-w-2xl mx-auto">
-              Choose the perfect course for your career goals and current experience level
+              Choose the perfect course for your career goals and current
+              experience level
             </p>
 
             <div className="overflow-x-auto">
               <table className="w-full text-left border-collapse">
                 <thead>
                   <tr className="border-b border-gray-700">
-                    <th className="p-4 text-adsmagnify-yellow font-semibold">Course</th>
-                    <th className="p-4 text-adsmagnify-yellow font-semibold">Duration</th>
-                    <th className="p-4 text-adsmagnify-yellow font-semibold">Price</th>
-                    <th className="p-4 text-adsmagnify-yellow font-semibold">Tools & Platforms</th>
-                    <th className="p-4 text-adsmagnify-yellow font-semibold">Action</th>
+                    <th className="p-4 text-adsmagnify-yellow font-semibold">
+                      Course
+                    </th>
+                    <th className="p-4 text-adsmagnify-yellow font-semibold">
+                      Duration
+                    </th>
+                    <th className="p-4 text-adsmagnify-yellow font-semibold">
+                      Price
+                    </th>
+                    <th className="p-4 text-adsmagnify-yellow font-semibold">
+                      Tools & Platforms
+                    </th>
+                    <th className="p-4 text-adsmagnify-yellow font-semibold">
+                      Action
+                    </th>
                   </tr>
                 </thead>
                 <tbody>
                   {coursesData.map((course) => {
-                    const courseMarketingTools = getMarketingToolsBySlug(course.slug);
+                    const courseMarketingTools = getMarketingToolsBySlug(
+                      course.slug
+                    );
                     return (
-                      <tr key={course.slug} className="border-b border-gray-800 hover:bg-navy-800 transition-colors">
+                      <tr
+                        key={course.slug}
+                        className="border-b border-gray-800 hover:bg-navy-800 transition-colors"
+                      >
                         <td className="p-4">
                           <div>
-                            <h3 className="font-semibold text-white mb-1">{course.shortName}</h3>
-                            <p className="text-gray-400 text-sm">{course.mode}</p>
+                            <h3 className="font-semibold text-white mb-1">
+                              {course.shortName}
+                            </h3>
+                            <p className="text-gray-400 text-sm">
+                              {course.mode}
+                            </p>
                           </div>
                         </td>
                         <td className="p-4 text-gray-300">{course.duration}</td>
                         <td className="p-4">
                           <div className="flex items-center text-adsmagnify-yellow font-bold">
                             <IndianRupee className="h-4 w-4" />
-                            {course.priceINR.toLocaleString('en-IN')}
+                            {course.priceINR.toLocaleString("en-IN")}
                           </div>
                         </td>
                         <td className="p-4">
                           <div className="flex flex-wrap gap-1">
-                            {courseMarketingTools.slice(0, 3).map((tool, idx3) => (
-                              <Badge key={`${tool}-${idx3}` as any} className="text-xs text-gray-300 border-gray-600">
-                                {tool}
-                              </Badge>
-                            ))}
+                            {courseMarketingTools
+                              .slice(0, 3)
+                              .map((tool, idx3) => (
+                                <Badge
+                                  key={`${tool}-${idx3}` as any}
+                                  className="text-xs text-gray-300 border-gray-600"
+                                >
+                                  {tool}
+                                </Badge>
+                              ))}
                             {courseMarketingTools.length > 3 && (
                               <Badge className="text-xs text-gray-400 border-gray-600">
                                 +{courseMarketingTools.length - 3} more
@@ -368,7 +454,11 @@ export default function CoursesPage() {
                           </div>
                         </td>
                         <td className="p-4">
-                          <Button asChild size="sm" className="bg-adsmagnify-yellow hover:bg-adsmagnify-dark-yellow text-adsmagnify-blue font-medium">
+                          <Button
+                            asChild
+                            size="sm"
+                            className="bg-adsmagnify-yellow hover:bg-adsmagnify-dark-yellow text-adsmagnify-blue font-medium"
+                          >
                             <Link href={`/courses/${course.slug}`}>
                               View Details
                             </Link>
@@ -391,41 +481,47 @@ export default function CoursesPage() {
             <h2 className="text-3xl lg:text-4xl font-bold text-navy-900 mb-12">
               What's Included in Every Course
             </h2>
-            
+
             <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
               {[
                 {
                   title: "Live Client Projects",
                   description: "Work with real budgets on actual campaigns",
-                  icon: Target
+                  icon: Target,
                 },
                 {
-                  title: "Shadow Internship", 
+                  title: "Shadow Internship",
                   description: "10 hours of hands-on agency experience",
-                  icon: CheckCircle
+                  icon: CheckCircle,
                 },
                 {
                   title: "AI Tools Training",
                   description: "Master ChatGPT-5, Gemini, Bolt.AI & more",
-                  icon: Zap
+                  icon: Zap,
                 },
                 {
                   title: "Lifetime Mentorship",
-                  description: "Consistent support even after course completion",
-                  icon: Award
+                  description:
+                    "Consistent support even after course completion",
+                  icon: Award,
                 },
                 {
                   title: "Job Placement Support",
                   description: "Resume building, interviews & networking",
-                  icon: Users
-                }
+                  icon: Users,
+                },
               ].map((item, index) => (
-                <Card key={index} className="text-center hover:shadow-lg transition-shadow">
+                <Card
+                  key={index}
+                  className="text-center hover:shadow-lg transition-shadow"
+                >
                   <CardContent className="p-6">
                     <div className="bg-adsmagnify-yellow p-3 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
                       <item.icon className="h-8 w-8 text-adsmagnify-blue" />
                     </div>
-                    <h3 className="font-bold text-navy-900 mb-2">{item.title}</h3>
+                    <h3 className="font-bold text-navy-900 mb-2">
+                      {item.title}
+                    </h3>
                     <p className="text-gray-600 text-sm">{item.description}</p>
                   </CardContent>
                 </Card>
@@ -445,15 +541,30 @@ export default function CoursesPage() {
             Ready to Start Your Digital Marketing Journey?
           </h2>
           <p className="text-lg mb-8 max-w-2xl mx-auto">
-            Book a free demo lecture and experience our teaching methodology. See real campaign results and meet your instructors before you commit.
+            Book a free demo lecture and experience our teaching methodology.
+            See real campaign results and meet your instructors before you
+            commit.
           </p>
-          
+
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild size="lg" className="bg-adsmagnify-blue hover:bg-navy-800 text-white hover:scale-105 transform transition-all duration-200">
+            <Button
+              asChild
+              size="lg"
+              className="bg-adsmagnify-blue hover:bg-navy-800 text-white hover:scale-105 transform transition-all duration-200"
+            >
               <Link href="/contact">Book Free Demo Lecture</Link>
             </Button>
-            <Button asChild variant="outline" size="lg" className="text-adsmagnify-blue hover:bg-adsmagnify-blue hover:text-adsmagnify-yellow hover:scale-105 transform transition-all duration-200">
-              <a href="https://wa.me/917700090236" target="_blank" rel="noopener noreferrer">
+            <Button
+              asChild
+              variant="outline"
+              size="lg"
+              className="text-adsmagnify-blue hover:bg-adsmagnify-blue hover:text-adsmagnify-yellow hover:scale-105 transform transition-all duration-200"
+            >
+              <a
+                href="https://wa.me/917700090236"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 WhatsApp +91 7700090236
               </a>
             </Button>
@@ -468,25 +579,25 @@ export default function CoursesPage() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "ItemList",
-            "itemListElement": coursesData.map((course, index) => ({
+            itemListElement: coursesData.map((course, index) => ({
               "@type": "Course",
-              "position": index + 1,
-              "name": course.name,
-              "description": course.overview,
-              "provider": {
+              position: index + 1,
+              name: course.name,
+              description: course.overview,
+              provider: {
                 "@type": "Organization",
-                "name": "Adsmagnify Academy"
+                name: "Adsmagnify Academy",
               },
-              "hasCourseInstance": {
+              hasCourseInstance: {
                 "@type": "CourseInstance",
-                "courseMode": "offline",
-                "duration": course.duration,
-                "price": course.priceINR,
-                "priceCurrency": "INR"
+                courseMode: "offline",
+                duration: course.duration,
+                price: course.priceINR,
+                priceCurrency: "INR",
               },
-              "url": `https://adsmagnify.vercel.app/courses/${course.slug}`
-            }))
-          })
+              url: `https://adsmagnify.vercel.app/courses/${course.slug}`,
+            })),
+          }),
         }}
       />
     </div>
