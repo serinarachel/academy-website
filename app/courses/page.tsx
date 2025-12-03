@@ -97,6 +97,30 @@ export default function CoursesPage() {
 
   const allMarketingTools = getAllMarketingTools();
 
+  // Custom date formatter: "6th Dec" or "20th Dec"
+  const formatDate = (dateString: string): string => {
+    const date = new Date(dateString);
+    const day = date.getDate();
+    const month = date.toLocaleDateString("en-IN", { month: "short" });
+
+    // Add ordinal suffix
+    const getOrdinalSuffix = (n: number): string => {
+      if (n > 3 && n < 21) return "th";
+      switch (n % 10) {
+        case 1:
+          return "st";
+        case 2:
+          return "nd";
+        case 3:
+          return "rd";
+        default:
+          return "th";
+      }
+    };
+
+    return `${day}${getOrdinalSuffix(day)} ${month}`;
+  };
+
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
@@ -331,13 +355,7 @@ export default function CoursesPage() {
                         </span>
                       </div>
                       <p className="text-sm text-green-700">
-                        {new Date(
-                          course.upcomingBatches[0].startDate
-                        ).toLocaleDateString("en-IN", {
-                          day: "numeric",
-                          month: "long",
-                          year: "numeric",
-                        })}
+                        {formatDate(course.upcomingBatches[0].startDate)}
                       </p>
                       <p className="text-xs text-green-600">
                         {course.upcomingBatches[0].seats}
