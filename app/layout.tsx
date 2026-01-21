@@ -59,6 +59,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        {/* reCAPTCHA Script */}
+        <Script
+          src="https://www.google.com/recaptcha/api.js"
+          strategy="afterInteractive"
+        />
+        
         {/* Meta Pixel Code */}
         <Script id="fb-pixel" strategy="afterInteractive">
           {`

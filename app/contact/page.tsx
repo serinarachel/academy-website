@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -15,19 +16,40 @@ import {
 } from "lucide-react";
 import { useFormTracking } from "@/hooks/use-tracking";
 import { navigateToInternal } from "@/utils/navigation";
+import ReCaptcha from "@/components/common/recaptcha";
 
 // Import course data for the form
 import coursesData from "@/data/courses.json";
 
 export default function ContactPage() {
   const { trackFormSubmit } = useFormTracking();
+  const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null);
+  const [recaptchaError, setRecaptchaError] = useState(false);
+
+  const handleRecaptchaChange = (token: string | null) => {
+    setRecaptchaToken(token);
+    setRecaptchaError(false);
+  };
+
+  const handleRecaptchaError = () => {
+    setRecaptchaError(true);
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
+    const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
+    
+    // Validate reCAPTCHA only if it's configured
+    if (siteKey && !recaptchaToken) {
+      e.preventDefault();
+      setRecaptchaError(true);
+      alert("Please complete the reCAPTCHA verification");
+      return;
+    }
+
     // Track form submission
     trackFormSubmit('demo_booking', 'contact_page');
     
     // FormSubmit.co will handle the submission and redirect
-    // No need for preventDefault or async handling
   };
 
   return (
@@ -68,6 +90,7 @@ export default function ContactPage() {
                   <input type="hidden" name="_captcha" value="false" />
                   <input type="hidden" name="_template" value="table" />
                   <input type="hidden" name="_next" value="https://adsmagnifyacademy.com/thank-you" />
+                  <input type="hidden" name="g-recaptcha-response" value={recaptchaToken || ""} />
                   <div className="grid md:grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <Label htmlFor="name">Full Name *</Label>
@@ -136,6 +159,17 @@ export default function ContactPage() {
                       className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                     />
                   </div>
+
+                  {/* reCAPTCHA */}
+                  <ReCaptcha 
+                    onChange={handleRecaptchaChange}
+                    onError={handleRecaptchaError}
+                  />
+                  {recaptchaError && (
+                    <p className="text-red-500 text-sm text-center">
+                      Please complete the reCAPTCHA verification
+                    </p>
+                  )}
 
                   <Button 
                     type="submit" 
