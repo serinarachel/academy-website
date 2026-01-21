@@ -1,0 +1,1 @@
+(globalThis.TURBOPACK||(globalThis.TURBOPACK=[])).push(["object"==typeof document?document.currentScript:void 0,5322,e=>{"use strict";var l=e.i(70082),i=e.i(61984),s=e.i(27909);let t=()=>((0,s.usePageTracking)(),null);e.s(["default",0,()=>(0,l.jsx)(i.Suspense,{fallback:null,children:(0,l.jsx)(t,{})})])},30486,e=>{e.n(e.i(5322))}]);

@@ -1,0 +1,10 @@
+:HL["/_next/static/chunks/b09c0d8d61d4bdd5.css","style"]
+:HL["/meta.webp","image"]
+:HL["/google.webp","image"]
+:HL["/linkedin.webp","image"]
+:HL["/pinterest.webp","image"]
+:HL["/google_search_console.webp","image"]
+:HL["/google_my_business.webp","image"]
+:HL["/google_analytics.webp","image"]
+:HL["/semrush.webp","image"]
+0:{"buildId":"yzzMFIooskb-nc5ZAmdr2","tree":{"name":"","paramType":null,"paramKey":"","hasRuntimePrefetch":false,"slots":{"children":{"name":"courses","paramType":null,"paramKey":"courses","hasRuntimePrefetch":false,"slots":{"children":{"name":"__PAGE__","paramType":null,"paramKey":"__PAGE__","hasRuntimePrefetch":false,"slots":null,"isRootLayout":false}},"isRootLayout":false}},"isRootLayout":true},"staleTime":300}

@@ -1,0 +1,11 @@
+:HL["/_next/static/chunks/b09c0d8d61d4bdd5.css","style"]
+:HL["/t1.webp","image"]
+:HL["/t3.webp","image"]
+:HL["/t2.webp","image"]
+:HL["/t7.webp","image"]
+:HL["/t5.webp","image"]
+:HL["/t8.webp","image"]
+:HL["/t10.webp","image"]
+:HL["/t12.webp","image"]
+:HL["/t4.webp","image"]
+0:{"buildId":"yzzMFIooskb-nc5ZAmdr2","tree":{"name":"","paramType":null,"paramKey":"","hasRuntimePrefetch":false,"slots":{"children":{"name":"testimonials","paramType":null,"paramKey":"testimonials","hasRuntimePrefetch":false,"slots":{"children":{"name":"__PAGE__","paramType":null,"paramKey":"__PAGE__","hasRuntimePrefetch":false,"slots":null,"isRootLayout":false}},"isRootLayout":false}},"isRootLayout":true},"staleTime":300}

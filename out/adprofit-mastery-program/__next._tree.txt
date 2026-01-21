@@ -1,0 +1,2 @@
+:HL["/_next/static/chunks/b09c0d8d61d4bdd5.css","style"]
+0:{"buildId":"yzzMFIooskb-nc5ZAmdr2","tree":{"name":"","paramType":null,"paramKey":"","hasRuntimePrefetch":false,"slots":{"children":{"name":"adprofit-mastery-program","paramType":null,"paramKey":"adprofit-mastery-program","hasRuntimePrefetch":false,"slots":{"children":{"name":"__PAGE__","paramType":null,"paramKey":"__PAGE__","hasRuntimePrefetch":false,"slots":null,"isRootLayout":false}},"isRootLayout":false}},"isRootLayout":true},"staleTime":300}
