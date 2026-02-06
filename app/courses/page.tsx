@@ -97,7 +97,7 @@ export default function CoursesPage() {
 
   const allMarketingTools = getAllMarketingTools();
 
-  // Custom date formatter: "6th Dec" or "20th Dec" (for upcoming batches)
+  // Custom date formatter: "23th Feb" or "23th Feb" (for upcoming batches)
   const formatDate = (dateString: string): string => {
     const date = new Date(dateString);
     const day = date.getDate();
@@ -121,7 +121,7 @@ export default function CoursesPage() {
     return `${day}${getOrdinalSuffix(day)} ${month}`;
   };
 
-  // Full date formatter for card: "6th December 2025"
+  // Full date formatter for card: "23th February 2026"
   const formatDateFull = (dateString: string): string => {
     const date = new Date(dateString);
     const day = date.getDate();

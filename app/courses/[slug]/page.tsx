@@ -160,7 +160,7 @@ export default async function CoursePage({ params }: CoursePageProps) {
 
   const marketingTools = getMarketingToolsBySlug(slug);
 
-  // Custom date formatter: "6th Dec" or "20th Dec"
+  // Custom date formatter: "23th Feb" or "23th Feb"
   const formatDate = (dateString: string): string => {
     const date = new Date(dateString);
     const day = date.getDate();
