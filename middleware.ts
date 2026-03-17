@@ -3,8 +3,11 @@ import type { NextRequest } from 'next/server';
 
 const BLOCKED_COUNTRIES = ['CN', 'PK', 'BD', 'ZA', 'NG']; // China, Pakistan, Bangladesh, South Africa, Nigeria
 
+type RequestWithGeo = NextRequest & { geo?: { country?: string } };
+
 export function middleware(request: NextRequest) {
-  const country = request.geo?.country ?? request.headers.get('x-vercel-ip-country') ?? '';
+  const req = request as RequestWithGeo;
+  const country = req.geo?.country ?? request.headers.get('x-vercel-ip-country') ?? '';
 
   if (country && BLOCKED_COUNTRIES.includes(country)) {
     return new NextResponse(
